@@ -1,0 +1,48 @@
+.filters-container {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filters-container ul {
+    list-style-type: none;
+    display: flex;
+    gap: 0.3rem;
+}
+
+.filters-containerulli {
+    border: 1pxsolidrgba(0, 0, 0, 0.534);
+    border-radius: 1rem;
+    opacity: 0.7;
+    padding: 0.1rem0.5rem;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.filters-containerulli:hover {
+    background: hsl(0, 0%, 90%);
+}
+
+.filters-containerullisvg {
+    font-size: 1.2rem;
+}
+
+.add-btn {
+    border: none;
+    background: none;
+    color: var(--clr-text);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0.2rem0.4rem;
+}
+
+.add-btn:hover {
+    background: hsl(0, 0%, 90%);
+}
+
+.add-btnsvg {
+    font-size: 1.2rem;
+}

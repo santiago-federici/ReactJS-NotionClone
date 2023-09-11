@@ -1,0 +1,9 @@
+.app-main {
+    display: flex;
+    gap: 2rem;
+}
+
+.info-section {
+    margin: 3rem;
+    width: 100%;
+}
