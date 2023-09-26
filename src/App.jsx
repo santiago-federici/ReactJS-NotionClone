@@ -1,7 +1,7 @@
 import { Aside } from './components/Aside'
 import { Filters } from './components/Filters'
 import { Header } from './components/Header'
-import { TasksContainer } from './components/TasksContainer'
+import { GroupsContainer } from './components/GroupsContainer'
 
 import './App.css'
 
@@ -17,7 +17,7 @@ function App() {
 
         <Filters />
 
-        <TasksContainer />
+        <GroupsContainer />
       </section>
     </main>
   )

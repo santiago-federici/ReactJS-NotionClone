@@ -1,26 +1,27 @@
-.tasks-container {
+.groups-container {
     display: grid;
     gap: 3rem;
 }
 
-.task-card__header {
+.group-card__header {
     display: flex;
 }
 
-.task-card__header>p {
+.group-card__header>p {
     display: flex;
     align-items: center;
     padding: 0.3rem 0.5rem;
     border-radius: 6px;
     position: relative;
+    cursor: pointer;
 }
 
-.task-card__header>p>svg {
+.group-card__header>p>svg {
     font-size: 1.2rem;
 }
 
 
-.task-card__header>p:hover {
+.group-card__header>p:hover {
     opacity: 1;
     background: hsl(0, 0%, 95%);
 }
@@ -31,7 +32,7 @@
 }
 
 
-.task-card__table {
+.group-card__table {
     display: grid;
 }
 
@@ -40,7 +41,6 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
-    padding: 0.5rem;
 }
 
 
@@ -48,11 +48,15 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.table-head>p {
     padding: 0.5rem;
 }
 
 .table-content>p {
-    padding: 2px10px;
+    padding: .5rem;
+    cursor: pointer;
 }
 
 .table-head>p,
@@ -79,7 +83,8 @@
     font-size: 1.2rem;
 }
 
-.task-card__table>div>p:hover {
+.table-head>p:hover,
+.table-footer>p:hover {
     cursor: pointer;
     background: hsl(0, 0%, 90%);
 }
@@ -87,8 +92,12 @@
 .table-content__status {
     width: fit-content;
     height: fit-content;
-    border-radius: 0.5rem;
     background: var(--bg-to-do);
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0 .5rem;
 }
 
 .arrow-normal {
@@ -101,6 +110,18 @@
     transform: rotate(-90deg);
 }
 
-.tasks-disappear {
+.groups-disappear {
     display: none;
+}
+
+.new-task-input {
+    border: none;
+    background: none;
+    padding: .5rem;
+    color: black;
+    display: block;
+}
+
+.new-task-input:focus {
+    outline: none;
 }

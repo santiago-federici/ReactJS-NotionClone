@@ -23,36 +23,36 @@ export function Aside() {
       </div>
 
       <section className='aside__section'>
-        <p><AiOutlineSearch class="icons-size" />Search</p>
-        <p><LuClock9 class="icons-size" />Updates</p>
-        <p><FiSettings class="icons-size" />Settings & members</p>
-        <p><FaPlusCircle class="icons-size" />New page</p>
+        <p><AiOutlineSearch className="icons-size" />Search</p>
+        <p><LuClock9 className="icons-size" />Updates</p>
+        <p><FiSettings className="icons-size" />Settings & members</p>
+        <p><FaPlusCircle className="icons-size" />New page</p>
       </section>
 
       <section className='aside__section'>
         <p>
-          <BsChevronRight class="right-arrow" />
-          <ImScissors class="icons-size" />
+          <BsChevronRight className="right-arrow" />
+          <ImScissors className="icons-size" />
           Taks List
         </p>
         <p>
-          <BsChevronRight class="right-arrow" />
-          <BiTrendingUp class="icons-size" />
+          <BsChevronRight className="right-arrow" />
+          <BiTrendingUp className="icons-size" />
           Tasks
         </p>
         <p>
-          <BsChevronRight class="right-arrow" />
-          <RiFocus2Line class="icons-size" />
+          <BsChevronRight className="right-arrow" />
+          <RiFocus2Line className="icons-size" />
           Projects
         </p>
         <p><AiOutlinePlus />Add a page</p>
       </section>
 
       <section className='aside__section'>
-        <p><LiaPortraitSolid class="icons-size" />Create a team space</p>
-        <p><GrTemplate class="icons-size" />Templates</p>
-        <p><TfiImport class="icons-size" />Import</p>
-        <p><BsTrash2Fill class="icons-size" />Trash</p>
+        <p><LiaPortraitSolid className="icons-size" />Create a team space</p>
+        <p><GrTemplate className="icons-size" />Templates</p>
+        <p><TfiImport className="icons-size" />Import</p>
+        <p><BsTrash2Fill className="icons-size" />Trash</p>
       </section>
     </aside>
   )
