@@ -91,7 +91,7 @@
     background: hsl(0, 0%, 90%);
 }
 
-.table-content__status {
+.status {
     width: fit-content;
     height: fit-content;
     background: var(--bg-to-do);
@@ -132,7 +132,12 @@
     position: relative;
 }
 
-.status-options {
+.priority-p {
+    position: relative;
+}
+
+.status-options,
+.priority-options {
     list-style-type: none;
     position: absolute;
     bottom: -7rem;
@@ -154,4 +159,30 @@
 .green-status {
     background: var(--bg-done);
     color: var(--fc-done);
+}
+
+.gray-status {
+    background: var(--bg-to-do);
+    color: var(--fc-to-do);
+}
+
+.priority {
+    border-radius: 5px;
+    padding: 0 .5rem;
+    width: fit-content;
+}
+
+.high-priority {
+    background: var(--bg-high);
+    color: var(--fc-high);
+}
+
+.medium-priority {
+    background: var(--bg-medium);
+    color: var(--fc-medium);
+}
+
+.low-priority {
+    background: var(--bg-low);
+    color: var(--fc-low);
 }
