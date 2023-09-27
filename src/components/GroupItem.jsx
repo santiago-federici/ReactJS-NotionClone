@@ -15,23 +15,13 @@ export function GroupItem() {
     {
       id: useId(),
       taskName: 'Read a book one',
-      taskStatus: 'to do',
+      taskStatus: 'To Do',
       due: 'September 10, 2023',
-      priority: 'high'
+      priority: 'High'
     }
   ])
 
   const [taskName, setTaskName] = useState('')
-
-  const handleClickArrow = () => {
-    if (arrow === 'arrow-normal') {
-      setArrow('arrow-rotate')
-      setTasksDisappear('groups-disappear')
-      return
-    }
-    setArrow('arrow-normal')
-    setTasksDisappear('')
-  }
 
   const handleChangeTaskName = (e) => {
     setTaskName(e.target.value)
@@ -50,6 +40,17 @@ export function GroupItem() {
 
     setTasks(newTasks)
     setTaskName('')
+  }
+
+  // handles the arrow animation
+  const handleClickArrow = () => {
+    if (arrow === 'arrow-normal') {
+      setArrow('arrow-rotate')
+      setTasksDisappear('groups-disappear')
+      return
+    }
+    setArrow('arrow-normal')
+    setTasksDisappear('')
   }
 
   return (
