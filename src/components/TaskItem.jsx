@@ -1,23 +1,25 @@
 import { useState } from 'react'
 import { GoDotFill } from 'react-icons/go'
-
-function TodoOptions() {
-  return (
-    <ul className='status-options'>
-      <li><span className="table-content__status"><GoDotFill />In Progress</span></li>
-      <li><span className="table-content__status"><GoDotFill />Done</span></li>
-      <li><span className="table-content__status"><GoDotFill />To Do</span></li>
-    </ul>
-  )
-}
+import { TodoOptions } from './TodoOptions'
 
 export function TaskItem({ taskName, taskStatus, due, priority }) {
   const [openTodoOptions, setOpenTodoOptions] = useState(false)
 
+  // handling status text
+  const [statusInnerText, setStatusInnerText] = useState(taskStatus)
+  // handling status className
+  const [statusClassName, setStatusClassName] = useState('')
+
   return (
     <>
       <p>{taskName}</p>
-      <p className='status-p'><span className="table-content__status" onClick={() => setOpenTodoOptions(!openTodoOptions)}><GoDotFill />{taskStatus}</span>{openTodoOptions && <TodoOptions />}</p>
+      <p className='status-p' onClick={() => setOpenTodoOptions(!openTodoOptions)}>
+        <span className={`table-content__status ' + ${statusClassName}`}>
+          <GoDotFill />
+          {statusInnerText}
+        </span>
+        {openTodoOptions && <TodoOptions setStatusInnerText={setStatusInnerText} setStatusClassName={setStatusClassName} />}
+      </p>
       <p>{due}</p>
       <p>{priority}</p>
     </>
