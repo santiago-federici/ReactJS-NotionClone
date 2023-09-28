@@ -1,4 +1,10 @@
 export function PriorityOptions({ setPriorityInnerText, setPriorityClassName }) {
+  // TODO: make the priority start with a default className, so it has the corresponding background and font color
+  // ==================================================================================================================
+  // ==================================================================================================================
+  // ==================================================================================================================
+  // ==================================================================================================================
+
   return (
     <ul className="priority-options">
       <li className="priority high-priority"

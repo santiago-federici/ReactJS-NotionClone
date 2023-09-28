@@ -10,18 +10,16 @@ import { nanoid } from 'nanoid'
 export function GroupItem() {
   const [arrow, setArrow] = useState('arrow-normal')
   const [tasksDisappear, setTasksDisappear] = useState('')
-
+  const [taskName, setTaskName] = useState('')
   const [tasks, setTasks] = useState([
     {
       id: useId(),
-      taskName: 'Read a book one',
+      taskName: 'Do homework',
       taskStatus: 'To Do',
-      due: 'September 10, 2023',
+      due: 'September 29, 2023',
       priority: 'High'
     }
   ])
-
-  const [taskName, setTaskName] = useState('')
 
   const handleChangeTaskName = (e) => {
     setTaskName(e.target.value)
@@ -31,7 +29,7 @@ export function GroupItem() {
     const newTask = {
       id: nanoid(),
       taskName,
-      taskStatus: '',
+      taskStatus: 'To Do',
       due: '',
       priority: ''
     }
