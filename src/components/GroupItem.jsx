@@ -1,5 +1,5 @@
 import { BiSolidDownArrow, BiDotsHorizontalRounded } from 'react-icons/bi'
-import { BsPlus } from 'react-icons/bs'
+import { BsEyeSlash, BsPlus, BsTrash3 } from 'react-icons/bs'
 import { CiBrightnessUp } from 'react-icons/ci'
 import { RxCalendar } from 'react-icons/rx'
 import { FaExclamation } from 'react-icons/fa'
@@ -14,10 +14,10 @@ export function GroupItem() {
   const [tasks, setTasks] = useState([
     {
       id: useId(),
-      taskName: 'Do homework',
+      taskName: 'Task',
       taskStatus: 'To Do',
-      due: 'September 29, 2023',
-      priority: 'High'
+      due: '',
+      priority: ''
     }
   ])
 
@@ -25,6 +25,19 @@ export function GroupItem() {
     setTaskName(e.target.value)
   }
 
+  // ====================================================
+  // ====================================================
+  // ====================================================
+  // ====================================================
+  // ====================================================
+  // This function is the same function for the plus icon (in the header), but with -> const newTasks = [newTask, ...tasks]. I should probably make the function in GroupsContainer and then pass it here.
+  // ====================================================
+  // ====================================================
+  // ====================================================
+  // ====================================================
+  // ====================================================
+  // ====================================================
+  // ====================================================
   const handleClickNew = () => {
     const newTask = {
       id: nanoid(),
@@ -51,6 +64,12 @@ export function GroupItem() {
     setTasksDisappear('')
   }
 
+  const [dotsOptions, setDotsOptions] = useState(false)
+
+  const handleDotsClick = () => {
+    setDotsOptions(!dotsOptions)
+  }
+
   return (
     <article className='group-card'>
       <div className='group-card__header'>
@@ -58,7 +77,23 @@ export function GroupItem() {
           <BiSolidDownArrow className={`${arrow}`} />
         </p>
         <p>Books</p>
-        <p className="opacity-7"><BiDotsHorizontalRounded /></p>
+        <p className="dots" onClick={handleDotsClick}>
+          <BiDotsHorizontalRounded />
+          {
+            dotsOptions &&
+            <ul className='floating-options dots-options'>
+              <li className='dot-element'>
+                <BsEyeSlash />
+                Hide
+              </li>
+              <li className='dot-element'>
+                <BsTrash3 />
+                Delete
+              </li>
+            </ul>
+          }
+        </p>
+
         <p className="opacity-7"><BsPlus /></p>
       </div>
 

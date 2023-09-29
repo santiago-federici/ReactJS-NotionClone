@@ -1,14 +1,8 @@
 import { GoDotFill } from 'react-icons/go'
 
 export function StatusOptions({ setStatusInnerText, setStatusClassName }) {
-  // TODO: make the status start with a default className, so it has the corresponding background and font color
-  // ==================================================================================================================
-  // ==================================================================================================================
-  // ==================================================================================================================
-  // ==================================================================================================================
-
   return (
-    <ul className='status-options'>
+    <ul className='floating-options status-options'>
       <li
         onClick={() => {
           setStatusInnerText('In Progress')

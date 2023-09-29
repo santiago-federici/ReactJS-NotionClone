@@ -130,3 +130,26 @@
 .add-group-btn>svg {
     font-size: 1.2rem;
 }
+
+.dots {
+    position: relative;
+    color: rgba(0 0 0 / .5);
+}
+
+.dots-options {
+    width: fit-content;
+    text-wrap: nowrap;
+    color: var(--clt-text);
+    bottom: -5rem;
+    left: 0;
+}
+
+.dot-element {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.dot-element>svg {
+    font-size: 1.2rem;
+}

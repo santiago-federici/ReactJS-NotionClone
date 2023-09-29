@@ -1,15 +1,15 @@
 import { BsPlus } from 'react-icons/bs'
 import { GroupItem } from './GroupItem'
-
-import './GroupsContainer.css'
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
+
+import './GroupsContainer.css'
 
 export function GroupsContainer() {
   const [groups, setGroups] = useState([<GroupItem key={nanoid()} />])
 
   return (
-    <ul className='groups-container'>
+    <div className='groups-container'>
 
       {groups}
 
@@ -19,6 +19,6 @@ export function GroupsContainer() {
         <BsPlus />
         Add a group
       </button>
-    </ul>
+    </div>
   )
 }
