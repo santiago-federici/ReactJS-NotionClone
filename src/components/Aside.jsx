@@ -1,15 +1,4 @@
-import { LuClock9 } from 'react-icons/lu'
-import { AiOutlineSearch, AiOutlinePlus } from 'react-icons/ai'
-import { FiSettings } from 'react-icons/fi'
-import { FaPlusCircle } from 'react-icons/fa'
-import { ImScissors } from 'react-icons/im'
-import { BiTrendingUp } from 'react-icons/bi'
-import { RiFocus2Line } from 'react-icons/ri'
-import { LiaPortraitSolid } from 'react-icons/lia'
-import { GrTemplate } from 'react-icons/gr'
-import { TfiImport } from 'react-icons/tfi'
-import { BsTrash2Fill, BsChevronRight } from 'react-icons/bs'
-
+import { ChevronRight, CirclePlus, Clock, Download, Plus, Scissors, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
 import './Aside.css'
 
 export function Aside() {
@@ -23,36 +12,63 @@ export function Aside() {
       </div>
 
       <section className='aside__section'>
-        <p><AiOutlineSearch className="icons-size" />Search</p>
-        <p><LuClock9 className="icons-size" />Updates</p>
-        <p><FiSettings className="icons-size" />Settings & members</p>
-        <p><FaPlusCircle className="icons-size" />New page</p>
+        <p>
+          <Search />
+          Search
+        </p>
+        <p>
+          <Clock />
+          Updates
+        </p>
+        <p>
+          <Settings />
+          Settings & members
+        </p>
+        <p>
+          <CirclePlus />
+          New page
+        </p>
       </section>
 
       <section className='aside__section'>
         <p>
-          <BsChevronRight className="right-arrow" />
-          <ImScissors className="icons-size" />
+          <ChevronRight />
+          <Scissors />
           Taks List
         </p>
         <p>
-          <BsChevronRight className="right-arrow" />
-          <BiTrendingUp className="icons-size" />
+          <ChevronRight />
+          <TrendingUp />
           Tasks
         </p>
         <p>
-          <BsChevronRight className="right-arrow" />
-          <RiFocus2Line className="icons-size" />
+          <ChevronRight />
+          <Target />
           Projects
         </p>
-        <p><AiOutlinePlus />Add a page</p>
+        <p>
+          <Plus />
+          Add a page
+        </p>
       </section>
 
       <section className='aside__section'>
-        <p><LiaPortraitSolid className="icons-size" />Create a team space</p>
-        <p><GrTemplate className="icons-size" />Templates</p>
-        <p><TfiImport className="icons-size" />Import</p>
-        <p><BsTrash2Fill className="icons-size" />Trash</p>
+        <p>
+          <UserSearch />
+          Create a team space
+        </p>
+        <p>
+          <Template />
+          Templates
+        </p>
+        <p>
+          <Download />
+          Import
+        </p>
+        <p>
+          <Trash />
+          Trash
+        </p>
       </section>
     </aside>
   )

@@ -1,7 +1,7 @@
-import { BsPlus } from 'react-icons/bs'
 import { GroupItem } from './GroupItem'
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
+import { Plus } from './Icons'
 
 import './GroupsContainer.css'
 
@@ -14,9 +14,9 @@ export function GroupsContainer() {
       {groups}
 
       <button
-        className='add-group-btn opacity-7'
+        className='add-group-btn low-opacity-text'
         onClick={() => setGroups([...groups, <GroupItem key={nanoid()} />])}>
-        <BsPlus />
+        <Plus />
         Add a group
       </button>
     </div>

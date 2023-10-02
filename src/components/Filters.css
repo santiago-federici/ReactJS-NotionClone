@@ -11,14 +11,12 @@
 }
 
 .filters-container ul li {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 1rem;
-    opacity: 0.7;
+    color: var(--clr-text-low-opacity);
     padding: 0.1rem 0.5rem;
     display: flex;
-    align-items: center;
-    gap: 5px;
-    width: fit-content;
+    gap: 3px;
 }
 
 .filters-container ul li span {
@@ -26,29 +24,18 @@
     align-items: center;
 }
 
-.filters-container ul li:hover {
-    background: hsl(0, 0%, 90%);
-}
-
 .add-filter-btn {
     border: none;
     background: none;
-    color: var(--clr-text);
-    opacity: 0.7;
+    color: var(--clr-text-low-opacity);
     display: flex;
     align-items: center;
     border-radius: 5px;
     padding: 0.2rem 0.4rem;
 }
 
+.filters-container ul li:hover,
 .add-filter-btn:hover {
     background: hsl(0, 0%, 90%);
-}
-
-.filters-container svg {
-    font-size: 1.2rem;
-}
-
-.filters-container ul .exclamation svg {
-    font-size: 1rem;
+    cursor: pointer;
 }

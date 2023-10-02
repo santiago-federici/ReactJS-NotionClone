@@ -19,7 +19,7 @@ header ul {
     padding: 0.3rem 0.5rem;
     border-radius: 6px;
     position: relative;
-    opacity: 0.7;
+    color: var(--clr-text-low-opacity);
 }
 
 .element svg {
@@ -27,7 +27,7 @@ header ul {
 }
 
 .element:hover {
-    opacity: 1;
+    color: var(--clr-text);
     background: hsl(0, 0%, 95%);
 }
 
@@ -36,8 +36,7 @@ header ul {
 }
 
 .selected {
-    opacity: 1;
-    color: black;
+    color: var(--clr-text);
 }
 
 .selected::after {

@@ -1,19 +1,15 @@
-import { BiSolidDownArrow, BiDotsHorizontalRounded } from 'react-icons/bi'
-import { BsEyeSlash, BsPlus, BsTrash3 } from 'react-icons/bs'
-import { CiBrightnessUp } from 'react-icons/ci'
-import { RxCalendar } from 'react-icons/rx'
-import { FaExclamation } from 'react-icons/fa'
 import { useState, useId } from 'react'
 import { TasksContainer } from './TasksContainer'
 import { nanoid } from 'nanoid'
+import { Calendar, CaretDown, CaretRight, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from './Icons'
 
 export function GroupItem() {
-  const [arrow, setArrow] = useState('arrow-normal')
-  const [tasksDisappear, setTasksDisappear] = useState('')
+  const [arrow, setArrow] = useState(true)
+  const [tasksDisappear, setTasksDisappear] = useState(false)
   const [tasks, setTasks] = useState([
     {
       id: useId(),
-      taskName: 'one',
+      taskName: '',
       taskStatus: 'To Do',
       due: '',
       priority: ''
@@ -23,7 +19,7 @@ export function GroupItem() {
   const handleNewClick = (e) => {
     const newTask = {
       id: nanoid(),
-      taskName: 'two',
+      taskName: 'Task',
       taskStatus: 'To Do',
       due: '',
       priority: ''
@@ -39,17 +35,6 @@ export function GroupItem() {
     }
   }
 
-  // handles the arrow animation
-  const handleClickArrow = () => {
-    if (arrow === 'arrow-normal') {
-      setArrow('arrow-rotate')
-      setTasksDisappear('groups-disappear')
-      return
-    }
-    setArrow('arrow-normal')
-    setTasksDisappear('')
-  }
-
   const [dotsOptions, setDotsOptions] = useState(false)
 
   const handleDotsClick = () => {
@@ -57,48 +42,55 @@ export function GroupItem() {
   }
 
   return (
-    <article className='group-card'>
+    <article>
       <div className='group-card__header'>
-        <p onClick={handleClickArrow}>
-          <BiSolidDownArrow className={`${arrow}`} />
+        <p onClick={() => {
+          setArrow(!arrow)
+          setTasksDisappear(!tasksDisappear)
+        }}>
+          {
+            arrow ? <CaretDown /> : <CaretRight />
+          }
         </p>
         <p>Books</p>
-        <p className="dots" onClick={handleDotsClick}>
-          <BiDotsHorizontalRounded />
+        <p className="dot low-opacity-text" onClick={handleDotsClick}>
+          <Dots />
           {
             dotsOptions &&
             <ul className='floating-options dots-options'>
               <li className='dot-element'>
-                <BsEyeSlash />
+                <EyeOff />
                 Hide
               </li>
               <li className='dot-element'>
-                <BsTrash3 />
+                <Trash />
                 Delete
               </li>
             </ul>
           }
         </p>
 
-        <p className="opacity-7" onClick={(e) => handleNewClick(e)}><BsPlus /></p>
+        <p className="low-opacity-text" onClick={(e) => handleNewClick(e)}><Plus /></p>
       </div>
 
-      <div className={`${tasksDisappear}`}>
-        <div className="group-card__table">
-          <div className="table-head opacity-7">
-            <p>Task name</p>
-            <p><CiBrightnessUp />Status</p>
-            <p><RxCalendar />Due</p>
-            <p><FaExclamation />Priority</p>
-          </div>
+      {
+        tasksDisappear
+          ? <></>
+          : <div>
+            <div className="table-head low-opacity-text">
+              <p>Aa Task name</p>
+              <p><Sun />Status</p>
+              <p><Calendar />Due</p>
+              <p><Exclamation />Priority</p>
+            </div>
 
-          <TasksContainer tasks={tasks} />
+            <TasksContainer tasks={tasks} />
 
-          <div className="table-footer opacity-7">
-            <p onClick={(e) => handleNewClick(e)}><BsPlus />New</p>
+            <div className="table-footer low-opacity-text">
+              <p onClick={(e) => handleNewClick(e)}><Plus />New</p>
+            </div>
           </div>
-        </div>
-      </div>
+      }
     </article>
   )
 }

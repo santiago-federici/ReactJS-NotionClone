@@ -2,6 +2,7 @@
 
 :root {
   --clr-text: hsl(45, 8%, 20%);
+  --clr-text-low-opacity: hsla(45, 8%, 20%, 0.65);
   --clr-surface: hsl(0, 0%, 100%);
   --clr-surface-darker: hsl(0, 0%, 98%);
   --clr-primary: hsl(210, 77%, 51%);
