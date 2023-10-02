@@ -10,47 +10,33 @@ import { nanoid } from 'nanoid'
 export function GroupItem() {
   const [arrow, setArrow] = useState('arrow-normal')
   const [tasksDisappear, setTasksDisappear] = useState('')
-  const [taskName, setTaskName] = useState('')
   const [tasks, setTasks] = useState([
     {
       id: useId(),
-      taskName: 'Task',
+      taskName: 'one',
       taskStatus: 'To Do',
       due: '',
       priority: ''
     }
   ])
 
-  const handleChangeTaskName = (e) => {
-    setTaskName(e.target.value)
-  }
-
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  // This function is the same function for the plus icon (in the header), but with -> const newTasks = [newTask, ...tasks]. I should probably make the function in GroupsContainer and then pass it here.
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  // ====================================================
-  const handleClickNew = () => {
+  const handleNewClick = (e) => {
     const newTask = {
       id: nanoid(),
-      taskName,
+      taskName: 'two',
       taskStatus: 'To Do',
       due: '',
       priority: ''
     }
 
-    const newTasks = [...tasks, newTask]
-
-    setTasks(newTasks)
-    setTaskName('')
+    // Checks which of the "add task" button is, and specifies the position where the task has to be added in
+    if (e.target.innerHTML.includes('New')) {
+      const newTasksArray = [...tasks, newTask]
+      setTasks(newTasksArray)
+    } else {
+      const newTasksArray = [newTask, ...tasks]
+      setTasks(newTasksArray)
+    }
   }
 
   // handles the arrow animation
@@ -94,7 +80,7 @@ export function GroupItem() {
           }
         </p>
 
-        <p className="opacity-7"><BsPlus /></p>
+        <p className="opacity-7" onClick={(e) => handleNewClick(e)}><BsPlus /></p>
       </div>
 
       <div className={`${tasksDisappear}`}>
@@ -108,10 +94,8 @@ export function GroupItem() {
 
           <TasksContainer tasks={tasks} />
 
-          <input className='new-task-input' onChange={(e) => handleChangeTaskName(e)} value={taskName} placeholder='Write the task name...' />
-
           <div className="table-footer opacity-7">
-            <p onClick={handleClickNew}><BsPlus />New</p>
+            <p onClick={(e) => handleNewClick(e)}><BsPlus />New</p>
           </div>
         </div>
       </div>

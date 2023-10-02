@@ -10,25 +10,27 @@
     gap: 0.3rem;
 }
 
-.filters-containerulli {
-    border: 1pxsolidrgba(0, 0, 0, 0.534);
+.filters-container ul li {
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
     opacity: 0.7;
-    padding: 0.1rem0.5rem;
+    padding: 0.1rem 0.5rem;
     display: flex;
     align-items: center;
+    gap: 5px;
     width: fit-content;
 }
 
-.filters-containerulli:hover {
+.filters-container ul li span {
+    display: flex;
+    align-items: center;
+}
+
+.filters-container ul li:hover {
     background: hsl(0, 0%, 90%);
 }
 
-.filters-containerullisvg {
-    font-size: 1.2rem;
-}
-
-.add-btn {
+.add-filter-btn {
     border: none;
     background: none;
     color: var(--clr-text);
@@ -36,13 +38,17 @@
     display: flex;
     align-items: center;
     border-radius: 5px;
-    padding: 0.2rem0.4rem;
+    padding: 0.2rem 0.4rem;
 }
 
-.add-btn:hover {
+.add-filter-btn:hover {
     background: hsl(0, 0%, 90%);
 }
 
-.add-btnsvg {
+.filters-container svg {
     font-size: 1.2rem;
+}
+
+.filters-container ul .exclamation svg {
+    font-size: 1rem;
 }

@@ -39,7 +39,7 @@ export function TaskItem({ taskName, taskStatus, due, priority }) {
 
   return (
     <>
-      <input className='task-name' placeholder={taskValue} onChange={(e) => hangleNameChange(e)} />
+      <input className='task-name' value={taskValue} onChange={(e) => hangleNameChange(e)} />
       <p className='status-p' onClick={() => setOpenTodoOptions(!openTodoOptions)}>
         <span className={`status ' + ${statusClassName}`}>
           <GoDotFill />
