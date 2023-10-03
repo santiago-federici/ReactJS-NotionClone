@@ -11,7 +11,7 @@ function App() {
       <Aside />
 
       <section className='info-section'>
-        <h1>Tasks</h1>
+        <h1 className='page-title'>Tasks</h1>
 
         <Header />
 

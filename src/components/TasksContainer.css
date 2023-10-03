@@ -1,6 +1,12 @@
+.no-tasks-yet {
+    padding: 0.5rem;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.11); */
+}
+
 .table-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
+    position: relative;
 }
 
 .table-content>p {
@@ -15,14 +21,10 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
     border-right: 1px solid rgba(0, 0, 0, 0.11);
     padding: .2rem .7rem;
-    color: var(--clr-text);
+    color: var(--clr-text-darker);
     font-weight: 600;
 
     transition: .3s all ease;
-}
-
-.task-name::placeholder {
-    color: var(--clr-text);
 }
 
 .task-name:focus {
@@ -44,11 +46,11 @@
 
 .status {
     width: fit-content;
+    height: 20px;
     display: flex;
-    gap: 5px;
     align-items: center;
-    border-radius: 0.5rem;
-    padding: 0 .5rem;
+    border-radius: 1rem;
+    padding: 0 10px 0 3px;
 }
 
 .blue-status {
@@ -98,4 +100,5 @@
     display: flex;
     justify-content: space-between;
     justify-content: flex-end;
+    color: var(--clr-text-darker);
 }

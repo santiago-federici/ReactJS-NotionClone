@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { GoDotFill } from 'react-icons/go'
 import { StatusOptions } from './StatusOptions'
 import { PriorityOptions } from './PriorityOptions'
+import { PointFilled } from './Icons'
 
 export function TaskItem({ taskName, taskStatus, due, priority }) {
   // handling status text, style and options
@@ -40,19 +40,23 @@ export function TaskItem({ taskName, taskStatus, due, priority }) {
   return (
     <>
       <input className='task-name' value={taskValue} onChange={(e) => hangleNameChange(e)} />
+
       <p className='status-p' onClick={() => setOpenTodoOptions(!openTodoOptions)}>
         <span className={`status ' + ${statusClassName}`}>
-          <GoDotFill />
+          <PointFilled />
           {statusInnerText}
         </span>
         {openTodoOptions && <StatusOptions setStatusInnerText={setStatusInnerText} setStatusClassName={setStatusClassName} />}
       </p>
+
       <p>{due}</p>
+
       <p className='priority-p' onClick={() => setOpenProprityOptions(!openProprityOptions)}>
         <span className={`priority ' + ${priorityClassName}`}>
           {priorityInnerText}
           {openProprityOptions && <PriorityOptions setPriorityInnerText={setPriorityInnerText} setPriorityClassName={setPriorityClassName} />}
-        </span></p>
+        </span>
+      </p>
     </>
   )
 }

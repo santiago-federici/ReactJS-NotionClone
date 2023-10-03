@@ -30,7 +30,6 @@ aside {
     align-items: center;
     gap: 0.2rem;
     padding: 5px 10px;
-    color: var(--clr-text-low-opacity);
 }
 
 .aside__section p:hover {

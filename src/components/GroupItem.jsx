@@ -1,22 +1,20 @@
-import { useState, useId } from 'react'
+import { useState } from 'react'
 import { TasksContainer } from './TasksContainer'
 import { nanoid } from 'nanoid'
-import { Calendar, CaretDown, CaretRight, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from './Icons'
+import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from './Icons'
 
-export function GroupItem() {
+export function GroupItem({ groupName }) {
   const [arrow, setArrow] = useState(true)
   const [tasksDisappear, setTasksDisappear] = useState(false)
-  const [tasks, setTasks] = useState([
-    {
-      id: useId(),
-      taskName: '',
-      taskStatus: 'To Do',
-      due: '',
-      priority: ''
-    }
-  ])
+  const [tasks, setTasks] = useState([])
+  const [groupValue, setGroupValue] = useState(groupName)
+  const hangleNameChange = (e) => {
+    const newGroupValue = e.target.value
 
-  const handleNewClick = (e) => {
+    setGroupValue(newGroupValue)
+  }
+
+  const handleNewTaskClick = (e) => {
     const newTask = {
       id: nanoid(),
       taskName: 'Task',
@@ -27,11 +25,9 @@ export function GroupItem() {
 
     // Checks which of the "add task" button is, and specifies the position where the task has to be added in
     if (e.target.innerHTML.includes('New')) {
-      const newTasksArray = [...tasks, newTask]
-      setTasks(newTasksArray)
+      setTasks([...tasks, newTask])
     } else {
-      const newTasksArray = [newTask, ...tasks]
-      setTasks(newTasksArray)
+      setTasks([newTask, ...tasks])
     }
   }
 
@@ -42,18 +38,18 @@ export function GroupItem() {
   }
 
   return (
-    <article>
+    <article className='group-card'>
       <div className='group-card__header'>
         <p onClick={() => {
           setArrow(!arrow)
           setTasksDisappear(!tasksDisappear)
         }}>
           {
-            arrow ? <CaretDown /> : <CaretRight />
+            arrow ? <span className='caret'><CaretDown /></span> : <span className='caret-rotate'><CaretDown /></span>
           }
         </p>
-        <p>Books</p>
-        <p className="dot low-opacity-text" onClick={handleDotsClick}>
+        <input className='task-name no-borders' value={groupValue} onChange={(e) => hangleNameChange(e)} />
+        <p className="dot" onClick={handleDotsClick}>
           <Dots />
           {
             dotsOptions &&
@@ -70,14 +66,14 @@ export function GroupItem() {
           }
         </p>
 
-        <p className="low-opacity-text" onClick={(e) => handleNewClick(e)}><Plus /></p>
+        <p className="" onClick={(e) => handleNewTaskClick(e)}><Plus /></p>
       </div>
 
       {
         tasksDisappear
           ? <></>
-          : <div>
-            <div className="table-head low-opacity-text">
+          : <>
+            <div className="table-head">
               <p>Aa Task name</p>
               <p><Sun />Status</p>
               <p><Calendar />Due</p>
@@ -86,10 +82,10 @@ export function GroupItem() {
 
             <TasksContainer tasks={tasks} />
 
-            <div className="table-footer low-opacity-text">
-              <p onClick={(e) => handleNewClick(e)}><Plus />New</p>
+            <div className="table-footer">
+              <p onClick={(e) => handleNewTaskClick(e)}><Plus />New</p>
             </div>
-          </div>
+          </>
       }
     </article>
   )

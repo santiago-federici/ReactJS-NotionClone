@@ -13,7 +13,6 @@
 .filters-container ul li {
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 1rem;
-    color: var(--clr-text-low-opacity);
     padding: 0.1rem 0.5rem;
     display: flex;
     gap: 3px;
@@ -27,7 +26,7 @@
 .add-filter-btn {
     border: none;
     background: none;
-    color: var(--clr-text-low-opacity);
+    color: var(--clr-text);
     display: flex;
     align-items: center;
     border-radius: 5px;

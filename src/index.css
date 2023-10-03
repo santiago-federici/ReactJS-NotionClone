@@ -1,33 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400&family=Fjalla+One&display=swap');
 
 :root {
-  --clr-text: hsl(45, 8%, 20%);
-  --clr-text-low-opacity: hsla(45, 8%, 20%, 0.65);
+  --clr-text: hsla(45, 8%, 20%, 0.65);
+  --clr-text-darker: hsl(45, 8%, 20%);
   --clr-surface: hsl(0, 0%, 100%);
   --clr-surface-darker: hsl(0, 0%, 98%);
   --clr-primary: hsl(210, 77%, 51%);
 
 
   /* Status bg */
-  --bg-done: hsl(142, 19%, 52%);
-  --bg-in-progress: hsl(203, 43%, 55%);
-  --bg-to-do: hsl(40, 5%, 88%);
+  --bg-done: hsl(123, 32.1%, 89.0%);
+  --bg-in-progress: hsl(203, 47.5%, 88.0%);
+  --bg-to-do: hsl(60, 3.4%, 88.6%);
 
   /* Status font */
-  --fc-done: hsl(148, 33%, 16%);
-  --fc-in-progress: hsl(206, 49%, 19%);
-  --fc-to-do: hsl(40, 6%, 18%);
+  --fc-done: hsl(141, 18.2%, 51.6%);
+  --fc-in-progress: hsl(204, 42.0%, 54.7%);
+  --fc-to-do: hsl(90, 0.9%, 56.5%);
 
   /* Priority bg */
-  --bg-low: hsl(142, 19%, 52%);
-  --bg-medium: hsl(41, 93%, 89%);
-  --bg-high: hsl(9, 100%, 93%);
+  --bg-low: hsl(123, 32.1%, 89.0%);
+  --bg-medium: hsl(41, 89.5%, 88.8%);
+  --bg-high: hsl(12, 100%, 93.1%);
 
 
   /* Priority font */
-  --fc-low: hsl(148, 33%, 16%);
-  --fc-medium: hsl(28, 41%, 18%);
-  --fc-high: hsl(2, 63%, 22%);
+  --fc-low: hsl(141, 9.9%, 45.7%);
+  --fc-medium: hsl(31, 24%, 50%);
+  --fc-high: hsl(1, 22.1%, 51.2%);
 
 
   --ff-base: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
