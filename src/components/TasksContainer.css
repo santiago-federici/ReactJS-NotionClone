@@ -71,7 +71,7 @@
 .priority {
     width: fit-content;
     border-radius: 5px;
-    padding: 0 .5rem;
+    padding: 0 6px;
 }
 
 .high-priority {

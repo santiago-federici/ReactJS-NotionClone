@@ -97,3 +97,19 @@
     border: none;
     width: 20ch;
 }
+
+.name-emoji-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.picker-container {
+    position: absolute;
+    top: 3rem;
+}
+
+.emoji {
+    color: var(--clr-text-darker);
+    font-size: 1.2rem;
+}

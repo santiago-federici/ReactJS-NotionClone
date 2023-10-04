@@ -5,6 +5,7 @@
 .app-main {
     display: flex;
     gap: 2rem;
+    margin-left: 260px;
 }
 
 .info-section {

@@ -32,17 +32,23 @@ export function Aside() {
 
       <section className='aside__section'>
         <p>
-          <ChevronRight />
+          <span className='chevron-container'>
+            <ChevronRight />
+          </span>
           <Scissors />
           Taks List
         </p>
         <p>
-          <ChevronRight />
+          <span className='chevron-container'>
+            <ChevronRight />
+          </span>
           <TrendingUp />
           Tasks
         </p>
         <p>
-          <ChevronRight />
+          <span className='chevron-container'>
+            <ChevronRight />
+          </span>
           <Target />
           Projects
         </p>

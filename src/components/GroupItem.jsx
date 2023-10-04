@@ -2,8 +2,12 @@ import { useState } from 'react'
 import { TasksContainer } from './TasksContainer'
 import { nanoid } from 'nanoid'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from './Icons'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 export function GroupItem({ groupName }) {
+  const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
+  const [selectedEmoji, setSelectedEmoji] = useState(null)
   const [arrow, setArrow] = useState(true)
   const [tasksDisappear, setTasksDisappear] = useState(false)
   const [tasks, setTasks] = useState([])
@@ -48,7 +52,17 @@ export function GroupItem({ groupName }) {
             arrow ? <span className='caret'><CaretDown /></span> : <span className='caret-rotate'><CaretDown /></span>
           }
         </p>
-        <input className='task-name no-borders' value={groupValue} onChange={(e) => hangleNameChange(e)} />
+        <span style={{ position: 'absolute', top: '0' }} onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>click to show emojis</span>
+        <div className='name-emoji-container'>
+          <span className='emoji'>{selectedEmoji}</span>
+          <input className='task-name no-borders' value={groupValue} onChange={(e) => hangleNameChange(e)} />
+          {
+            visibleEmojiPicker
+              ? <div className='picker-container'><Picker data={data} onEmojiSelect={(e) => setSelectedEmoji(e.native)} /></div>
+              : <></>
+
+          }
+        </div>
         <p className="dot" onClick={handleDotsClick}>
           <Dots />
           {

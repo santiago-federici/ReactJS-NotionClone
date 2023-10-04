@@ -1,13 +1,15 @@
 aside {
-    /* position: fixed; */
+    position: fixed;
+    left: 0;
 
-    padding: 1rem;
+    padding: .5rem;
     display: grid;
     place-content: start;
 
-    gap: 1rem;
+    gap: .5rem;
     background: var(--clr-surface-darker);
 
+    width: 220px;
     height: 100svh;
 
     box-shadow: rgba(0, 0, 0, 0.024) -1px 0px 0px 0px inset;
@@ -30,8 +32,21 @@ aside {
     align-items: center;
     gap: 0.2rem;
     padding: 5px 10px;
+    border-radius: 4px;
 }
 
 .aside__section p:hover {
     background: hsl(0, 0%, 85%);
+}
+
+.chevron-container {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.chevron-container:hover {
+    background: hsl(0, 0%, 80%);
+    cursor: pointer;
 }
