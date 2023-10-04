@@ -1,0 +1,31 @@
+.modal {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 430px;
+    background: var(--clr-surface);
+    z-index: 999;
+    box-shadow: 0 0 10px 1px rgba(0 0 0 / .1);
+    padding: 1rem;
+}
+
+.group-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.group-modal-header>div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chevrons-task-modal {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.11);
+    padding-left: .5rem;
+}
