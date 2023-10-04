@@ -3,7 +3,7 @@ import './Aside.css'
 
 export function Aside() {
   return (
-    <aside>
+    <aside className='fixed-aside'>
       <div className="user-container">
         <img
           src="https://lh3.googleusercontent.com/a/AAcHTtc6qAUeOnXlMeW8kAEPVdkCl5UgiNSRJWoyezVHdRlP=s100"

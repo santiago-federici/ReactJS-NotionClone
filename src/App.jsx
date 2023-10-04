@@ -1,7 +1,7 @@
 import { Aside } from './components/Aside'
 import { Filters } from './components/Filters'
 import { Header } from './components/Header'
-import { GroupsContainer } from './components/GroupsContainer'
+import { GroupsContainer } from './components/Groups/GroupsContainer.jsx'
 
 import './App.css'
 

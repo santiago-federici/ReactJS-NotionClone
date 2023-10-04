@@ -9,6 +9,7 @@
 
 .group-card {
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+    position: relative;
 }
 
 .group-card__header {
@@ -93,15 +94,18 @@
 
 }
 
-.no-borders {
-    border: none;
-    width: 20ch;
+.name-emoji-container {
+    color: var(--clr-text-darker);
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 5px;
 }
 
-.name-emoji-container {
-    display: flex;
-    align-items: center;
-    position: relative;
+.name-emoji-container:hover {
+    background: hsl(0, 0%, 90%);
 }
 
 .picker-container {
@@ -110,6 +114,5 @@
 }
 
 .emoji {
-    color: var(--clr-text-darker);
     font-size: 1.2rem;
 }
