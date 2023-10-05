@@ -6,7 +6,6 @@ import { Plus } from '../Icons'
 import './GroupsContainer.css'
 
 export function GroupsContainer() {
-  // const [groups, setGroups] = useState([<GroupItem key={nanoid()} />])
   const [groups, setGroups] = useState([])
 
   const handleNewGroupClick = () => {

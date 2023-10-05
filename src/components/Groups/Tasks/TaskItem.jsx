@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { StatusOptions } from '../../Modals/StatusOptions'
 import { PriorityOptions } from '../../Modals/PriorityOptions'
 import { PointFilled, SidebarRight } from '../../Icons'
+import { useModal } from '../../../hooks/useModal'
 
-export function TaskItem({ taskName, taskStatus, due, priority, setTaskModal, modal, setModal }) {
+export function TaskItem({ taskName, taskStatus, due, priority }) {
+  const { modal, setModal, setChevronsForTasks } = useModal()
+
   // handling status text, style and options
   const [openTodoOptions, setOpenTodoOptions] = useState(false)
   const [statusInnerText, setStatusInnerText] = useState(taskStatus)
@@ -39,12 +42,12 @@ export function TaskItem({ taskName, taskStatus, due, priority, setTaskModal, mo
 
   return (
     <>
-      <input className='task-name' value={taskValue} onChange={(e) => hangleNameChange(e)} />
+      <input className='input-name input-borders' value={taskValue} onChange={(e) => hangleNameChange(e)} />
       <span
         style={{ position: 'absolute', top: '-2rem', right: '0' }}
         onClick={() => {
           setModal(!modal)
-          setTaskModal(true)
+          setChevronsForTasks(true)
         }}
       >
         <SidebarRight />

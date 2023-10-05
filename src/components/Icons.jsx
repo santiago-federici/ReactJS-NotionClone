@@ -67,12 +67,12 @@ export function ChevronRight() {
   )
 }
 
-export function DoubleChevronRight() {
+export function ChevronRightPipe() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevrons-right" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-right-pipe" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M7 7l5 5l-5 5"></path>
-      <path d="M13 7l5 5l-5 5"></path>
+      <path d="M6 6l6 6l-6 6"></path>
+      <path d="M17 5v13"></path>
     </svg>
   )
 }
@@ -317,6 +317,27 @@ export function Star() {
     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-star" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
+    </svg>
+  )
+}
+
+export function SmileFilled() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-mood-smile-filled" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.8 10.946a1 1 0 0 0 -1.414 .014a2.5 2.5 0 0 1 -3.572 0a1 1 0 0 0 -1.428 1.4a4.5 4.5 0 0 0 6.428 0a1 1 0 0 0 -.014 -1.414zm-6.19 -5.286l-.127 .007a1 1 0 0 0 .117 1.993l.127 -.007a1 1 0 0 0 -.117 -1.993zm6 0l-.127 .007a1 1 0 0 0 .117 1.993l.127 -.007a1 1 0 0 0 -.117 -1.993z" strokeWidth="0" fill="currentColor"></path>
+    </svg>
+  )
+}
+
+export function Photo() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-photo" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M15 8h.01"></path>
+      <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z"></path>
+      <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"></path>
+      <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"></path>
     </svg>
   )
 }

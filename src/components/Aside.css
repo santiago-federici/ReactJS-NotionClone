@@ -36,7 +36,8 @@
 }
 
 .aside__section p:hover {
-    background: hsl(0, 0%, 85%);
+    background: hsl(0, 0%, 91.8%);
+    cursor: pointer;
 }
 
 .chevron-container {
@@ -47,6 +48,6 @@
 }
 
 .chevron-container:hover {
-    background: hsl(0, 0%, 80%);
+    background: hsl(0, 0%, 85%);
     cursor: pointer;
 }

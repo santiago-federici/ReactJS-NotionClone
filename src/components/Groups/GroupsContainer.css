@@ -26,7 +26,8 @@
 
 .group-card__header>p:hover {
     color: var(--clr-text-darker);
-    background: hsl(0, 0%, 95%);
+    background: hsl(0, 3%, 93.5%);
+
 }
 
 .table-head {
@@ -51,7 +52,7 @@
 .table-footer>p:hover,
 .add-group-btn:hover {
     cursor: pointer;
-    background: hsl(0, 0%, 90%);
+    background: hsl(0, 3%, 93.5%);
 }
 
 .add-group-btn {
@@ -105,14 +106,25 @@
 }
 
 .name-emoji-container:hover {
-    background: hsl(0, 0%, 90%);
-}
-
-.picker-container {
-    position: absolute;
-    top: 3rem;
+    background: hsl(0, 3%, 93.5%);
 }
 
 .emoji {
     font-size: 1.2rem;
+}
+
+.input-name {
+    background: none;
+    padding: .2rem .7rem;
+    color: var(--clr-text-darker);
+    font-weight: 600;
+
+    transition: .3s all ease;
+}
+
+.input-name:focus {
+    box-shadow: 0 0 15px 2px rgba(0 0 0 / .3);
+    outline: 1px solid rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
+    scale: 1.01;
 }

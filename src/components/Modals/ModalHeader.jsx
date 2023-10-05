@@ -1,26 +1,30 @@
-import { ChevronDown, ChevronUp, Clock, Dots, DoubleChevronRight, MaximizeArrows, Message, SidebarRight, Star } from '../Icons'
+import { useModal } from '../../hooks/useModal'
+import { ChevronDown, ChevronRightPipe, ChevronUp, Clock, Dots, MaximizeArrows, Message, SidebarRight, Star } from '../Icons'
 
-import './Modals.css'
+export function ModalHeader() {
+  const { modal, setModal, chevronsForTasks } = useModal()
 
-export function ModalHeader({ taskModal }) {
   return (
     <div className='group-modal-header'>
       <div>
-        <DoubleChevronRight />
-        <MaximizeArrows />
-        <SidebarRight />
+        <span onClick={() => setModal(!modal)}><ChevronRightPipe /></span>
+        <span><MaximizeArrows /></span>
+        <span><SidebarRight /></span>
         {
-          taskModal
-            ? <div className='chevrons-task-modal'><ChevronUp /><ChevronDown /></div>
+          chevronsForTasks
+            ? <div className='chevrons-task-modal'>
+              <span><ChevronUp /></span>
+              <span><ChevronDown /></span>
+            </div>
             : <></>
         }
       </div>
       <div>
         <p>Share</p>
-        <Message />
-        <Clock />
-        <Star />
-        <Dots />
+        <span><Message /></span>
+        <span><Clock /></span>
+        <span><Star /></span>
+        <span><Dots /></span>
       </div>
     </div>
   )

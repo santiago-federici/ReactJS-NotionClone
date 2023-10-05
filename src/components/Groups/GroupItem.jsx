@@ -2,19 +2,17 @@ import { useState } from 'react'
 import { TasksContainer } from './Tasks/TasksContainer'
 import { nanoid } from 'nanoid'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from '../Icons'
-import data from '@emoji-mart/data'
-import Picker from '@emoji-mart/react'
 import { GroupModal } from '../Modals/GroupModal'
-import { useTaskModal } from '../../hooks/useTaskModal'
+import { useModal } from '../../hooks/useModal'
 
 export function GroupItem({ groupName }) {
-  const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
-  const [selectedEmoji, setSelectedEmoji] = useState(null)
   const [arrow, setArrow] = useState(true)
   const [tasksDisappear, setTasksDisappear] = useState(false)
   const [tasks, setTasks] = useState([])
-  const [modal, setModal] = useState(false)
-  const { taskModal, setTaskModal } = useTaskModal()
+  const [groupNameValue, setGroupNameValue] = useState(groupName)
+  const [selectedEmoji, setSelectedEmoji] = useState(null)
+
+  const { setChevronsForTasks, modal, setModal } = useModal()
 
   const handleNewTaskClick = (e) => {
     const newTask = {
@@ -50,23 +48,20 @@ export function GroupItem({ groupName }) {
             arrow ? <span className='caret'><CaretDown /></span> : <span className='caret-rotate'><CaretDown /></span>
           }
         </p>
-        <span style={{ position: 'absolute', top: '0' }} onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>click to show emojis</span>
         <div className='name-emoji-container' onClick={() => {
           setModal(!modal)
-          setTaskModal(false)
+          setChevronsForTasks(false)
         }}>
           <span className='emoji'>{selectedEmoji}</span>
-          <p>{groupName}</p>
-          {
-            visibleEmojiPicker
-              ? <div className='picker-container'><Picker data={data} onEmojiSelect={(e) => setSelectedEmoji(e.native)} /></div>
-              : <></>
-
-          }
+          <p>{groupNameValue}</p>
         </div>
         {
           modal
-            ? <GroupModal taskModal={taskModal} />
+            ? <GroupModal
+              groupNameValue={groupNameValue}
+              setGroupNameValue={setGroupNameValue}
+              selectedEmoji={selectedEmoji}
+              setSelectedEmoji={setSelectedEmoji} />
             : <></>
         }
         <p className="dot" onClick={handleDotsClick}>
@@ -86,7 +81,7 @@ export function GroupItem({ groupName }) {
           }
         </p>
 
-        <p className="" onClick={(e) => handleNewTaskClick(e)}><Plus /></p>
+        <p onClick={(e) => handleNewTaskClick(e)}><Plus /></p>
       </div>
 
       {
@@ -100,11 +95,7 @@ export function GroupItem({ groupName }) {
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer
-              tasks={tasks}
-              setTaskModal={setTaskModal}
-              modal={modal}
-              setModal={setModal} />
+            <TasksContainer tasks={tasks} />
 
             <div className="table-footer">
               <p onClick={(e) => handleNewTaskClick(e)}><Plus />New</p>

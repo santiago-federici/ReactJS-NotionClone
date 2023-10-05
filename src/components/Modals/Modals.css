@@ -10,6 +10,10 @@
     padding: 1rem;
 }
 
+.modal-info-container {
+    padding: 0 1rem 80px 1rem;
+}
+
 .group-modal-header {
     display: flex;
     align-items: center;
@@ -19,7 +23,28 @@
 .group-modal-header>div {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 3px;
+}
+
+
+.group-modal-header span,
+.group-modal-header p {
+    display: flex;
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.group-modal-header span:hover,
+.group-modal-header p:hover {
+    color: var(--clr-text-darker);
+    background: hsl(0, 3%, 93.5%);
+}
+
+.modal-group-name {
+    border: none;
+    font-size: 2rem;
+    width: 100%;
 }
 
 .chevrons-task-modal {
@@ -28,4 +53,57 @@
     gap: .5rem;
     border-left: 1px solid rgba(0, 0, 0, 0.11);
     padding-left: .5rem;
+}
+
+.hidden-emoji-options {
+    margin: .5rem 0 .5rem 1rem;
+    display: flex;
+    gap: 2px;
+}
+
+.hidden-emoji-options:hover>span {
+    color: var(--clr-text);
+}
+
+.hidden-emoji-options>span {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: transparent;
+    transition: .3s all ease;
+}
+
+.hidden-emoji-options>span:hover {
+    background: hsl(0, 3%, 93.5%);
+}
+
+.add-icon {
+    position: relative;
+}
+
+.picker-container {
+    position: absolute;
+    top: 10rem;
+    z-index: 999;
+}
+
+.group-name-container {
+    display: flex;
+    color: var(--clr-text-darker);
+    align-items: center;
+}
+
+.group-name-container>.emoji {
+    font-size: 2rem;
+    border-radius: 4px;
+    padding: 10px 2px;
+    cursor: pointer;
+    transition: .2s all ease;
+}
+
+.group-name-container>.emoji:hover {
+    background: hsl(0, 3%, 93.5%);
 }

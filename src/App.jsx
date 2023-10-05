@@ -4,22 +4,25 @@ import { Header } from './components/Header'
 import { GroupsContainer } from './components/Groups/GroupsContainer.jsx'
 
 import './App.css'
+import { ModalProvider } from './context/modal'
 
 function App() {
   return (
-    <main className="app-main">
-      <Aside />
+    <ModalProvider>
+      <main className="app-main">
+        <Aside />
 
-      <section className='info-section'>
-        <h1 className='page-title'>Tasks</h1>
+        <section className='info-section'>
+          <h1 className='page-title'>Tasks</h1>
 
-        <Header />
+          <Header />
 
-        <Filters />
+          <Filters />
 
-        <GroupsContainer />
-      </section>
-    </main>
+          <GroupsContainer />
+        </section>
+      </main>
+    </ModalProvider>
   )
 }
 
