@@ -16,17 +16,12 @@ export function GroupAside({ groupNameValue, setGroupNameValue, selectedEmoji, s
   }
 
   return (
-    <aside className='group-aside'>
+    <aside className='aside-container'>
       <AsidesHeader />
 
       <div className='group-aside-info'>
-        {
-          visibleEmojiPicker
-            ? <div className='picker-container'><Picker data={data} onEmojiSelect={(e) => setSelectedEmoji(e.native)} /></div>
-            : <></>
-        }
 
-        <div className='hidden-emoji-options'>
+        <div className='hidden-hover-options'>
           {
             selectedEmoji === null
               ? <span className='add-icon' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}><SmileFilled />Add icon</span>
@@ -37,12 +32,17 @@ export function GroupAside({ groupNameValue, setGroupNameValue, selectedEmoji, s
 
         <div className='aside-group-name-container'>
           {
+            visibleEmojiPicker
+              ? <div className='picker-container'><Picker data={data} onEmojiSelect={(e) => setSelectedEmoji(e.native)} /></div>
+              : <></>
+          }
+          {
             selectedEmoji === null
               ? <></>
               : <span className='emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>{selectedEmoji}</span>
           }
 
-          <input className='input-name aside-group-name' value={groupNameValue} onChange={(e) => hangleChangeName(e)} />
+          <input className='change-name aside-group-name' value={groupNameValue} onChange={(e) => hangleChangeName(e)} />
         </div>
       </div>
 

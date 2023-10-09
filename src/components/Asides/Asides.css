@@ -1,4 +1,4 @@
-.group-aside {
+.aside-container {
     position: fixed;
     right: 0;
     top: 0;
@@ -14,6 +14,7 @@
 
 .group-aside-info {
     padding: 0 1rem 80px 1rem;
+    position: relative;
 }
 
 .asides-header {
@@ -43,7 +44,8 @@
     background: hsl(0, 3%, 93.5%);
 }
 
-.aside-group-name {
+.aside-group-name,
+.aside-task-name {
     border: none;
     font-size: 2rem;
     width: 100%;
@@ -57,17 +59,17 @@
     padding-left: .5rem;
 }
 
-.hidden-emoji-options {
+.hidden-hover-options {
     margin: .5rem 0 .5rem 1rem;
     display: flex;
     gap: 2px;
 }
 
-.hidden-emoji-options:hover>span {
+.hidden-hover-options:hover>span {
     color: var(--clr-text);
 }
 
-.hidden-emoji-options>span {
+.hidden-hover-options>span {
     display: flex;
     gap: 5px;
     align-items: center;
@@ -78,7 +80,7 @@
     transition: .3s all ease;
 }
 
-.hidden-emoji-options>span:hover {
+.hidden-hover-options>span:hover {
     background: hsl(0, 3%, 93.5%);
 }
 
@@ -88,17 +90,20 @@
 
 .picker-container {
     position: absolute;
-    top: 10rem;
+    top: 3rem;
     z-index: 999;
 }
 
-.aside-group-name-container {
+.aside-group-name-container,
+.aside-task-name-container {
     display: flex;
     color: var(--clr-text-darker);
     align-items: center;
+    position: relative;
 }
 
-.aside-group-name-container>.emoji {
+.aside-group-name-container>.emoji,
+.aside-task-name-container>.emoji {
     font-size: 2rem;
     border-radius: 4px;
     padding: 10px 2px;
@@ -106,6 +111,38 @@
     transition: .2s all ease;
 }
 
-.aside-group-name-container>.emoji:hover {
+.aside-group-name-container>.emoji:hover,
+.aside-task-name-container>.emoji:hover {
     background: hsl(0, 3%, 93.5%);
+}
+
+.empty-emoji {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 4px;
+}
+
+.empty-emoji:hover {
+    background: hsl(0, 3%, 93.5%);
+}
+
+.task-aside-info {
+    margin-top: 2rem;
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.task-aside-info__left,
+.task-aside-info__right {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+}
+
+.task-aside-info__left>p,
+.task-aside-info__right>p {
+    display: flex;
+    gap: 0.2rem;
 }

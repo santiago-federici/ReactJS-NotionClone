@@ -69,7 +69,7 @@
     width: fit-content;
     padding: .3rem .4rem;
     border-radius: 4px;
-    color: var(--clt-text);
+    color: var(--clr-text);
 }
 
 .dot {
@@ -79,7 +79,7 @@
 .dots-options {
     width: fit-content;
     text-wrap: nowrap;
-    color: var(--clt-text);
+    color: var(--clr-text);
     bottom: -5rem;
     left: 0;
 }
@@ -120,16 +120,24 @@
     font-size: 1.2rem;
 }
 
-.input-name {
+.change-name {
     background: none;
     padding: .2rem .7rem;
     color: var(--clr-text-darker);
     font-weight: 600;
+    position: relative;
+    border: none;
+    z-index: 2;
 
     transition: .3s all ease;
 }
 
-.input-name:focus {
+.change-name:hover {
+    cursor: pointer;
+}
+
+.change-name:focus {
+    background: var(--clr-surface);
     box-shadow: 0 0 15px 2px rgba(0 0 0 / .3);
     outline: 1px solid rgba(0, 0, 0, 0.11);
     border-radius: 4px;

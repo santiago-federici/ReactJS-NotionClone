@@ -12,7 +12,7 @@ export function GroupItem({ groupName }) {
   const [groupNameValue, setGroupNameValue] = useState(groupName)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
-  const { setChevronsForTasks, aside, setAside } = useAside()
+  const { setChevronsForTasks, groupAside, setGroupAside, setTaskAside } = useAside()
 
   const arrowClassName = arrow ? 'caret' : 'caret-rotate'
 
@@ -35,7 +35,8 @@ export function GroupItem({ groupName }) {
 
   const handleClickOpenGroupAside = () => {
     setChevronsForTasks(false)
-    setAside(!aside)
+    setGroupAside(!groupAside)
+    setTaskAside(false)
   }
 
   const handleClickTaskVisibility = () => {
@@ -56,7 +57,7 @@ export function GroupItem({ groupName }) {
           <p>{groupNameValue}</p>
         </div>
         {
-          aside
+          groupAside
             ? <GroupAside
               groupNameValue={groupNameValue}
               setGroupNameValue={setGroupNameValue}

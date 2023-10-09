@@ -1,5 +1,64 @@
-export function TaskModal() {
+import { Calendar, Exclamation, HorizontalFile, Photo, PointFilled, Sun } from '../Icons'
+import { AsidesHeader } from './AsidesHeader'
+import { useState } from 'react'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
+
+import './Asides.css'
+
+export function TaskAside({ taskValue, setTaskValue, statusInnerText, taskDue, priorityInnerText, priorityClassName, statusClassName, selectedEmoji, setSelectedEmoji }) {
+  const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
+
+  const hangleChangeName = (e) => {
+    const newTaskValue = e.target.value
+
+    setTaskValue(newTaskValue)
+  }
+
   return (
-    <>This is the TaskModal</>
+    <aside className='aside-container'>
+      <AsidesHeader />
+
+      <div className='hidden-hover-options'>
+        <span><Photo />Add cover</span>
+      </div>
+
+      <span className='aside-task-name-container'>
+        {
+          visibleEmojiPicker
+            ? <div className='picker-container'><Picker data={data} onEmojiSelect={(e) => setSelectedEmoji(e.native)} /></div>
+            : <></>
+        }
+        {
+          selectedEmoji === null
+            ? <span className='empty-emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}><HorizontalFile /></span>
+            : <span className='emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>{selectedEmoji}</span>
+        }
+        <input className='change-name aside-task-name' value={taskValue} onChange={(e) => hangleChangeName(e)} />
+      </span>
+
+      <div className='task-aside-info'>
+
+        <div className='task-aside-info__left'>
+          <p><Sun />Status</p>
+          <p><Calendar />Due</p>
+          <p><Exclamation />Priority</p>
+        </div>
+
+        <div className='task-aside-info__right'>
+
+          <span className={`status ' + ${statusClassName}`}>
+            <PointFilled />
+            {statusInnerText}
+          </span>
+
+          <p>{taskDue}</p>
+
+          <span className={`priority ' + ${priorityClassName}`}> {priorityInnerText} </span>
+        </div>
+
+      </div>
+
+    </aside>
   )
 }

@@ -2,12 +2,17 @@ import { useAside } from '../../hooks/useAside'
 import { ChevronDown, ChevronRightPipe, ChevronUp, Clock, Dots, MaximizeArrows, Message, SidebarRight, Star } from '../Icons'
 
 export function AsidesHeader() {
-  const { aside, setAside, chevronsForTasks } = useAside()
+  const { setGroupAside, setTaskAside, chevronsForTasks } = useAside()
+
+  const handleClickCloseAsides = () => {
+    setGroupAside(false)
+    setTaskAside(false)
+  }
 
   return (
     <div className='asides-header'>
       <div>
-        <span onClick={() => setAside(!aside)}><ChevronRightPipe /></span>
+        <span onClick={handleClickCloseAsides}><ChevronRightPipe /></span>
         <span><MaximizeArrows /></span>
         <span><SidebarRight /></span>
         {
@@ -29,10 +34,3 @@ export function AsidesHeader() {
     </div>
   )
 }
-
-// ?=========================================================================
-// ?=========================================================================
-// ?=========================================================================
-// ?=========================================================================
-// ?=========================================================================
-// TODO: change all 'modal' words
