@@ -1,16 +1,16 @@
-import { Aside } from './components/Aside'
-import { Filters } from './components/Filters'
+import { AsideProvider } from './context/aside'
+import { PagesAside } from './components/PagesAside'
 import { Header } from './components/Header'
+import { Filters } from './components/Filters'
 import { GroupsContainer } from './components/Groups/GroupsContainer.jsx'
 
 import './App.css'
-import { ModalProvider } from './context/modal'
 
 function App() {
   return (
-    <ModalProvider>
+    <AsideProvider>
       <main className="app-main">
-        <Aside />
+        <PagesAside />
 
         <section className='info-section'>
           <h1 className='page-title'>Tasks</h1>
@@ -22,7 +22,7 @@ function App() {
           <GroupsContainer />
         </section>
       </main>
-    </ModalProvider>
+    </AsideProvider>
   )
 }
 

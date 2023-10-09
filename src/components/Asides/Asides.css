@@ -1,4 +1,4 @@
-.modal {
+.group-aside {
     position: fixed;
     right: 0;
     top: 0;
@@ -8,46 +8,48 @@
     z-index: 999;
     box-shadow: 0 0 10px 1px rgba(0 0 0 / .1);
     padding: 1rem;
+
+    transition: .6s all ease;
 }
 
-.modal-info-container {
+.group-aside-info {
     padding: 0 1rem 80px 1rem;
 }
 
-.group-modal-header {
+.asides-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.group-modal-header>div {
+.asides-header>div {
     display: flex;
     align-items: center;
     gap: 3px;
 }
 
 
-.group-modal-header span,
-.group-modal-header p {
+.asides-header span,
+.asides-header p {
     display: flex;
     padding: 5px;
     border-radius: 6px;
     cursor: pointer;
 }
 
-.group-modal-header span:hover,
-.group-modal-header p:hover {
+.asides-header span:hover,
+.asides-header p:hover {
     color: var(--clr-text-darker);
     background: hsl(0, 3%, 93.5%);
 }
 
-.modal-group-name {
+.aside-group-name {
     border: none;
     font-size: 2rem;
     width: 100%;
 }
 
-.chevrons-task-modal {
+.chevrons-tasks {
     display: flex;
     align-items: center;
     gap: .5rem;
@@ -90,13 +92,13 @@
     z-index: 999;
 }
 
-.group-name-container {
+.aside-group-name-container {
     display: flex;
     color: var(--clr-text-darker);
     align-items: center;
 }
 
-.group-name-container>.emoji {
+.aside-group-name-container>.emoji {
     font-size: 2rem;
     border-radius: 4px;
     padding: 10px 2px;
@@ -104,6 +106,6 @@
     transition: .2s all ease;
 }
 
-.group-name-container>.emoji:hover {
+.aside-group-name-container>.emoji:hover {
     background: hsl(0, 3%, 93.5%);
 }

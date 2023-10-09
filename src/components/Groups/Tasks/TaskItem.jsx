@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { StatusOptions } from '../../Modals/StatusOptions'
-import { PriorityOptions } from '../../Modals/PriorityOptions'
+import { StatusOptions } from '../../StatusOptions'
+import { PriorityOptions } from '../../PriorityOptions'
 import { PointFilled, SidebarRight } from '../../Icons'
-import { useModal } from '../../../hooks/useModal'
+import { useAside } from '../../../hooks/useAside'
 
 export function TaskItem({ taskName, taskStatus, due, priority }) {
-  const { modal, setModal, setChevronsForTasks } = useModal()
+  const { aside, setAside, setChevronsForTasks } = useAside()
 
   // handling status text, style and options
   const [openTodoOptions, setOpenTodoOptions] = useState(false)
@@ -46,29 +46,29 @@ export function TaskItem({ taskName, taskStatus, due, priority }) {
       <span
         style={{ position: 'absolute', top: '-2rem', right: '0' }}
         onClick={() => {
-          setModal(!modal)
+          setAside(!aside)
           setChevronsForTasks(true)
         }}
       >
         <SidebarRight />
       </span>
 
-      <p className='status-p' onClick={() => setOpenTodoOptions(!openTodoOptions)}>
+      <span className='status-span table-content__item' onClick={() => setOpenTodoOptions(!openTodoOptions)}>
         <span className={`status ' + ${statusClassName}`}>
           <PointFilled />
           {statusInnerText}
         </span>
         {openTodoOptions && <StatusOptions setStatusInnerText={setStatusInnerText} setStatusClassName={setStatusClassName} />}
-      </p>
+      </span>
 
-      <p>{due}</p>
+      <p className='table-content__item'>{due}</p>
 
-      <p className='priority-p' onClick={() => setOpenProprityOptions(!openProprityOptions)}>
+      <span className='priority-span table-content__item' onClick={() => setOpenProprityOptions(!openProprityOptions)}>
         <span className={`priority ' + ${priorityClassName}`}>
           {priorityInnerText}
           {openProprityOptions && <PriorityOptions setPriorityInnerText={setPriorityInnerText} setPriorityClassName={setPriorityClassName} />}
         </span>
-      </p>
+      </span>
     </>
   )
 }

@@ -1,17 +1,17 @@
 import { ChevronRight, CirclePlus, Clock, Download, Plus, Scissors, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
-import './Aside.css'
+import './PagesAside.css'
 
-export function Aside() {
+export function PagesAside() {
   return (
-    <aside className='fixed-aside'>
+    <aside className='fixed-pages-aside'>
       <div className="user-container">
         <img
           src="https://lh3.googleusercontent.com/a/AAcHTtc6qAUeOnXlMeW8kAEPVdkCl5UgiNSRJWoyezVHdRlP=s100"
         />
-        <h3 className="aside-username">Santiago Federicis Notion</h3>
+        <h3 className="pages-aside-username">Santiago Federicis Notion</h3>
       </div>
 
-      <section className='aside__section'>
+      <section className='pages-aside__section'>
         <p>
           <Search />
           Search
@@ -30,7 +30,7 @@ export function Aside() {
         </p>
       </section>
 
-      <section className='aside__section'>
+      <section className='pages-aside__section'>
         <p>
           <span className='chevron-container'>
             <ChevronRight />
@@ -58,7 +58,7 @@ export function Aside() {
         </p>
       </section>
 
-      <section className='aside__section'>
+      <section className='pages-aside__section'>
         <p>
           <UserSearch />
           Create a team space

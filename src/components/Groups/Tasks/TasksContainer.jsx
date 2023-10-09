@@ -1,7 +1,7 @@
 import { TaskItem } from './TaskItem'
 import './TasksContainer.css'
 
-export function TasksContainer({ tasks }) {
+export function TasksContainer({ tasks, handleClickNewTask }) {
   return (
     <ul className="table-content">
       {
@@ -15,7 +15,7 @@ export function TasksContainer({ tasks }) {
               priority={task.priority}
             />
           ))
-          : <span className='no-tasks-yet'>No tasks yet</span>
+          : <span className='no-tasks-yet' onClick={(e) => handleClickNewTask(e)}>No tasks yet. Click to add a row.</span>
       }
     </ul>
   )

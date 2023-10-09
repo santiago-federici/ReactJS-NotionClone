@@ -2,19 +2,21 @@ import { useState } from 'react'
 import { TasksContainer } from './Tasks/TasksContainer'
 import { nanoid } from 'nanoid'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from '../Icons'
-import { GroupModal } from '../Modals/GroupModal'
-import { useModal } from '../../hooks/useModal'
+import { GroupAside } from '../Asides/GroupAside'
+import { useAside } from '../../hooks/useAside'
 
 export function GroupItem({ groupName }) {
   const [arrow, setArrow] = useState(true)
-  const [tasksDisappear, setTasksDisappear] = useState(false)
+  const [tasksVisible, setTasksVisible] = useState(true)
   const [tasks, setTasks] = useState([])
   const [groupNameValue, setGroupNameValue] = useState(groupName)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
-  const { setChevronsForTasks, modal, setModal } = useModal()
+  const { setChevronsForTasks, aside, setAside } = useAside()
 
-  const handleNewTaskClick = (e) => {
+  const arrowClassName = arrow ? 'caret' : 'caret-rotate'
+
+  const handleClickNewTask = (e) => {
     const newTask = {
       id: nanoid(),
       taskName: 'Task',
@@ -31,40 +33,39 @@ export function GroupItem({ groupName }) {
     }
   }
 
-  const [dotsOptions, setDotsOptions] = useState(false)
-
-  const handleDotsClick = () => {
-    setDotsOptions(!dotsOptions)
+  const handleClickOpenGroupAside = () => {
+    setChevronsForTasks(false)
+    setAside(!aside)
   }
 
+  const handleClickTaskVisibility = () => {
+    setArrow(!arrow)
+    setTasksVisible(!tasksVisible)
+  }
+
+  const [dotsOptions, setDotsOptions] = useState(false)
+
   return (
-    <article className='group-card'>
-      <div className='group-card__header'>
-        <p onClick={() => {
-          setArrow(!arrow)
-          setTasksDisappear(!tasksDisappear)
-        }}>
-          {
-            arrow ? <span className='caret'><CaretDown /></span> : <span className='caret-rotate'><CaretDown /></span>
-          }
+    <article className='group-container'>
+      <div className='group-container__header'>
+        <p onClick={handleClickTaskVisibility}>
+          <span className={arrowClassName}><CaretDown /></span>
         </p>
-        <div className='name-emoji-container' onClick={() => {
-          setModal(!modal)
-          setChevronsForTasks(false)
-        }}>
+        <div className='group-name-container' onClick={handleClickOpenGroupAside}>
           <span className='emoji'>{selectedEmoji}</span>
           <p>{groupNameValue}</p>
         </div>
         {
-          modal
-            ? <GroupModal
+          aside
+            ? <GroupAside
               groupNameValue={groupNameValue}
               setGroupNameValue={setGroupNameValue}
               selectedEmoji={selectedEmoji}
               setSelectedEmoji={setSelectedEmoji} />
             : <></>
         }
-        <p className="dot" onClick={handleDotsClick}>
+
+        <p className="dot" onClick={() => setDotsOptions(!dotsOptions)}>
           <Dots />
           {
             dotsOptions &&
@@ -81,26 +82,26 @@ export function GroupItem({ groupName }) {
           }
         </p>
 
-        <p onClick={(e) => handleNewTaskClick(e)}><Plus /></p>
+        <p onClick={(e) => handleClickNewTask(e)}><Plus /></p>
       </div>
 
       {
-        tasksDisappear
-          ? <></>
-          : <>
-            <div className="table-head">
+        tasksVisible
+          ? <>
+            <div className='tasks-table-head'>
               <p>Aa Task name</p>
               <p><Sun />Status</p>
               <p><Calendar />Due</p>
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} />
+            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} />
 
-            <div className="table-footer">
-              <p onClick={(e) => handleNewTaskClick(e)}><Plus />New</p>
+            <div className="tasks-table-footer">
+              <p onClick={(e) => handleClickNewTask(e)}><Plus />New</p>
             </div>
           </>
+          : <></>
       }
     </article>
   )

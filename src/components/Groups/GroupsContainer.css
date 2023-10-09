@@ -2,21 +2,26 @@
     margin-top: 2rem;
 }
 
+.no-groups-yet:hover {
+    cursor: pointer;
+    color: var(--clr-text-darker);
+}
+
 .groups-container {
     display: grid;
     gap: 3rem;
 }
 
-.group-card {
+.group-container {
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
     position: relative;
 }
 
-.group-card__header {
+.group-container__header {
     display: flex;
 }
 
-.group-card__header>p {
+.group-container__header>p {
     display: flex;
     align-items: center;
     padding: 0.3rem 0.5rem;
@@ -24,32 +29,33 @@
     cursor: pointer;
 }
 
-.group-card__header>p:hover {
+.group-container__header>p:hover {
     color: var(--clr-text-darker);
     background: hsl(0, 3%, 93.5%);
 
 }
 
-.table-head {
+.tasks-table-head {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+    transition: .3s all ease;
 }
 
-.table-head>p {
+.tasks-table-head>p {
     padding: 0.5rem;
     display: flex;
     gap: 0.2rem;
 }
 
-.table-footer>p {
+.tasks-table-footer>p {
     padding: 0.5rem;
     display: flex;
     gap: 5px;
 }
 
-.table-head>p:hover,
-.table-footer>p:hover,
+.tasks-table-head>p:hover,
+.tasks-table-footer>p:hover,
 .add-group-btn:hover {
     cursor: pointer;
     background: hsl(0, 3%, 93.5%);
@@ -92,10 +98,11 @@
 .caret-rotate {
     rotate: -90deg;
     transition: .3s all ease;
+    color: var(--clr-text-darker);
 
 }
 
-.name-emoji-container {
+.group-name-container {
     color: var(--clr-text-darker);
     display: flex;
     gap: 5px;
@@ -105,7 +112,7 @@
     padding: 0 5px;
 }
 
-.name-emoji-container:hover {
+.group-name-container:hover {
     background: hsl(0, 3%, 93.5%);
 }
 

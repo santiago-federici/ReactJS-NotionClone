@@ -1,6 +1,10 @@
 .no-tasks-yet {
     padding: 0.5rem;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.11); */
+}
+
+.no-tasks-yet:hover {
+    cursor: pointer;
+    color: var(--clr-text-darker);
 }
 
 .table-content {
@@ -9,7 +13,7 @@
     position: relative;
 }
 
-.table-content>p {
+.table-content__item {
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
     padding: .5rem;
     cursor: pointer;
@@ -21,12 +25,12 @@
     border-right: 1px solid rgba(0, 0, 0, 0.11);
 }
 
-.status-p {
+.status-span {
     position: relative;
     border-right: 1px solid rgba(0, 0, 0, 0.11);
 }
 
-.priority-p {
+.priority-span {
     position: relative;
     border-left: 1px solid rgba(0, 0, 0, 0.11);
 }

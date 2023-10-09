@@ -27,16 +27,14 @@ export function GroupsContainer() {
               key={group.id}
               groupName={group.groupName} />
           ))
-          : <p className='no-groups-yet'>No groups yet</p>
+          : <p className='no-groups-yet' onClick={handleNewGroupClick}>No groups yet. Click to add a group.</p>
       }
 
-      <button
-        className='add-group-btn'
-        onClick={handleNewGroupClick}
-      >
+      <button className='add-group-btn' onClick={handleNewGroupClick}>
         <Plus />
         Add a group
       </button>
+
     </div>
   )
 }

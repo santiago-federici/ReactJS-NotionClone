@@ -1,25 +1,25 @@
-import { ModalHeader } from './ModalHeader'
+import { AsidesHeader } from './AsidesHeader'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 import { useState } from 'react'
 import { Photo, SmileFilled } from '../Icons'
 
-import './Modals.css'
+import './Asides.css'
 
-export function GroupModal({ groupNameValue, setGroupNameValue, selectedEmoji, setSelectedEmoji }) {
+export function GroupAside({ groupNameValue, setGroupNameValue, selectedEmoji, setSelectedEmoji }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
 
-  const hangleNameChange = (e) => {
+  const hangleChangeName = (e) => {
     const newGroupNameValue = e.target.value
 
     setGroupNameValue(newGroupNameValue)
   }
 
   return (
-    <aside className='modal'>
-      <ModalHeader />
+    <aside className='group-aside'>
+      <AsidesHeader />
 
-      <div className='modal-info-container'>
+      <div className='group-aside-info'>
         {
           visibleEmojiPicker
             ? <div className='picker-container'><Picker data={data} onEmojiSelect={(e) => setSelectedEmoji(e.native)} /></div>
@@ -35,14 +35,14 @@ export function GroupModal({ groupNameValue, setGroupNameValue, selectedEmoji, s
           <span><Photo />Add cover</span>
         </div>
 
-        <div className='group-name-container'>
+        <div className='aside-group-name-container'>
           {
             selectedEmoji === null
               ? <></>
               : <span className='emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>{selectedEmoji}</span>
           }
 
-          <input className='input-name modal-group-name' value={groupNameValue} onChange={(e) => hangleNameChange(e)} />
+          <input className='input-name aside-group-name' value={groupNameValue} onChange={(e) => hangleChangeName(e)} />
         </div>
       </div>
 
