@@ -16,6 +16,7 @@
 .floating-options {
     list-style-type: none;
     position: absolute;
+    width: 100%;
     display: grid;
     gap: .5rem;
     z-index: 999;

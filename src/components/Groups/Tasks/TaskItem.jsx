@@ -12,31 +12,15 @@ export function TaskItem({ taskName, taskStatus, taskDue, taskPriority }) {
   const [selectedEmoji, setSelectedEmoji] = useState(null)
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
 
-  // handling status text, style and options
-  const [openTodoOptions, setOpenTodoOptions] = useState(false)
+  // handling status text, styles and options
+  const [openStatusOptions, setOpenStatusOptions] = useState(false)
   const [statusInnerText, setStatusInnerText] = useState(taskStatus)
-  const [statusClassName, setStatusClassName] = useState(
-    statusInnerText === 'To Do'
-      ? 'gray-status'
-      : statusInnerText === 'Done'
-        ? 'green-status'
-        : statusInnerText === 'In Progress'
-          ? 'blue-status'
-          : ''
-  )
+  const [statusClassName, setStatusClassName] = useState(statusInnerText.toLowerCase().split(' ').join('') + '-status')
 
-  // handling priority text, style and options
+  // handling priority text, styles and options
   const [openProprityOptions, setOpenProprityOptions] = useState(false)
   const [priorityInnerText, setPriorityInnerText] = useState(taskPriority)
-  const [priorityClassName, setPriorityClassName] = useState(
-    priorityInnerText === 'Low'
-      ? 'low-priority'
-      : priorityInnerText === 'Medium'
-        ? 'medium-priority'
-        : priorityInnerText === 'High'
-          ? 'high-priority'
-          : ''
-  )
+  const [priorityClassName, setPriorityClassName] = useState(priorityInnerText + '-priority')
 
   const [taskValue, setTaskValue] = useState(taskName)
   const hangleChangeName = (e) => {
@@ -75,12 +59,15 @@ export function TaskItem({ taskName, taskStatus, taskDue, taskPriority }) {
         </span>
       </span>
 
-      <span className='status-span table-content__item' onClick={() => setOpenTodoOptions(!openTodoOptions)}>
+      <span className='status-span table-content__item' onClick={() => setOpenStatusOptions(!openStatusOptions)}>
         <span className={`status ' + ${statusClassName}`}>
           <PointFilled />
           {statusInnerText}
         </span>
-        {openTodoOptions && <StatusOptions setStatusInnerText={setStatusInnerText} setStatusClassName={setStatusClassName} />}
+        {openStatusOptions &&
+          <StatusOptions
+            setStatusInnerText={setStatusInnerText}
+            setStatusClassName={setStatusClassName} />}
       </span>
 
       <p className='table-content__item'>{taskDue}</p>
@@ -88,7 +75,10 @@ export function TaskItem({ taskName, taskStatus, taskDue, taskPriority }) {
       <span className='priority-span table-content__item' onClick={() => setOpenProprityOptions(!openProprityOptions)}>
         <span className={`priority ' + ${priorityClassName}`}>
           {priorityInnerText}
-          {openProprityOptions && <PriorityOptions setPriorityInnerText={setPriorityInnerText} setPriorityClassName={setPriorityClassName} />}
+          {openProprityOptions &&
+            <PriorityOptions
+              setPriorityInnerText={setPriorityInnerText}
+              setPriorityClassName={setPriorityClassName} />}
         </span>
       </span>
 

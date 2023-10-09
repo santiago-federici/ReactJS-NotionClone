@@ -63,17 +63,17 @@
     padding: 0 10px 0 3px;
 }
 
-.blue-status {
+.inprogress-status {
     background: var(--bg-in-progress);
     color: var(--fc-in-progress);
 }
 
-.green-status {
+.done-status {
     background: var(--bg-done);
     color: var(--fc-done);
 }
 
-.gray-status {
+.todo-status {
     background: var(--bg-to-do);
     color: var(--fc-to-do);
 }
