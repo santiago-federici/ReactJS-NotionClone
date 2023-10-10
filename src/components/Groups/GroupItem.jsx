@@ -96,7 +96,7 @@ export function GroupItem({ groupName }) {
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} />
+            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupNameValue={groupNameValue} handleClickOpenGroupAside={handleClickOpenGroupAside} />
 
             <div className="tasks-table-footer">
               <p onClick={(e) => handleClickNewTask(e)}><Plus />New</p>
