@@ -109,7 +109,7 @@
     align-items: center;
     cursor: pointer;
     border-radius: 4px;
-    padding: 0 5px;
+    padding: 0 7px 0 5px;
 }
 
 .group-name-container:hover {

@@ -174,3 +174,92 @@
     position: relative;
     cursor: pointer;
 }
+
+.ga-tasks-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.ga-tasks-container__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ga-tasks-container__header>h3 {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 6px 4px;
+    width: fit-content;
+}
+
+.ga-tasks-container__header>.header-icons {
+    display: flex;
+    gap: 4px;
+}
+
+.ga-tasks-container__header>.header-icons>span {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 0 6px;
+    cursor: pointer;
+    color: var(--clr-text-darker);
+}
+
+.ga-tasks-container__header>.header-icons>*:hover {
+    background: hsl(0, 0%, 95%);
+}
+
+.ga-tasks-container__header>h3:hover {
+    background: hsl(0, 3%, 93.5%);
+}
+
+.ga-tasks-list {
+    list-style-type: none;
+    display: grid;
+    gap: .5rem;
+}
+
+.ga-tasks-list>li {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 4px 6px;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.ga-tasks-list>li:hover {
+    background: hsl(0, 0%, 95%);
+
+}
+
+.ga-tasks-list>li>* {
+    display: grid;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.ga-tasks-list>li>*:hover {
+    background: hsl(0, 0%, 89%);
+}
+
+.ga-tasks-container__btn {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.ga-tasks-container__btn:hover {
+    background: hsl(0, 0%, 95%);
+}

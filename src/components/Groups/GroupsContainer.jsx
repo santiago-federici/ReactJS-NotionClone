@@ -27,8 +27,7 @@ export function GroupsContainer() {
           ? groups.map(group => (
             <GroupItem
               key={group.id}
-              id={group.id}
-              groupName={group.groupName}
+              {...group}
               selectedGroupId={selectedGroupId === group.id}
               openGroupAside={openGroupAside} />
           ))

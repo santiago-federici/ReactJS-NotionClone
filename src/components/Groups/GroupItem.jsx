@@ -5,10 +5,11 @@ import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from
 import { GroupAside } from '../Asides/GroupAside'
 
 export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
+  const [tasks, setTasks] = useState([])
+
   const [arrow, setArrow] = useState(true)
   const [tasksVisible, setTasksVisible] = useState(true)
 
-  const [tasks, setTasks] = useState([])
   const [groupNameValue, setGroupNameValue] = useState(groupName)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
@@ -19,8 +20,8 @@ export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
       id: nanoid(),
       taskName: 'Task',
       taskStatus: 'To Do',
-      due: '',
-      priority: ''
+      taskDue: '',
+      taskPriority: ''
     }
 
     // Checks which of the "add task" button is, and specifies the position where the task has to be added in
@@ -79,7 +80,7 @@ export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupNameValue={groupNameValue} />
+            <TasksContainer tasks={tasks} setTasks={setTasks} handleClickNewTask={handleClickNewTask} groupNameValue={groupNameValue} />
 
             <div className="tasks-table-footer">
               <p onClick={(e) => handleClickNewTask(e)}><Plus />New</p>
@@ -93,7 +94,8 @@ export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
           groupNameValue={groupNameValue}
           setGroupNameValue={setGroupNameValue}
           selectedEmoji={selectedEmoji}
-          setSelectedEmoji={setSelectedEmoji} />
+          setSelectedEmoji={setSelectedEmoji}
+          tasks={tasks} />
       }
     </article>
   )

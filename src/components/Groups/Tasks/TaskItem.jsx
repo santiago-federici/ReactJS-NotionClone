@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StatusOptions } from '../../StatusOptions'
 import { PriorityOptions } from '../../PriorityOptions'
 import { HorizontalFile, PointFilled, SidebarRight } from '../../Icons'
@@ -6,7 +6,7 @@ import { TaskAside } from '../../Asides/TaskAside'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
-export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupNameValue, selectedTaskId, openTaskAside }) {
+export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupNameValue, selectedTaskId, openTaskAside, updateTaskName }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
@@ -26,6 +26,10 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
 
     setTaskValue(newTaskValue)
   }
+
+  useEffect(() => {
+    updateTaskName(id, taskValue)
+  }, [taskValue])
 
   return (
     <>
@@ -92,6 +96,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
           selectedEmoji={selectedEmoji}
           setSelectedEmoji={setSelectedEmoji}
           groupNameValue={groupNameValue}
+          handleChangeName={handleChangeName}
         />
       }
     </>

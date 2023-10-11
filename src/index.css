@@ -33,18 +33,6 @@
   --ff-base: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-
-/* @media(prefers-color-scheme: dark) {
-    :root {
-        --clr-heading: hsl(0, 0%, 100%);
-        --clr-text: hsl(204, 20%, 85%);
-        --clr-surface: hsl(226, 27%, 18%);
-        --clr-primary: hsl(27, 100%, 56%);
-        --clr-secondary: hsl(186, 69%, 67%);
-        --clr-accent: hsl(315, 89%, 52%);
-    }
-} */
-
 *,
 *::before,
 *::after {

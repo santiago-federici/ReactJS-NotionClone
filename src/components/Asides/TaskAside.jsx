@@ -9,18 +9,12 @@ import Picker from '@emoji-mart/react'
 
 import './Asides.css'
 
-export function TaskAside({ taskValue, setTaskValue, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupNameValue }) {
+export function TaskAside({ taskValue, setTaskValue, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupNameValue, handleChangeName }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [openStatusOptions, setOpenStatusOptions] = useState(false)
   const [openProprityOptions, setOpenProprityOptions] = useState(false)
 
   const { selectedGroupId, openGroupAside } = useAside()
-
-  const hangleChangeName = (e) => {
-    const newTaskValue = e.target.value
-
-    setTaskValue(newTaskValue)
-  }
 
   return (
     <aside className='aside-container'>
@@ -41,7 +35,7 @@ export function TaskAside({ taskValue, setTaskValue, statusInnerText, setStatusI
             ? <span className='empty-emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}><HorizontalFile /></span>
             : <span className='emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>{selectedEmoji}</span>
         }
-        <input className='change-name aside-task-name' value={taskValue} onChange={(e) => hangleChangeName(e)} />
+        <input className='change-name aside-task-name' value={taskValue} onChange={(e) => handleChangeName(e)} />
       </span>
 
       <div className='task-aside-info'>
