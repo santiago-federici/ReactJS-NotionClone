@@ -2,15 +2,13 @@ import { useState } from 'react'
 import { StatusOptions } from '../../StatusOptions'
 import { PriorityOptions } from '../../PriorityOptions'
 import { HorizontalFile, PointFilled, SidebarRight } from '../../Icons'
-import { useAside } from '../../../hooks/useAside'
 import { TaskAside } from '../../Asides/TaskAside'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
-export function TaskItem({ taskName, taskStatus, taskDue, taskPriority, groupNameValue, handleClickOpenGroupAside }) {
-  const { taskAside, setTaskAside, setChevronsForTasks, setGroupAside } = useAside()
-  const [selectedEmoji, setSelectedEmoji] = useState(null)
+export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupNameValue, selectedTaskId, openTaskAside }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
+  const [selectedEmoji, setSelectedEmoji] = useState(null)
 
   // handling status text, styles and options
   const [openStatusOptions, setOpenStatusOptions] = useState(false)
@@ -23,16 +21,10 @@ export function TaskItem({ taskName, taskStatus, taskDue, taskPriority, groupNam
   const [priorityClassName, setPriorityClassName] = useState(priorityInnerText + '-priority')
 
   const [taskValue, setTaskValue] = useState(taskName)
-  const hangleChangeName = (e) => {
+  const handleChangeName = (e) => {
     const newTaskValue = e.target.value
 
     setTaskValue(newTaskValue)
-  }
-
-  const handleClickOpenTaskAside = () => {
-    setGroupAside(false)
-    setChevronsForTasks(true)
-    setTaskAside(!taskAside)
   }
 
   return (
@@ -52,8 +44,10 @@ export function TaskItem({ taskName, taskStatus, taskDue, taskPriority, groupNam
               : <></>
           }
         </span>
-        <input className='change-name' value={taskValue} onChange={(e) => hangleChangeName(e)} />
-        <span className='task-aside-icon' onClick={handleClickOpenTaskAside}>
+        <input className='change-name' value={taskValue} onChange={(e) => handleChangeName(e)} />
+        <span className='task-aside-icon' onClick={() => {
+          openTaskAside(id)
+        }}>
           <SidebarRight />
           OPEN
         </span>
@@ -83,25 +77,22 @@ export function TaskItem({ taskName, taskStatus, taskDue, taskPriority, groupNam
       </span>
 
       {
-        taskAside
-          ? <TaskAside
-            taskValue={taskValue}
-            setTaskValue={setTaskValue}
-            statusInnerText={statusInnerText}
-            setStatusInnerText={setStatusInnerText}
-            statusClassName={statusClassName}
-            setStatusClassName={setStatusClassName}
-            taskDue={taskDue}
-            priorityInnerText={priorityInnerText}
-            setPriorityInnerText={setPriorityInnerText}
-            priorityClassName={priorityClassName}
-            setPriorityClassName={setPriorityClassName}
-            selectedEmoji={selectedEmoji}
-            setSelectedEmoji={setSelectedEmoji}
-            groupNameValue={groupNameValue}
-            handleClickOpenGroupAside={handleClickOpenGroupAside}
-          />
-          : <></>
+        selectedTaskId && <TaskAside
+          taskValue={taskValue}
+          setTaskValue={setTaskValue}
+          statusInnerText={statusInnerText}
+          setStatusInnerText={setStatusInnerText}
+          statusClassName={statusClassName}
+          setStatusClassName={setStatusClassName}
+          taskDue={taskDue}
+          priorityInnerText={priorityInnerText}
+          setPriorityInnerText={setPriorityInnerText}
+          priorityClassName={priorityClassName}
+          setPriorityClassName={setPriorityClassName}
+          selectedEmoji={selectedEmoji}
+          setSelectedEmoji={setSelectedEmoji}
+          groupNameValue={groupNameValue}
+        />
       }
     </>
   )

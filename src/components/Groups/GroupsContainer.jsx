@@ -2,11 +2,13 @@ import { GroupItem } from './GroupItem'
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
 import { Plus } from '../Icons'
+import { useAside } from '../../hooks/useAside'
 
 import './GroupsContainer.css'
 
 export function GroupsContainer() {
   const [groups, setGroups] = useState([])
+  const { selectedGroupId, openGroupAside } = useAside()
 
   const handleNewGroupClick = () => {
     const newGroup = {
@@ -25,7 +27,10 @@ export function GroupsContainer() {
           ? groups.map(group => (
             <GroupItem
               key={group.id}
-              groupName={group.groupName} />
+              id={group.id}
+              groupName={group.groupName}
+              selectedGroupId={selectedGroupId === group.id}
+              openGroupAside={openGroupAside} />
           ))
           : <p className='no-groups-yet' onClick={handleNewGroupClick}>No groups yet. Click to add a group.</p>
       }

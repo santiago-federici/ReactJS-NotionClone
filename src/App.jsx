@@ -8,21 +8,24 @@ import './App.css'
 
 function App() {
   return (
-    <AsideProvider>
-      <main className="app-main">
-        <PagesAside />
 
-        <section className='info-section'>
-          <h1 className='page-title'>Tasks</h1>
+    <main className="app-main">
+      <PagesAside />
+
+      <section className='info-section'>
+        <h1 className='page-title'>Tasks</h1>
+
+        <AsideProvider>
 
           <Header />
 
           <Filters />
 
           <GroupsContainer />
-        </section>
-      </main>
-    </AsideProvider>
+
+        </AsideProvider>
+      </section>
+    </main>
   )
 }
 

@@ -1,17 +1,20 @@
 import { Calendar, Exclamation, HorizontalFile, Photo, PointFilled, Sun, Target } from '../Icons'
 import { AsidesHeader } from './AsidesHeader'
 import { useState } from 'react'
-import data from '@emoji-mart/data'
-import Picker from '@emoji-mart/react'
+import { useAside } from '../../hooks/useAside'
 import { StatusOptions } from '../StatusOptions'
 import { PriorityOptions } from '../PriorityOptions'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 import './Asides.css'
 
-export function TaskAside({ taskValue, setTaskValue, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupNameValue, handleClickOpenGroupAside }) {
+export function TaskAside({ taskValue, setTaskValue, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupNameValue }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [openStatusOptions, setOpenStatusOptions] = useState(false)
   const [openProprityOptions, setOpenProprityOptions] = useState(false)
+
+  const { selectedGroupId, openGroupAside } = useAside()
 
   const hangleChangeName = (e) => {
     const newTaskValue = e.target.value
@@ -77,7 +80,7 @@ export function TaskAside({ taskValue, setTaskValue, statusInnerText, setStatusI
             </span>
           </span>
 
-          <p className='right-child' onClick={handleClickOpenGroupAside}>{groupNameValue}</p>
+          <p className='right-child' onClick={() => openGroupAside(selectedGroupId)}>{groupNameValue}</p>
         </div>
 
       </div>

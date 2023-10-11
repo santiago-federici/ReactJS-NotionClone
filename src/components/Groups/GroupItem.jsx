@@ -3,16 +3,14 @@ import { TasksContainer } from './Tasks/TasksContainer'
 import { nanoid } from 'nanoid'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from '../Icons'
 import { GroupAside } from '../Asides/GroupAside'
-import { useAside } from '../../hooks/useAside'
 
-export function GroupItem({ groupName }) {
+export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
   const [arrow, setArrow] = useState(true)
   const [tasksVisible, setTasksVisible] = useState(true)
+
   const [tasks, setTasks] = useState([])
   const [groupNameValue, setGroupNameValue] = useState(groupName)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
-
-  const { setChevronsForTasks, groupAside, setGroupAside, setTaskAside } = useAside()
 
   const arrowClassName = arrow ? 'caret' : 'caret-rotate'
 
@@ -33,12 +31,6 @@ export function GroupItem({ groupName }) {
     }
   }
 
-  const handleClickOpenGroupAside = () => {
-    setChevronsForTasks(false)
-    setGroupAside(!groupAside)
-    setTaskAside(false)
-  }
-
   const handleClickTaskVisibility = () => {
     setArrow(!arrow)
     setTasksVisible(!tasksVisible)
@@ -52,19 +44,10 @@ export function GroupItem({ groupName }) {
         <p onClick={handleClickTaskVisibility}>
           <span className={arrowClassName}><CaretDown /></span>
         </p>
-        <div className='group-name-container' onClick={handleClickOpenGroupAside}>
+        <div className='group-name-container' onClick={() => openGroupAside(id)}>
           <span className='emoji'>{selectedEmoji}</span>
           <p>{groupNameValue}</p>
         </div>
-        {
-          groupAside
-            ? <GroupAside
-              groupNameValue={groupNameValue}
-              setGroupNameValue={setGroupNameValue}
-              selectedEmoji={selectedEmoji}
-              setSelectedEmoji={setSelectedEmoji} />
-            : <></>
-        }
 
         <p className="dot" onClick={() => setDotsOptions(!dotsOptions)}>
           <Dots />
@@ -96,13 +79,21 @@ export function GroupItem({ groupName }) {
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupNameValue={groupNameValue} handleClickOpenGroupAside={handleClickOpenGroupAside} />
+            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupNameValue={groupNameValue} />
 
             <div className="tasks-table-footer">
               <p onClick={(e) => handleClickNewTask(e)}><Plus />New</p>
             </div>
           </>
           : <></>
+      }
+      {
+        selectedGroupId &&
+        <GroupAside
+          groupNameValue={groupNameValue}
+          setGroupNameValue={setGroupNameValue}
+          selectedEmoji={selectedEmoji}
+          setSelectedEmoji={setSelectedEmoji} />
       }
     </article>
   )

@@ -2,17 +2,12 @@ import { useAside } from '../../hooks/useAside'
 import { ChevronDown, ChevronRightPipe, ChevronUp, Clock, Dots, MaximizeArrows, Message, SidebarRight, Star } from '../Icons'
 
 export function AsidesHeader() {
-  const { setGroupAside, setTaskAside, chevronsForTasks } = useAside()
-
-  const handleClickCloseAsides = () => {
-    setGroupAside(false)
-    setTaskAside(false)
-  }
+  const { closeAsides, chevronsForTasks } = useAside()
 
   return (
     <div className='asides-header'>
       <div>
-        <span onClick={handleClickCloseAsides}><ChevronRightPipe /></span>
+        <span onClick={() => closeAsides()}><ChevronRightPipe /></span>
         <span><MaximizeArrows /></span>
         <span><SidebarRight /></span>
         {
