@@ -1,19 +1,19 @@
 import { AsidesHeader } from './AsidesHeader'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CircleCheckFilled, Dots, HorizontalFile, Photo, Plus, Search, SmileFilled } from '../Icons'
 
 import './Asides.css'
 
-export function GroupAside({ tasks, groupNameValue, setGroupNameValue, selectedEmoji, setSelectedEmoji }) {
+export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, handleChangeGroupName, groupId }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
 
-  const handleChangeName = (e) => {
-    const newGroupNameValue = e.target.value
+  const [newGroupName, setNewGroupName] = useState(groupName)
 
-    setGroupNameValue(newGroupNameValue)
-  }
+  useEffect(() => {
+    handleChangeGroupName(groupId, newGroupName)
+  }, [newGroupName])
 
   return (
     <aside className='aside-container'>
@@ -42,7 +42,7 @@ export function GroupAside({ tasks, groupNameValue, setGroupNameValue, selectedE
               : <span className='emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>{selectedEmoji}</span>
           }
 
-          <input className='change-name aside-group-name' value={groupNameValue} onChange={(e) => handleChangeName(e)} />
+          <input className='change-name aside-group-name' value={groupName} onChange={(e) => setNewGroupName(e.target.value)} />
         </div>
       </div>
 

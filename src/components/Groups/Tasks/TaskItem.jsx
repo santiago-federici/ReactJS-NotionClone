@@ -6,7 +6,7 @@ import { TaskAside } from '../../Asides/TaskAside'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
-export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupNameValue, selectedTaskId, openTaskAside }) {
+export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupName, selectedTaskId, openTaskAside }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
@@ -90,7 +90,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
           setPriorityClassName={setPriorityClassName}
           selectedEmoji={selectedEmoji}
           setSelectedEmoji={setSelectedEmoji}
-          groupNameValue={groupNameValue}
+          groupName={groupName}
           handleChangeTaskName={handleChangeTaskName}
         />
       }

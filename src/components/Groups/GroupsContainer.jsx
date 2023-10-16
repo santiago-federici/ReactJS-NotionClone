@@ -55,6 +55,19 @@ export function GroupsContainer() {
     }
   }
 
+  const handleChangeGroupName = (id, newGroupName) => {
+    setGroups(groups.map(group => {
+      if (group.id === id) {
+        return {
+          ...group,
+          groupName: newGroupName
+        }
+      } else {
+        return group
+      }
+    }))
+  }
+
   return (
     <div className='groups-container'>
 
@@ -67,7 +80,9 @@ export function GroupsContainer() {
               tasks={group.tasks}
               handleClickNewTask={handleClickNewTask}
               selectedGroupId={selectedGroupId === group.id}
-              openGroupAside={openGroupAside} />
+              openGroupAside={openGroupAside}
+              handleChangeGroupName={handleChangeGroupName}
+            />
           ))
           : <p className='no-groups-yet' onClick={handleNewGroupClick}>No groups yet. Click to add a group.</p>
       }

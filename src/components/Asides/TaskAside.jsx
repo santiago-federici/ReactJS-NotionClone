@@ -9,7 +9,7 @@ import Picker from '@emoji-mart/react'
 
 import './Asides.css'
 
-export function TaskAside({ taskValue, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupNameValue, handleChangeTaskName }) {
+export function TaskAside({ taskValue, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupName, handleChangeTaskName }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [openStatusOptions, setOpenStatusOptions] = useState(false)
   const [openProprityOptions, setOpenProprityOptions] = useState(false)
@@ -74,7 +74,7 @@ export function TaskAside({ taskValue, statusInnerText, setStatusInnerText, stat
             </span>
           </span>
 
-          <p className='right-child' onClick={() => openGroupAside(selectedGroupId)}>{groupNameValue}</p>
+          <p className='right-child' onClick={() => openGroupAside(selectedGroupId)}>{groupName}</p>
         </div>
 
       </div>

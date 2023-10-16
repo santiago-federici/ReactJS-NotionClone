@@ -3,11 +3,10 @@ import { TasksContainer } from './Tasks/TasksContainer'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from '../Icons'
 import { GroupAside } from '../Asides/GroupAside'
 
-export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGroupId, openGroupAside }) {
+export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGroupId, openGroupAside, handleChangeGroupName }) {
   const [arrow, setArrow] = useState(true)
   const [tasksVisible, setTasksVisible] = useState(true)
 
-  const [groupNameValue, setGroupNameValue] = useState(groupName)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
   const arrowClassName = arrow ? 'caret' : 'caret-rotate'
@@ -27,7 +26,7 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
         </p>
         <div className='group-name-container' onClick={() => openGroupAside(id)}>
           <span className='emoji'>{selectedEmoji}</span>
-          <p>{groupNameValue}</p>
+          <p>{groupName}</p>
         </div>
 
         <p className="dot" onClick={() => setDotsOptions(!dotsOptions)}>
@@ -60,7 +59,7 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupId={id} groupNameValue={groupNameValue} />
+            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupId={id} groupName={groupName} />
 
             <div className="tasks-table-footer">
               <p onClick={(e) => handleClickNewTask(e, id)}><Plus />New</p>
@@ -71,11 +70,12 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
       {
         selectedGroupId &&
         <GroupAside
-          groupNameValue={groupNameValue}
-          setGroupNameValue={setGroupNameValue}
+          groupName={groupName}
           selectedEmoji={selectedEmoji}
           setSelectedEmoji={setSelectedEmoji}
-          tasks={tasks} />
+          tasks={tasks}
+          handleChangeGroupName={handleChangeGroupName}
+          groupId={id} />
       }
     </article>
   )

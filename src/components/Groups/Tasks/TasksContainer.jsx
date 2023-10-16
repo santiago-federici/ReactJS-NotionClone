@@ -3,7 +3,7 @@ import { TaskItem } from './TaskItem'
 import './TasksContainer.css'
 import { useAside } from '../../../hooks/useAside'
 
-export function TasksContainer({ tasks, handleClickNewTask, groupId, groupNameValue }) {
+export function TasksContainer({ tasks, handleClickNewTask, groupId, groupName }) {
   const { selectedTaskId, openTaskAside } = useAside()
 
   return (
@@ -14,7 +14,7 @@ export function TasksContainer({ tasks, handleClickNewTask, groupId, groupNameVa
             <TaskItem
               key={task.id}
               {...task}
-              groupNameValue={groupNameValue}
+              groupName={groupName}
               selectedTaskId={selectedTaskId === task.id}
               openTaskAside={openTaskAside}
             />
