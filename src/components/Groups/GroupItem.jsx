@@ -1,12 +1,9 @@
 import { useState } from 'react'
 import { TasksContainer } from './Tasks/TasksContainer'
-import { nanoid } from 'nanoid'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from '../Icons'
 import { GroupAside } from '../Asides/GroupAside'
 
-export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
-  const [tasks, setTasks] = useState([])
-
+export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGroupId, openGroupAside }) {
   const [arrow, setArrow] = useState(true)
   const [tasksVisible, setTasksVisible] = useState(true)
 
@@ -14,23 +11,6 @@ export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
   const arrowClassName = arrow ? 'caret' : 'caret-rotate'
-
-  const handleClickNewTask = (e) => {
-    const newTask = {
-      id: nanoid(),
-      taskName: 'Task',
-      taskStatus: 'To Do',
-      taskDue: '',
-      taskPriority: ''
-    }
-
-    // Checks which of the "add task" button is, and specifies the position where the task has to be added in
-    if (e.target.innerHTML.includes('New')) {
-      setTasks([...tasks, newTask])
-    } else {
-      setTasks([newTask, ...tasks])
-    }
-  }
 
   const handleClickTaskVisibility = () => {
     setArrow(!arrow)
@@ -67,7 +47,7 @@ export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
           }
         </p>
 
-        <p onClick={(e) => handleClickNewTask(e)}><Plus /></p>
+        <p onClick={(e) => handleClickNewTask(e, id)}><Plus /></p>
       </div>
 
       {
@@ -80,10 +60,10 @@ export function GroupItem({ id, groupName, selectedGroupId, openGroupAside }) {
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} setTasks={setTasks} handleClickNewTask={handleClickNewTask} groupNameValue={groupNameValue} />
+            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupId={id} groupNameValue={groupNameValue} />
 
             <div className="tasks-table-footer">
-              <p onClick={(e) => handleClickNewTask(e)}><Plus />New</p>
+              <p onClick={(e) => handleClickNewTask(e, id)}><Plus />New</p>
             </div>
           </>
           : <></>

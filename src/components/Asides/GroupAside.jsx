@@ -9,7 +9,7 @@ import './Asides.css'
 export function GroupAside({ tasks, groupNameValue, setGroupNameValue, selectedEmoji, setSelectedEmoji }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
 
-  const hangleChangeName = (e) => {
+  const handleChangeName = (e) => {
     const newGroupNameValue = e.target.value
 
     setGroupNameValue(newGroupNameValue)
@@ -42,7 +42,7 @@ export function GroupAside({ tasks, groupNameValue, setGroupNameValue, selectedE
               : <span className='emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>{selectedEmoji}</span>
           }
 
-          <input className='change-name aside-group-name' value={groupNameValue} onChange={(e) => hangleChangeName(e)} />
+          <input className='change-name aside-group-name' value={groupNameValue} onChange={(e) => handleChangeName(e)} />
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 import { GoDotFill } from 'react-icons/go'
 
 export function StatusOptions({ setStatusInnerText, setStatusClassName }) {
-  const hangleClickInnerText = (e) => {
+  const handleClickInnerText = (e) => {
     const innerText = e.target.textContent
     setStatusInnerText(innerText)
     setStatusClassName(innerText.toLowerCase().split(' ').join('') + '-status')
@@ -9,21 +9,21 @@ export function StatusOptions({ setStatusInnerText, setStatusClassName }) {
 
   return (
     <ul className='floating-options status-options'>
-      <li onClick={(e) => hangleClickInnerText(e)}>
+      <li onClick={(e) => handleClickInnerText(e)}>
         <span className="status inprogress-status">
           <GoDotFill />
           In Progress
         </span>
       </li>
 
-      <li onClick={(e) => hangleClickInnerText(e)}>
+      <li onClick={(e) => handleClickInnerText(e)}>
         <span className="status done-status">
           <GoDotFill />
           Done
         </span>
       </li>
 
-      <li onClick={(e) => hangleClickInnerText(e)}>
+      <li onClick={(e) => handleClickInnerText(e)}>
         <span className="status todo-status">
           <GoDotFill />
           To Do

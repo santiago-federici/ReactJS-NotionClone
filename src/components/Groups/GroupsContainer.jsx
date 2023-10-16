@@ -13,10 +13,46 @@ export function GroupsContainer() {
   const handleNewGroupClick = () => {
     const newGroup = {
       id: nanoid(),
-      groupName: 'New Group'
+      groupName: 'New Group',
+      tasks: []
     }
 
     setGroups([...groups, newGroup])
+  }
+
+  const handleClickNewTask = (e, id) => {
+    const newTask = {
+      id: nanoid(),
+      taskName: 'Task',
+      taskStatus: 'To Do',
+      taskDue: '',
+      taskPriority: ''
+    }
+
+    // Checks which of the "add task" button is, and specifies the position where the task has to be added at
+    if (e.target.innerHTML.includes('New')) {
+      setGroups(groups.map(group => {
+        if (group.id === id) {
+          return {
+            ...group,
+            tasks: [...group.tasks, newTask]
+          }
+        } else {
+          return group
+        }
+      }))
+    } else {
+      setGroups(groups.map(group => {
+        if (group.id === id) {
+          return {
+            ...group,
+            tasks: [newTask, ...group.tasks]
+          }
+        } else {
+          return group
+        }
+      }))
+    }
   }
 
   return (
@@ -28,6 +64,8 @@ export function GroupsContainer() {
             <GroupItem
               key={group.id}
               {...group}
+              tasks={group.tasks}
+              handleClickNewTask={handleClickNewTask}
               selectedGroupId={selectedGroupId === group.id}
               openGroupAside={openGroupAside} />
           ))
@@ -38,7 +76,6 @@ export function GroupsContainer() {
         <Plus />
         Add a group
       </button>
-
     </div>
   )
 }

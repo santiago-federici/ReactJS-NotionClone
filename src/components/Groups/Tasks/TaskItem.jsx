@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { StatusOptions } from '../../StatusOptions'
 import { PriorityOptions } from '../../PriorityOptions'
 import { HorizontalFile, PointFilled, SidebarRight } from '../../Icons'
@@ -6,7 +6,7 @@ import { TaskAside } from '../../Asides/TaskAside'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
-export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupNameValue, selectedTaskId, openTaskAside, updateTaskName }) {
+export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupNameValue, selectedTaskId, openTaskAside }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
@@ -21,15 +21,11 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
   const [priorityClassName, setPriorityClassName] = useState(priorityInnerText + '-priority')
 
   const [taskValue, setTaskValue] = useState(taskName)
-  const handleChangeName = (e) => {
+  const handleChangeTaskName = (e) => {
     const newTaskValue = e.target.value
 
     setTaskValue(newTaskValue)
   }
-
-  useEffect(() => {
-    updateTaskName(id, taskValue)
-  }, [taskValue])
 
   return (
     <>
@@ -48,7 +44,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
               : <></>
           }
         </span>
-        <input className='change-name' value={taskValue} onChange={(e) => handleChangeName(e)} />
+        <input className='change-name' value={taskValue} onChange={(e) => handleChangeTaskName(e)} />
         <span className='task-aside-icon' onClick={() => {
           openTaskAside(id)
         }}>
@@ -83,7 +79,6 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
       {
         selectedTaskId && <TaskAside
           taskValue={taskValue}
-          setTaskValue={setTaskValue}
           statusInnerText={statusInnerText}
           setStatusInnerText={setStatusInnerText}
           statusClassName={statusClassName}
@@ -96,7 +91,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
           selectedEmoji={selectedEmoji}
           setSelectedEmoji={setSelectedEmoji}
           groupNameValue={groupNameValue}
-          handleChangeName={handleChangeName}
+          handleChangeTaskName={handleChangeTaskName}
         />
       }
     </>
