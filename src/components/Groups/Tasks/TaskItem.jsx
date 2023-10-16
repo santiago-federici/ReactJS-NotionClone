@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StatusOptions } from '../../StatusOptions'
 import { PriorityOptions } from '../../PriorityOptions'
 import { HorizontalFile, PointFilled, SidebarRight } from '../../Icons'
@@ -6,7 +6,7 @@ import { TaskAside } from '../../Asides/TaskAside'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
-export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupName, selectedTaskId, openTaskAside }) {
+export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupName, selectedTaskId, openTaskAside, updateTaskName, groupId }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
@@ -27,6 +27,10 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
     setTaskValue(newTaskValue)
   }
 
+  useEffect(() => {
+    updateTaskName(groupId, id, taskValue)
+  }, [taskValue])
+
   return (
     <>
       <span className='task-name-container'>
@@ -44,7 +48,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
               : <></>
           }
         </span>
-        <input className='change-name' value={taskValue} onChange={(e) => handleChangeTaskName(e)} />
+        <input className='change-name' value={taskValue} onChange={(e) => setTaskValue(e.target.value)} />
         <span className='task-aside-icon' onClick={() => {
           openTaskAside(id)
         }}>

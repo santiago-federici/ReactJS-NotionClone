@@ -55,12 +55,34 @@ export function GroupsContainer() {
     }
   }
 
-  const handleChangeGroupName = (id, newGroupName) => {
+  const updateGroupName = (id, newGroupName) => {
     setGroups(groups.map(group => {
       if (group.id === id) {
         return {
           ...group,
           groupName: newGroupName
+        }
+      } else {
+        return group
+      }
+    }))
+  }
+
+  const updateTaskName = (groupId, taskId, newTaskName) => {
+    setGroups(groups.map(group => {
+      if (group.id === groupId) {
+        return {
+          ...group,
+          tasks: group.tasks.map(task => {
+            if (task.id === taskId) {
+              return {
+                ...task,
+                taskName: newTaskName
+              }
+            } else {
+              return task
+            }
+          })
         }
       } else {
         return group
@@ -81,7 +103,8 @@ export function GroupsContainer() {
               handleClickNewTask={handleClickNewTask}
               selectedGroupId={selectedGroupId === group.id}
               openGroupAside={openGroupAside}
-              handleChangeGroupName={handleChangeGroupName}
+              updateGroupName={updateGroupName}
+              updateTaskName={updateTaskName}
             />
           ))
           : <p className='no-groups-yet' onClick={handleNewGroupClick}>No groups yet. Click to add a group.</p>
@@ -91,6 +114,8 @@ export function GroupsContainer() {
         <Plus />
         Add a group
       </button>
+
+      <button onClick={() => console.log(groups)}>Click</button>
     </div>
   )
 }

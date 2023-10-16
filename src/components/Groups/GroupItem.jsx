@@ -3,7 +3,7 @@ import { TasksContainer } from './Tasks/TasksContainer'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from '../Icons'
 import { GroupAside } from '../Asides/GroupAside'
 
-export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGroupId, openGroupAside, handleChangeGroupName }) {
+export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGroupId, openGroupAside, updateGroupName, updateTaskName }) {
   const [arrow, setArrow] = useState(true)
   const [tasksVisible, setTasksVisible] = useState(true)
 
@@ -59,7 +59,7 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupId={id} groupName={groupName} />
+            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupId={id} groupName={groupName} updateTaskName={updateTaskName} />
 
             <div className="tasks-table-footer">
               <p onClick={(e) => handleClickNewTask(e, id)}><Plus />New</p>
@@ -74,7 +74,7 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
           selectedEmoji={selectedEmoji}
           setSelectedEmoji={setSelectedEmoji}
           tasks={tasks}
-          handleChangeGroupName={handleChangeGroupName}
+          updateGroupName={updateGroupName}
           groupId={id} />
       }
     </article>

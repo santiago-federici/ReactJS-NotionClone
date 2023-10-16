@@ -6,13 +6,13 @@ import { CircleCheckFilled, Dots, HorizontalFile, Photo, Plus, Search, SmileFill
 
 import './Asides.css'
 
-export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, handleChangeGroupName, groupId }) {
+export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, updateGroupName, groupId }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
 
   const [newGroupName, setNewGroupName] = useState(groupName)
 
   useEffect(() => {
-    handleChangeGroupName(groupId, newGroupName)
+    updateGroupName(groupId, newGroupName)
   }, [newGroupName])
 
   return (

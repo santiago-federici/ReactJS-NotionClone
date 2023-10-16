@@ -3,7 +3,7 @@ import { TaskItem } from './TaskItem'
 import './TasksContainer.css'
 import { useAside } from '../../../hooks/useAside'
 
-export function TasksContainer({ tasks, handleClickNewTask, groupId, groupName }) {
+export function TasksContainer({ tasks, handleClickNewTask, groupId, groupName, updateTaskName }) {
   const { selectedTaskId, openTaskAside } = useAside()
 
   return (
@@ -17,6 +17,8 @@ export function TasksContainer({ tasks, handleClickNewTask, groupId, groupName }
               groupName={groupName}
               selectedTaskId={selectedTaskId === task.id}
               openTaskAside={openTaskAside}
+              updateTaskName={updateTaskName}
+              groupId={groupId}
             />
           ))
           : <span className='no-tasks-yet' onClick={(e) => handleClickNewTask(e, groupId)}>No tasks yet. Click to add a row.</span>
