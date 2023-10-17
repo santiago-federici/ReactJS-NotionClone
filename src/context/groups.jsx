@@ -16,19 +16,19 @@ export function GroupsProvider({ children }) {
     setGroups([...groups, newGroup])
   }
 
-  const handleNewTask = (e, id) => {
+  const handleNewTask = (e, groupId) => {
     const newTask = {
       id: nanoid(),
       taskName: 'Task',
       taskStatus: 'To Do',
-      taskDue: '',
+      taskDue: 'October 17th',
       taskPriority: ''
     }
 
     // Checks which of the "add task" button is, and specifies the position where the task has to be added at
     if (e.target.innerHTML.includes('New')) {
       setGroups(groups.map(group => {
-        if (group.id === id) {
+        if (group.id === groupId) {
           return {
             ...group,
             tasks: [...group.tasks, newTask]
@@ -39,7 +39,7 @@ export function GroupsProvider({ children }) {
       }))
     } else {
       setGroups(groups.map(group => {
-        if (group.id === id) {
+        if (group.id === groupId) {
           return {
             ...group,
             tasks: [newTask, ...group.tasks]
@@ -51,9 +51,9 @@ export function GroupsProvider({ children }) {
     }
   }
 
-  const updateGroupName = (id, newGroupName) => {
+  const updateGroupName = (groupId, newGroupName) => {
     setGroups(groups.map(group => {
-      if (group.id === id) {
+      if (group.id === groupId) {
         return {
           ...group,
           groupName: newGroupName

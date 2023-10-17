@@ -30,8 +30,6 @@ export function GroupsContainer() {
         <Plus />
         Add a group
       </button>
-
-      <button onClick={() => console.log(groups)}>Click</button>
     </div>
   )
 }

@@ -12,7 +12,7 @@ export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, 
 
   const [newGroupName, setNewGroupName] = useState(groupName)
 
-  const { updateGroupName } = useGroups()
+  const { updateGroupName, handleNewTask } = useGroups()
 
   useEffect(() => {
     updateGroupName(groupId, newGroupName)
@@ -57,7 +57,7 @@ export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, 
           </h3>
           <div className='header-icons'>
             <span><Search /></span>
-            <span><Plus /></span>
+            <span onClick={(e) => handleNewTask(e, groupId)}><Plus /></span>
             <span><Dots /></span>
           </div>
         </div>
@@ -67,7 +67,7 @@ export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, 
             tasks.map(task => (
               <li key={task.id}>
                 <span><HorizontalFile /></span>
-                <p>{task.taskName}</p>
+                <span>{task.taskName}</span>
                 <span>{task.taskStatus}</span>
                 <span>{task.taskPriority}</span>
               </li>
@@ -75,7 +75,7 @@ export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, 
           }
         </ul>
 
-        <span className='ga-tasks-container__btn'><Plus />New page in Tasks</span>
+        <span className='ga-tasks-container__btn' onClick={(e) => handleNewTask(e, groupId)}><Plus />New page in Tasks</span>
       </div>
 
     </aside>

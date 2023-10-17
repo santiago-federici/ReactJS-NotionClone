@@ -24,7 +24,6 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
   const { updateTaskName, updateTaskStatus, updateTaskPriority } = useGroups()
 
   const [newTaskName, setNewTaskName] = useState(taskName)
-  // const [newTaskStatus, setNewTaskStatus] = useState(taskStatus)
 
   useEffect(() => {
     updateTaskName(groupId, id, newTaskName)
