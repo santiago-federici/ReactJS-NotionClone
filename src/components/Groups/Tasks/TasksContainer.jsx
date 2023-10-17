@@ -2,9 +2,12 @@
 import { TaskItem } from './TaskItem'
 import './TasksContainer.css'
 import { useAside } from '../../../hooks/useAside'
+import { useGroups } from '../../../hooks/useGroups'
 
-export function TasksContainer({ tasks, handleClickNewTask, groupId, groupName, updateTaskName }) {
+export function TasksContainer({ tasks, groupId, groupName }) {
   const { selectedTaskId, openTaskAside } = useAside()
+
+  const { handleNewTask } = useGroups()
 
   return (
     <ul className="table-content">
@@ -17,11 +20,10 @@ export function TasksContainer({ tasks, handleClickNewTask, groupId, groupName, 
               groupName={groupName}
               selectedTaskId={selectedTaskId === task.id}
               openTaskAside={openTaskAside}
-              updateTaskName={updateTaskName}
               groupId={groupId}
             />
           ))
-          : <span className='no-tasks-yet' onClick={(e) => handleClickNewTask(e, groupId)}>No tasks yet. Click to add a row.</span>
+          : <span className='no-tasks-yet' onClick={(e) => handleNewTask(e, groupId)}>No tasks yet. Click to add a row.</span>
       }
     </ul>
   )

@@ -2,12 +2,15 @@ import { useState } from 'react'
 import { TasksContainer } from './Tasks/TasksContainer'
 import { Calendar, CaretDown, Dots, Exclamation, EyeOff, Plus, Sun, Trash } from '../Icons'
 import { GroupAside } from '../Asides/GroupAside'
+import { useGroups } from '../../hooks/useGroups'
 
-export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGroupId, openGroupAside, updateGroupName, updateTaskName }) {
+export function GroupItem({ id, groupName, tasks, selectedGroupId, openGroupAside }) {
   const [arrow, setArrow] = useState(true)
   const [tasksVisible, setTasksVisible] = useState(true)
 
   const [selectedEmoji, setSelectedEmoji] = useState(null)
+
+  const { handleNewTask } = useGroups()
 
   const arrowClassName = arrow ? 'caret' : 'caret-rotate'
 
@@ -46,7 +49,7 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
           }
         </p>
 
-        <p onClick={(e) => handleClickNewTask(e, id)}><Plus /></p>
+        <p onClick={(e) => handleNewTask(e, id)}><Plus /></p>
       </div>
 
       {
@@ -59,10 +62,10 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
               <p><Exclamation />Priority</p>
             </div>
 
-            <TasksContainer tasks={tasks} handleClickNewTask={handleClickNewTask} groupId={id} groupName={groupName} updateTaskName={updateTaskName} />
+            <TasksContainer tasks={tasks} groupId={id} groupName={groupName} />
 
             <div className="tasks-table-footer">
-              <p onClick={(e) => handleClickNewTask(e, id)}><Plus />New</p>
+              <p onClick={(e) => handleNewTask(e, id)}><Plus />New</p>
             </div>
           </>
           : <></>
@@ -74,7 +77,6 @@ export function GroupItem({ id, groupName, tasks, handleClickNewTask, selectedGr
           selectedEmoji={selectedEmoji}
           setSelectedEmoji={setSelectedEmoji}
           tasks={tasks}
-          updateGroupName={updateGroupName}
           groupId={id} />
       }
     </article>

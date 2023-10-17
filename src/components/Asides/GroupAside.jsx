@@ -5,11 +5,14 @@ import { useEffect, useState } from 'react'
 import { CircleCheckFilled, Dots, HorizontalFile, Photo, Plus, Search, SmileFilled } from '../Icons'
 
 import './Asides.css'
+import { useGroups } from '../../hooks/useGroups'
 
-export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, updateGroupName, groupId }) {
+export function GroupAside({ tasks, groupName, selectedEmoji, setSelectedEmoji, groupId }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
 
   const [newGroupName, setNewGroupName] = useState(groupName)
+
+  const { updateGroupName } = useGroups()
 
   useEffect(() => {
     updateGroupName(groupId, newGroupName)

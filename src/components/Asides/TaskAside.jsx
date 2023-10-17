@@ -9,7 +9,7 @@ import Picker from '@emoji-mart/react'
 
 import './Asides.css'
 
-export function TaskAside({ taskValue, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupName, handleChangeTaskName }) {
+export function TaskAside({ newTaskName, setNewTaskName, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupName }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [openStatusOptions, setOpenStatusOptions] = useState(false)
   const [openProprityOptions, setOpenProprityOptions] = useState(false)
@@ -35,7 +35,7 @@ export function TaskAside({ taskValue, statusInnerText, setStatusInnerText, stat
             ? <span className='empty-emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}><HorizontalFile /></span>
             : <span className='emoji' onClick={() => setVisibleEmojiPicker(!visibleEmojiPicker)}>{selectedEmoji}</span>
         }
-        <input className='change-name aside-task-name' value={taskValue} onChange={(e) => handleChangeTaskName(e)} />
+        <input className='change-name aside-task-name' value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} />
       </span>
 
       <div className='task-aside-info'>

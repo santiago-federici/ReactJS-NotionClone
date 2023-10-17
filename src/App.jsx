@@ -5,6 +5,7 @@ import { Filters } from './components/Filters'
 import { GroupsContainer } from './components/Groups/GroupsContainer.jsx'
 
 import './App.css'
+import { GroupsProvider } from './context/groups'
 
 function App() {
   return (
@@ -15,15 +16,18 @@ function App() {
       <section className='info-section'>
         <h1 className='page-title'>Tasks</h1>
 
-        <AsideProvider>
+        <GroupsProvider>
 
-          <Header />
+          <AsideProvider>
 
-          <Filters />
+            <Header />
 
-          <GroupsContainer />
+            <Filters />
 
-        </AsideProvider>
+            <GroupsContainer />
+
+          </AsideProvider>
+        </GroupsProvider>
 
       </section>
     </main>

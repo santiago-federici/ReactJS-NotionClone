@@ -5,8 +5,9 @@ import { HorizontalFile, PointFilled, SidebarRight } from '../../Icons'
 import { TaskAside } from '../../Asides/TaskAside'
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
+import { useGroups } from '../../../hooks/useGroups'
 
-export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupName, selectedTaskId, openTaskAside, updateTaskName, groupId }) {
+export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, groupName, selectedTaskId, openTaskAside, groupId }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
@@ -20,16 +21,22 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
   const [priorityInnerText, setPriorityInnerText] = useState(taskPriority)
   const [priorityClassName, setPriorityClassName] = useState(priorityInnerText + '-priority')
 
-  const [taskValue, setTaskValue] = useState(taskName)
-  const handleChangeTaskName = (e) => {
-    const newTaskValue = e.target.value
+  const { updateTaskName, updateTaskStatus, updateTaskPriority } = useGroups()
 
-    setTaskValue(newTaskValue)
-  }
+  const [newTaskName, setNewTaskName] = useState(taskName)
+  // const [newTaskStatus, setNewTaskStatus] = useState(taskStatus)
 
   useEffect(() => {
-    updateTaskName(groupId, id, taskValue)
-  }, [taskValue])
+    updateTaskName(groupId, id, newTaskName)
+  }, [newTaskName])
+
+  useEffect(() => {
+    updateTaskStatus(groupId, id, statusInnerText)
+  }, [statusInnerText])
+
+  useEffect(() => {
+    updateTaskPriority(groupId, id, priorityInnerText)
+  }, [priorityInnerText])
 
   return (
     <>
@@ -48,7 +55,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
               : <></>
           }
         </span>
-        <input className='change-name' value={taskValue} onChange={(e) => setTaskValue(e.target.value)} />
+        <input className='change-name' value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} />
         <span className='task-aside-icon' onClick={() => {
           openTaskAside(id)
         }}>
@@ -82,7 +89,8 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
 
       {
         selectedTaskId && <TaskAside
-          taskValue={taskValue}
+          newTaskName={newTaskName}
+          setNewTaskName={setNewTaskName}
           statusInnerText={statusInnerText}
           setStatusInnerText={setStatusInnerText}
           statusClassName={statusClassName}
@@ -95,7 +103,6 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
           selectedEmoji={selectedEmoji}
           setSelectedEmoji={setSelectedEmoji}
           groupName={groupName}
-          handleChangeTaskName={handleChangeTaskName}
         />
       }
     </>

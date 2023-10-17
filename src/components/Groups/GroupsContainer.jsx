@@ -1,94 +1,13 @@
 import { GroupItem } from './GroupItem'
-import { useState } from 'react'
-import { nanoid } from 'nanoid'
 import { Plus } from '../Icons'
 import { useAside } from '../../hooks/useAside'
+import { useGroups } from '../../hooks/useGroups'
 
 import './GroupsContainer.css'
 
 export function GroupsContainer() {
-  const [groups, setGroups] = useState([])
   const { selectedGroupId, openGroupAside } = useAside()
-
-  const handleNewGroupClick = () => {
-    const newGroup = {
-      id: nanoid(),
-      groupName: 'New Group',
-      tasks: []
-    }
-
-    setGroups([...groups, newGroup])
-  }
-
-  const handleClickNewTask = (e, id) => {
-    const newTask = {
-      id: nanoid(),
-      taskName: 'Task',
-      taskStatus: 'To Do',
-      taskDue: '',
-      taskPriority: ''
-    }
-
-    // Checks which of the "add task" button is, and specifies the position where the task has to be added at
-    if (e.target.innerHTML.includes('New')) {
-      setGroups(groups.map(group => {
-        if (group.id === id) {
-          return {
-            ...group,
-            tasks: [...group.tasks, newTask]
-          }
-        } else {
-          return group
-        }
-      }))
-    } else {
-      setGroups(groups.map(group => {
-        if (group.id === id) {
-          return {
-            ...group,
-            tasks: [newTask, ...group.tasks]
-          }
-        } else {
-          return group
-        }
-      }))
-    }
-  }
-
-  const updateGroupName = (id, newGroupName) => {
-    setGroups(groups.map(group => {
-      if (group.id === id) {
-        return {
-          ...group,
-          groupName: newGroupName
-        }
-      } else {
-        return group
-      }
-    }))
-  }
-
-  const updateTaskName = (groupId, taskId, newTaskName) => {
-    setGroups(groups.map(group => {
-      if (group.id === groupId) {
-        return {
-          ...group,
-          tasks: group.tasks.map(task => {
-            if (task.id === taskId) {
-              return {
-                ...task,
-                taskName: newTaskName
-              }
-            } else {
-              return task
-            }
-          })
-        }
-      } else {
-        return group
-      }
-    }))
-  }
+  const { groups, handleNewGroup } = useGroups()
 
   return (
     <div className='groups-container'>
@@ -100,17 +19,14 @@ export function GroupsContainer() {
               key={group.id}
               {...group}
               tasks={group.tasks}
-              handleClickNewTask={handleClickNewTask}
               selectedGroupId={selectedGroupId === group.id}
               openGroupAside={openGroupAside}
-              updateGroupName={updateGroupName}
-              updateTaskName={updateTaskName}
             />
           ))
-          : <p className='no-groups-yet' onClick={handleNewGroupClick}>No groups yet. Click to add a group.</p>
+          : <p className='no-groups-yet' onClick={handleNewGroup}>No groups yet. Click to add a group.</p>
       }
 
-      <button className='add-group-btn' onClick={handleNewGroupClick}>
+      <button className='add-group-btn' onClick={handleNewGroup}>
         <Plus />
         Add a group
       </button>
