@@ -21,7 +21,7 @@ export function GroupsProvider({ children }) {
       id: nanoid(),
       taskName: 'Task',
       taskStatus: 'To Do',
-      taskDue: 'October 17th',
+      taskDue: '',
       taskPriority: ''
     }
 
@@ -151,6 +151,28 @@ export function GroupsProvider({ children }) {
     }))
   }
 
+  const updateTaskDue = (groupId, taskId, newTaskDue) => {
+    setGroups(groups.map(group => {
+      if (group.id === groupId) {
+        return {
+          ...group,
+          tasks: group.tasks.map(task => {
+            if (task.id === taskId) {
+              return {
+                ...task,
+                taskDue: newTaskDue
+              }
+            } else {
+              return task
+            }
+          })
+        }
+      } else {
+        return group
+      }
+    }))
+  }
+
   return (
     <GroupsContext.Provider value={{
       groups,
@@ -161,6 +183,7 @@ export function GroupsProvider({ children }) {
       updateTaskName,
       updateTaskStatus,
       updateTaskPriority,
+      updateTaskDue,
       handleDeleteGroup,
       handleDeleteTask
     }}>

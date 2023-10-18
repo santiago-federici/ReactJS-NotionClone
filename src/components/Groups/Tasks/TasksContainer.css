@@ -152,3 +152,12 @@
 .task-aside-icon:hover {
     background: hsl(0, 0%, 95%);
 }
+
+.date-picker {
+    background: transparent;
+    text-align: center;
+    color: var(--clr-text-darker);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}

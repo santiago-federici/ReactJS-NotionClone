@@ -21,7 +21,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
   const [priorityInnerText, setPriorityInnerText] = useState(taskPriority)
   const [priorityClassName, setPriorityClassName] = useState(priorityInnerText + '-priority')
 
-  const { updateTaskName, updateTaskStatus, updateTaskPriority } = useGroups()
+  const { updateTaskName, updateTaskStatus, updateTaskPriority, updateTaskDue } = useGroups()
 
   const [newTaskName, setNewTaskName] = useState(taskName)
 
@@ -36,6 +36,12 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
   useEffect(() => {
     updateTaskPriority(groupId, id, priorityInnerText)
   }, [priorityInnerText])
+
+  const [newTaskDue, setNewTaskDue] = useState(taskDue)
+
+  useEffect(() => {
+    updateTaskDue(groupId, id, newTaskDue)
+  }, [newTaskDue])
 
   return (
     <>
@@ -74,7 +80,7 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
             setStatusClassName={setStatusClassName} />}
       </span>
 
-      <p className='table-content__item'>{taskDue}</p>
+      <input type='date' className='table-content__item date-picker' value={newTaskDue} onChange={(e) => setNewTaskDue(e.target.value)} />
 
       <span className='priority-span table-content__item' onClick={() => setOpenProprityOptions(!openProprityOptions)}>
         <span className={`priority ' + ${priorityClassName}`}>
