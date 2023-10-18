@@ -51,6 +51,27 @@ export function GroupsProvider({ children }) {
     }
   }
 
+  const handleDeleteGroup = (groupId) => {
+    const newGroups = groups.filter(group => group.id !== groupId)
+
+    setGroups(newGroups)
+  }
+
+  const handleDeleteTask = (groupId, taskId) => {
+    const newGroups = groups.map(group => {
+      if (group.id === groupId) {
+        const newTasks = group.tasks.filter(task => task.id !== taskId)
+        return {
+          ...group,
+          tasks: newTasks
+        }
+      } else {
+        return group
+      }
+    })
+    setGroups(newGroups)
+  }
+
   const updateGroupName = (groupId, newGroupName) => {
     setGroups(groups.map(group => {
       if (group.id === groupId) {
@@ -139,7 +160,9 @@ export function GroupsProvider({ children }) {
       updateGroupName,
       updateTaskName,
       updateTaskStatus,
-      updateTaskPriority
+      updateTaskPriority,
+      handleDeleteGroup,
+      handleDeleteTask
     }}>
       {children}
     </GroupsContext.Provider>

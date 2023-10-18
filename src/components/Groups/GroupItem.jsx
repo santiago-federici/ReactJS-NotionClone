@@ -10,7 +10,7 @@ export function GroupItem({ id, groupName, tasks, selectedGroupId, openGroupAsid
 
   const [selectedEmoji, setSelectedEmoji] = useState(null)
 
-  const { handleNewTask } = useGroups()
+  const { handleNewTask, handleDeleteGroup } = useGroups()
 
   const arrowClassName = arrow ? 'caret' : 'caret-rotate'
 
@@ -41,7 +41,7 @@ export function GroupItem({ id, groupName, tasks, selectedGroupId, openGroupAsid
                 <EyeOff />
                 Hide
               </li>
-              <li className='dot-element'>
+              <li className='dot-element' onClick={() => handleDeleteGroup(id)}>
                 <Trash />
                 Delete
               </li>

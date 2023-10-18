@@ -264,3 +264,21 @@
 .ga-tasks-container__btn:hover {
     background: hsl(0, 0%, 95%);
 }
+
+.delete-task-btn {
+    background: var(--bg-high);
+    color: var(--fc-high);
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 4px 0;
+    font-weight: 600;
+    margin: 2rem 5rem;
+    cursor: pointer;
+    transition: 200ms all ease;
+}
+
+.delete-task-btn:hover {
+    background: rgba(255, 0, 0, 0.5);
+    color: var(--clr-text-darker);
+}

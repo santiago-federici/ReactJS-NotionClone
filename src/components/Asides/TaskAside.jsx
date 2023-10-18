@@ -8,13 +8,15 @@ import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
 import './Asides.css'
+import { useGroups } from '../../hooks/useGroups'
 
-export function TaskAside({ newTaskName, setNewTaskName, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupName }) {
+export function TaskAside({ taskId, groupId, newTaskName, setNewTaskName, statusInnerText, setStatusInnerText, statusClassName, setStatusClassName, taskDue, priorityInnerText, setPriorityInnerText, priorityClassName, setPriorityClassName, selectedEmoji, setSelectedEmoji, groupName }) {
   const [visibleEmojiPicker, setVisibleEmojiPicker] = useState(false)
   const [openStatusOptions, setOpenStatusOptions] = useState(false)
   const [openProprityOptions, setOpenProprityOptions] = useState(false)
 
   const { selectedGroupId, openGroupAside } = useAside()
+  const { handleDeleteTask } = useGroups()
 
   return (
     <aside className='aside-container'>
@@ -78,6 +80,8 @@ export function TaskAside({ newTaskName, setNewTaskName, statusInnerText, setSta
         </div>
 
       </div>
+
+      <button className='delete-task-btn' onClick={() => handleDeleteTask(groupId, taskId)}>Delete task</button>
 
     </aside>
   )

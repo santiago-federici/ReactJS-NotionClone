@@ -88,6 +88,8 @@ export function TaskItem({ id, taskName, taskStatus, taskDue, taskPriority, grou
 
       {
         selectedTaskId && <TaskAside
+          taskId={id}
+          groupId={groupId}
           newTaskName={newTaskName}
           setNewTaskName={setNewTaskName}
           statusInnerText={statusInnerText}
