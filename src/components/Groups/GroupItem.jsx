@@ -52,24 +52,21 @@ export function GroupItem({ id, groupName, tasks, selectedGroupId, openGroupAsid
         <p onClick={(e) => handleNewTask(e, id)}><Plus /></p>
       </div>
 
-      {
-        tasksVisible
-          ? <>
-            <div className='tasks-table-head'>
-              <p>Aa Task name</p>
-              <p><Sun />Status</p>
-              <p><Calendar />Due</p>
-              <p><Exclamation />Priority</p>
-            </div>
+      <div className={`${tasksVisible ? '' : 'invisible'}`}>
+        <div className='tasks-table-head'>
+          <p>Aa Task name</p>
+          <p><Sun />Status</p>
+          <p><Calendar />Due</p>
+          <p><Exclamation />Priority</p>
+        </div>
 
-            <TasksContainer tasks={tasks} groupId={id} groupName={groupName} />
+        <TasksContainer tasks={tasks} groupId={id} groupName={groupName} />
 
-            <div className="tasks-table-footer">
-              <p onClick={(e) => handleNewTask(e, id)}><Plus />New</p>
-            </div>
-          </>
-          : <></>
-      }
+        <div className="tasks-table-footer">
+          <p onClick={(e) => handleNewTask(e, id)}><Plus />New</p>
+        </div>
+      </div>
+
       {
         selectedGroupId &&
         <GroupAside

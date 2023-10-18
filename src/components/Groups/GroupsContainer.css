@@ -143,3 +143,7 @@
     border-radius: 4px;
     scale: 1.01;
 }
+
+.invisible {
+    display: none;
+}
