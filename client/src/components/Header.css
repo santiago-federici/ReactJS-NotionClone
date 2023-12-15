@@ -1,4 +1,4 @@
-header {
+.views-header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
     width: 100%;
     padding: 1.5rem 0 0.5rem 0;
@@ -6,7 +6,7 @@ header {
     justify-content: space-between;
 }
 
-header ul {
+.views-header ul {
     list-style-type: none;
     display: flex;
     gap: 0.2rem;

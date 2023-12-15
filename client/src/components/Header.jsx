@@ -4,7 +4,7 @@ import './Header.css'
 export function Header() {
   return (
 
-    <header>
+    <header className='views-header'>
       <ul>
         <li className="element selected">
           <Target />
