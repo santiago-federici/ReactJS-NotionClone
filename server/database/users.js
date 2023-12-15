@@ -28,4 +28,17 @@ export class PageModel {
 
     return pages
   }
+
+  static async getByUserId ({ userId }) {
+    const [pages] = await connection.query(
+      'SELECT id, title, parent_page_id, icon FROM pages WHERE user_id = UUID_TO_BIN(?);',
+      [userId]
+    )
+
+    console.log(pages)
+
+    if (pages.length === 0) return null
+
+    return pages
+  }
 }

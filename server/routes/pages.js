@@ -8,7 +8,7 @@ export const createPagesRouter = ({ pageModel }) => {
   const pageController = new PageController({ pageModel })
 
   pagesRouter.get('/', pageController.getAll)
-  // pagesRouter.get('/:id', pageController.getById)
+  pagesRouter.get('/:userId', pageController.getByUserId)
   // pagesRouter.post('/', pageController.create)
   // pagesRouter.delete('/:id', pageController.delete)
   // pagesRouter.patch('/:id', pageController.update)

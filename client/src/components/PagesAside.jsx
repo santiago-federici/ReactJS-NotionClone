@@ -1,7 +1,27 @@
-import { ChevronRight, CirclePlus, Clock, Download, Plus, Scissors, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
+import { useEffect, useState } from 'react'
+import { ChevronRight, CirclePlus, Clock, Download, EmptyPage, Plus, Scissors, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
 import './PagesAside.css'
 
 export function PagesAside() {
+  const [pages, setPages] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/pages/e144e0c6-9b56-11ee-b0a7-e0d464e5bd01')
+      .then(res => res.json())
+      .then(data => setPages(data))
+  }, [])
+
+  const renderIcon = (icon) => {
+    switch (icon) {
+      case 'TrendingUp':
+        return <TrendingUp />
+      case 'Target':
+        return <Target />
+      default:
+        return <EmptyPage />
+    }
+  }
+
   return (
     <aside className='fixed-pages-aside'>
       <div className="user-container">
@@ -31,7 +51,7 @@ export function PagesAside() {
       </section>
 
       <section className='pages-aside__section'>
-        <p>
+        {/* <p>
           <span className='chevron-container'>
             <ChevronRight />
           </span>
@@ -51,11 +71,27 @@ export function PagesAside() {
           </span>
           <Target />
           Projects
-        </p>
-        <p>
-          <Plus />
-          Add a page
-        </p>
+        </p> */}
+
+        <ul>
+          {
+            pages.map(page => (
+              <li key={page.id}>
+                <p>
+                  {/* <TrendingUp /> */}
+                  {renderIcon(page.icon)}
+                  {page.title}
+                </p>
+              </li>
+            ))
+          }
+          <li>
+            <p>
+              <Plus />
+              Add a page
+            </p>
+          </li>
+        </ul>
       </section>
 
       <section className='pages-aside__section'>
