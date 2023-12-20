@@ -11,12 +11,12 @@ export class UserController {
     res.json(users)
   }
 
-  // getById = async (req, res) => {
-  //   const { id } = req.params
-  //   const movie = await this.movieModel.getById({ id })
-  //   if (movie) return res.json(movie)
-  //   res.status(404).json({ message: 'Movie not found' })
-  // }
+  getByUsername = async (req, res) => {
+    const { username } = req.params
+    const user = await this.userModel.getByUsername({ username })
+    if (user) return res.json(user)
+    res.status(404).json({ message: 'User not found' })
+  }
 
   // create = async (req, res) => {
   //   const result = validateUser(req.body)

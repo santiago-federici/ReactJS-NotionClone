@@ -1,4 +1,6 @@
 .fixed-pages-aside {
+    resize: horizontal;
+    
     position: fixed;
     left: 0;
 
@@ -27,27 +29,31 @@
     border-radius: 4px;
 }
 
-.pages-aside__section p {
+.pages-aside__section {
+    list-style-type: none;
+}
+
+
+.pages-aside__section li {
     display: flex;
     align-items: center;
     gap: 0.2rem;
-    padding: 5px 10px;
+    padding: 4px 10px;
     border-radius: 4px;
 }
 
-.pages-aside__section p:hover {
+.pages-aside__section li:hover {
     background: hsl(0, 0%, 91.8%);
     cursor: pointer;
 }
 
-.chevron-container {
+.icon-container {
     display: flex;
     align-items: center;
-    padding: 3px;
     border-radius: 4px;
 }
 
-.chevron-container:hover {
+.icon-container:hover {
     background: hsl(0, 0%, 85%);
     cursor: pointer;
 }

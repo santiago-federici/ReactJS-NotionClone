@@ -18,6 +18,15 @@ export class UserModel {
 
     return users
   }
+
+  static async getByUsername ({ username }) {
+    const [users] = await connection.query(
+      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE username = ?;',
+      [username]
+    )
+
+    return users
+  }
 }
 
 export class PageModel {

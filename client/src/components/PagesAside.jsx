@@ -31,87 +31,61 @@ export function PagesAside() {
         <h3 className="pages-aside-username">Santiago Federicis Notion</h3>
       </div>
 
-      <section className='pages-aside__section'>
-        <p>
+      <ul className='pages-aside__section'>
+        <li>
           <Search />
           Search
-        </p>
-        <p>
+        </li>
+        <li>
           <Clock />
           Updates
-        </p>
-        <p>
+        </li>
+        <li>
           <Settings />
           Settings & members
-        </p>
-        <p>
+        </li>
+        <li>
           <CirclePlus />
           New page
-        </p>
-      </section>
+        </li>
+      </ul>
 
-      <section className='pages-aside__section'>
-        {/* <p>
-          <span className='chevron-container'>
-            <ChevronRight />
-          </span>
-          <Scissors />
-          Taks List
-        </p>
-        <p>
-          <span className='chevron-container'>
-            <ChevronRight />
-          </span>
-          <TrendingUp />
-          Tasks
-        </p>
-        <p>
-          <span className='chevron-container'>
-            <ChevronRight />
-          </span>
-          <Target />
-          Projects
-        </p> */}
-
-        <ul>
-          {
-            pages.map(page => (
-              <li key={page.id}>
-                <p>
-                  {/* <TrendingUp /> */}
+      <ul className='pages-aside__section'>
+        {
+          pages.map(page => (
+            <li key={page.id}>
+                <span className='icon-container'>
                   {renderIcon(page.icon)}
-                  {page.title}
-                </p>
-              </li>
-            ))
-          }
-          <li>
-            <p>
-              <Plus />
-              Add a page
-            </p>
-          </li>
-        </ul>
-      </section>
+                </span>
+                {page.title}
+            </li>
+          ))
+        }
 
-      <section className='pages-aside__section'>
-        <p>
+        <li>
+          <Plus />
+          Add a page
+        </li>
+      </ul>
+
+      <ul className='pages-aside__section'>
+        <li>
           <UserSearch />
           Create a team space
-        </p>
-        <p>
+        </li>
+        <li>
           <Template />
           Templates
-        </p>
-        <p>
+        </li>
+        <li>
           <Download />
           Import
-        </p>
-        <p>
+        </li>
+        <li>
           <Trash />
           Trash
-        </p>
-      </section>
+        </li>
+      </ul>
     </aside>
   )
 }
