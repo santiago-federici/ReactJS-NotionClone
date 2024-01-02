@@ -14,14 +14,17 @@ export function Login () {
     fetch(`http://localhost:3000/users/${username}`)
       .then(res => res.json())
       .then(data => {
-        if (data) {
-          if (data.user_password === userPassword) {
-            console.log('correct')
-          } else {
-            console.log('incorrect')
-          }
-        } else {
+        if (data.length === 0) {
           console.log('user not found')
+        } else {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].user_password === userPassword) {
+              console.log('correct')
+              console.log('userEmail: ', data[i].email)
+            } else {
+              console.log('incorrect')
+            }
+          }
         }
       })
   }, [submit])
