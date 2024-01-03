@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { ChevronRight, CirclePlus, Clock, Download, EmptyPage, Plus, Scissors, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
+import { CirclePlus, Clock, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
 import './PagesAside.css'
 
-export function PagesAside() {
+export function PagesAside({ userId, username }) {
   const [pages, setPages] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/pages/e144e0c6-9b56-11ee-b0a7-e0d464e5bd01')
+    fetch(`http://localhost:3000/pages/${userId}`)
       .then(res => res.json())
       .then(data => setPages(data))
   }, [])
@@ -22,13 +22,17 @@ export function PagesAside() {
     }
   }
 
+  const handleAddAPage = () => {
+    console.log('adding a page')
+  }
+
   return (
     <aside className='fixed-pages-aside'>
       <div className="user-container">
         <img
           src="https://lh3.googleusercontent.com/a/AAcHTtc6qAUeOnXlMeW8kAEPVdkCl5UgiNSRJWoyezVHdRlP=s100"
         />
-        <h3 className="pages-aside-username">Santiago Federicis Notion</h3>
+        <h3 className="pages-aside-username">{username}`s Notion</h3>
       </div>
 
       <ul className='pages-aside__section'>
@@ -52,7 +56,7 @@ export function PagesAside() {
 
       <ul className='pages-aside__section'>
         {
-          pages.map(page => (
+          pages.length > 0 && pages.map(page => (
             <li key={page.id}>
                 <span className='icon-container'>
                   {renderIcon(page.icon)}
@@ -62,7 +66,7 @@ export function PagesAside() {
           ))
         }
 
-        <li>
+        <li onClick={() => handleAddAPage()}>
           <Plus />
           Add a page
         </li>

@@ -1,33 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { NotionCompleteLogo } from '../Icons'
 import './Login.css'
+import { useNavigate } from 'react-router-dom'
 
-export function Login () {
+export function Login ({ setUserId }) {
   const [username, setUsername] = useState()
   const [userPassword, setUserPassword] = useState()
-  const [submit, setSubmit] = useState(false)
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    console.log(username)
-    console.log(userPassword)
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-    fetch(`http://localhost:3000/users/${username}`)
+    fetch('http://localhost:3000/users/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password: userPassword })
+      })
       .then(res => res.json())
       .then(data => {
-        if (data.length === 0) {
-          console.log('user not found')
+        const message = document.querySelector('.incorrect-user')
+        if (data.length > 0) {
+          setUserId(data[0].id)
+          message.style.display = 'none'
+          navigate('/app')
         } else {
-          for (let i = 0; i < data.length; i++) {
-            if (data[i].user_password === userPassword) {
-              console.log('correct')
-              console.log('userEmail: ', data[i].email)
-            } else {
-              console.log('incorrect')
-            }
-          }
+          message.style.display = 'block'
         }
       })
-  }, [submit])
+      .catch(err => console.log(err))
+  }
 
   return (
     <main className='login-main'>
@@ -47,7 +51,9 @@ export function Login () {
           <input type="password" placeholder="Enter your password..." onChange={(e) => setUserPassword(e.target.value)} />
         </label>
 
-        <span className='submit-login-btn' onClick={() => setSubmit(true)}>Login</span>
+        <span className='submit-login-btn' onClick={(e) => handleSubmit(e)}>Login</span>
+
+        <p className='incorrect-user'>Incorrect user or password. Try again.</p>
       </form>
     </main>
   )

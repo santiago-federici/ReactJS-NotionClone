@@ -1,6 +1,3 @@
-// import { MovieModel } from '../models/local-file-system/movie.js'
-// import { validateUser, validatePartialUser } from '../schemas/users.js'
-
 export class UserController {
   constructor ({ userModel }) {
     this.userModel = userModel
@@ -11,11 +8,18 @@ export class UserController {
     res.json(users)
   }
 
-  getByUsername = async (req, res) => {
-    const { username } = req.params
-    const user = await this.userModel.getByUsername({ username })
-    if (user) return res.json(user)
+  getById = async (req, res) => {
+    const { id } = req.params
+    const user = await this.userModel.getById({ id })
+    if (user.length > 0) return res.json(user)
     res.status(404).json({ message: 'User not found' })
+  }
+
+  loginByUsername = async (req, res) => {
+    const { username, password } = req.body
+    const user = await this.userModel.loginByUsername({ username, password })
+    if (user.length > 0) return res.json(user)
+    res.status(404).json({ message: 'Wrong user or password' })
   }
 
   // create = async (req, res) => {

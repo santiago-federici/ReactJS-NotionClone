@@ -19,10 +19,19 @@ export class UserModel {
     return users
   }
 
-  static async getByUsername ({ username }) {
+  static async getById ({ id }) {
     const [users] = await connection.query(
-      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE username = ?;',
-      [username]
+      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE id = UUID_TO_BIN(?);',
+      [id]
+    )
+
+    return users
+  }
+
+  static async loginByUsername ({ username, password }) {
+    const [users] = await connection.query(
+      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE username = ? AND user_password = ?;',
+      [username, password]
     )
 
     return users

@@ -1,21 +1,21 @@
 // import { useState } from 'react'
-import { WelcomeWithAccount } from './components/WithAccount/WelcomeWithAccount.jsx'
-import { WelcomeWithoutAccount } from './components/WithoutAccount/WelcomeWithoutAccount.jsx'
+import { HomePageWithAccount } from './components/WithAccount/HomePageWithAccount.jsx'
+import { HomePageWithoutAccount } from './components/WithoutAccount/HomePageWithoutAccount.jsx'
 import { Login } from './components/Login/Login.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './App.css'
+import { useState } from 'react'
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+  const [userId, setUserId] = useState()
   return (
 
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<WelcomeWithoutAccount />} />
-        <Route exact path='/app' element={<WelcomeWithAccount />} />
-        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/' element={<HomePageWithoutAccount />} />
+        <Route exact path='/app' element={<HomePageWithAccount userId={userId} />} />
+        <Route exact path='/login' element={<Login setUserId={setUserId} />} />
       </Routes>
     </BrowserRouter>
 
@@ -23,10 +23,3 @@ function App() {
 }
 
 export default App
-
-// {
-//   isLoggedIn
-//     ? <WelcomeWithAccount />
-
-//     : <WelcomeWithoutAccount setIsLoggedIn={setIsLoggedIn} />
-// }
