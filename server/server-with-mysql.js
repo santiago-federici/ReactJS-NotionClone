@@ -1,5 +1,5 @@
 import { createApp } from './app.js'
 
-import { PageModel, UserModel } from './database/models.js'
+import { UserModel, TableModel } from './database/models.js'
 
-createApp({ userModel: UserModel, pageModel: PageModel })
+createApp({ userModel: UserModel, tableModel: TableModel })

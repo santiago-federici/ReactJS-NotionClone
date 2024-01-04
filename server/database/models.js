@@ -28,35 +28,31 @@ export class UserModel {
     return users
   }
 
-  static async loginByUsername ({ username, password }) {
+  static async loginByEmail ({ email, password }) {
     const [users] = await connection.query(
-      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE username = ? AND user_password = ?;',
-      [username, password]
+      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE email = ? AND user_password = ?;',
+      [email, password]
     )
 
     return users
   }
 }
 
-export class PageModel {
+export class TableModel {
   static async getAll () {
-    const [pages] = await connection.query(
-      'SELECT id, title, parent_page_id, BIN_TO_UUID(user_id) user_id FROM pages;'
+    const [tables] = await connection.query(
+      'SELECT id, title, BIN_TO_UUID(user_id) user_id FROM tables;'
     )
 
-    return pages
+    return tables
   }
 
   static async getByUserId ({ userId }) {
-    const [pages] = await connection.query(
-      'SELECT id, title, parent_page_id, icon FROM pages WHERE user_id = UUID_TO_BIN(?);',
+    const [tables] = await connection.query(
+      'SELECT id, title, BIN_TO_UUID(user_id) user_id FROM tables WHERE BIN_TO_UUID(user_id) = ?;',
       [userId]
     )
 
-    console.log(pages)
-
-    if (pages.length === 0) return null
-
-    return pages
+    return tables
   }
 }
