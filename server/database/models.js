@@ -55,4 +55,13 @@ export class TableModel {
 
     return tables
   }
+
+  static async create ({ userId }) {
+    const [newTable] = await connection.query(
+      'INSERT INTO tables (title, user_id) VALUES (?, UUID_TO_BIN(?));',
+      ['Untitled', userId]
+    )
+
+    return newTable
+  }
 }

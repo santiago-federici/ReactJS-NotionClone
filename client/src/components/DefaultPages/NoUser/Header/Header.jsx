@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CloseIcon, HamburgerMenu, NotionCompleteLogo } from '../../Icons.jsx'
+import { CloseIcon, HamburgerMenu, NotionCompleteLogo } from '../../../Icons.jsx'
 import { MenuContainer } from './MenuContainer/MenuContainer.jsx'
 
 export function Header () {

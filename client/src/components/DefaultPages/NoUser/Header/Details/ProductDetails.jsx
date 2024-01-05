@@ -1,4 +1,4 @@
-import { BookWiki, DocsDocs, DropdownRight, Sparkles, TargetProjects } from '../../../Icons.jsx'
+import { BookWiki, DocsDocs, DropdownRight, Sparkles, TargetProjects } from '../../../../Icons.jsx'
 
 export function ProductDetails () {
   return (

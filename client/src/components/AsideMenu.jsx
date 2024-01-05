@@ -1,16 +1,7 @@
-import { useEffect, useState } from 'react'
 import { CirclePlus, Clock, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
-import './PagesAside.css'
+import './AsideMenu.css'
 
-export function PagesAside({ userId, username }) {
-  const [pages, setPages] = useState([])
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/pages/${userId}`)
-      .then(res => res.json())
-      .then(data => setPages(data))
-  }, [])
-
+export function AsideMenu({ userId, username, setTables, tables }) {
   const renderIcon = (icon) => {
     switch (icon) {
       case 'TrendingUp':
@@ -23,19 +14,32 @@ export function PagesAside({ userId, username }) {
   }
 
   const handleAddAPage = () => {
-    console.log('adding a page')
+    fetch('http://localhost:3000/tables',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data.title)
+        const newTables = [...tables, data]
+        setTables(newTables)
+      })
+      .catch(err => console.log(err))
   }
 
   return (
-    <aside className='fixed-pages-aside'>
-      <div className="user-container">
-        <img
-          src="https://lh3.googleusercontent.com/a/AAcHTtc6qAUeOnXlMeW8kAEPVdkCl5UgiNSRJWoyezVHdRlP=s100"
-        />
-        <h3 className="pages-aside-username">{username}`s Notion</h3>
+    <aside className='aside-menu'>
+
+      <div className="menu-username-container">
+        <div className='users-first-letter'><p>{username && username.split('')[0]}</p></div>
+        <p>{username}`s Notion</p>
       </div>
 
-      <ul className='pages-aside__section'>
+      <ul className='menu-options-container'>
         <li>
           <Search />
           Search
@@ -54,14 +58,14 @@ export function PagesAside({ userId, username }) {
         </li>
       </ul>
 
-      <ul className='pages-aside__section'>
+      <ul className='menu-options-container'>
         {
-          pages.length > 0 && pages.map(page => (
-            <li key={page.id}>
+          tables.length > 0 && tables.map(table => (
+            <li key={table.id}>
                 <span className='icon-container'>
-                  {renderIcon(page.icon)}
+                  {renderIcon(table.icon)}
                 </span>
-                {page.title}
+                {table.title}
             </li>
           ))
         }
@@ -72,10 +76,10 @@ export function PagesAside({ userId, username }) {
         </li>
       </ul>
 
-      <ul className='pages-aside__section'>
+      <ul className='menu-options-container'>
         <li>
           <UserSearch />
-          Create a team space
+          Create a teamspace
         </li>
         <li>
           <Template />

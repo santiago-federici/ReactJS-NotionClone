@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { NotionCompleteLogo } from '../Icons'
-import './Login.css'
 import { useNavigate } from 'react-router-dom'
 
+import { NotionCompleteLogo } from '../Icons'
+
+import './Login.css'
+
 export function Login ({ setUserId }) {
-  const [username, setUsername] = useState()
+  const [email, setEmail] = useState()
   const [userPassword, setUserPassword] = useState()
   const navigate = useNavigate()
 
@@ -17,7 +19,7 @@ export function Login ({ setUserId }) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, password: userPassword })
+        body: JSON.stringify({ email, password: userPassword })
       })
       .then(res => res.json())
       .then(data => {
@@ -25,7 +27,7 @@ export function Login ({ setUserId }) {
         if (data.length > 0) {
           setUserId(data[0].id)
           message.style.display = 'none'
-          navigate('/app')
+          navigate('/userdefaultpage')
         } else {
           message.style.display = 'block'
         }
@@ -42,8 +44,8 @@ export function Login ({ setUserId }) {
         <h2>Log in</h2>
 
         <label>
-          Username
-          <input type="text" placeholder="Enter your username..." onChange={(e) => setUsername(e.target.value)} />
+          Email
+          <input type="text" placeholder="Enter your email address..." onChange={(e) => setEmail(e.target.value)} />
         </label>
 
         <label>
