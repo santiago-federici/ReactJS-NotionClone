@@ -1,4 +1,4 @@
-import { CirclePlus, Clock, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
+import { CirclePlus, Clock, Dots, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
 import './AsideMenu.css'
 
 export function AsideMenu({ userId, username, setTables, tables }) {
@@ -26,6 +26,22 @@ export function AsideMenu({ userId, username, setTables, tables }) {
       .then(data => {
         console.log(data.title)
         const newTables = [...tables, data]
+        setTables(newTables)
+      })
+      .catch(err => console.log(err))
+  }
+
+  const handleDeleteAPage = (tableId) => {
+    fetch(`http://localhost:3000/tables/${tableId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        const newTables = tables.filter(table => table.id !== data.id)
         setTables(newTables)
       })
       .catch(err => console.log(err))
@@ -66,6 +82,8 @@ export function AsideMenu({ userId, username, setTables, tables }) {
                   {renderIcon(table.icon)}
                 </span>
                 {table.title}
+
+                <span onClick={(id) => handleDeleteAPage(table.id)}> <Dots /> </span>
             </li>
           ))
         }

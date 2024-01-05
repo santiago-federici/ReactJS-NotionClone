@@ -64,4 +64,13 @@ export class TableModel {
 
     return newTable
   }
+
+  static async delete ({ tableId }) {
+    const [tableToDelete] = await connection.query(
+      'DELETE FROM tables WHERE id = ?;',
+      [tableId]
+    )
+
+    return tableToDelete
+  }
 }
