@@ -14,7 +14,7 @@ export function Main () {
           </button>
         </div>
 
-        <img className='hero-image' src='https://www.notion.so/cdn-cgi/image/format=webp,width=3840/https://images.ctfassets.net/spoqsaf9291f/3aQs9PTDRM8Rj1gIQfNGeG/a0af6bf6ad27e40abfd0c6fb35dcb825/hero_xmas-rev.png' alt='Hero image'/>
+        {/* <img className='hero-image' src='https://www.notion.so/cdn-cgi/image/format=webp,width=3840/https://images.ctfassets.net/spoqsaf9291f/3aQs9PTDRM8Rj1gIQfNGeG/a0af6bf6ad27e40abfd0c6fb35dcb825/hero_xmas-rev.png' alt='Hero image'/> */}
       </main>
   )
 }

@@ -14,11 +14,4 @@ export class UserController {
     if (user.length > 0) return res.json(user)
     res.status(404).json({ message: 'User not found' })
   }
-
-  loginByEmail = async (req, res) => {
-    const { email, password } = req.body
-    const user = await this.userModel.loginByEmail({ email, password })
-    if (user.length > 0) return res.json(user)
-    res.status(404).json({ message: 'Wrong email or password' })
-  }
 }

@@ -27,15 +27,6 @@ export class UserModel {
 
     return users
   }
-
-  static async loginByEmail ({ email, password }) {
-    const [users] = await connection.query(
-      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE email = ? AND user_password = ?;',
-      [email, password]
-    )
-
-    return users
-  }
 }
 
 export class TableModel {
@@ -72,5 +63,16 @@ export class TableModel {
     )
 
     return tableToDelete
+  }
+}
+
+export class AuthenticationModel {
+  static async loginByEmail ({ email, password }) {
+    const [users] = await connection.query(
+      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE email = ? AND user_password = ?;',
+      [email, password]
+    )
+
+    return users
   }
 }

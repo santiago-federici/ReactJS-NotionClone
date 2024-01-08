@@ -13,7 +13,7 @@ export function Login ({ setUserId }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch('http://localhost:3000/users/login',
+    fetch('http://localhost:3000/authentication/login',
       {
         method: 'POST',
         headers: {
