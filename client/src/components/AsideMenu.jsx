@@ -52,7 +52,7 @@ export function AsideMenu({ userId, username, setTables, tables }) {
 
       <div className="menu-username-container">
         <div className='users-first-letter'><p>{username && username.split('')[0]}</p></div>
-        <p>{username}`s Notion</p>
+        <p>{username && username}`s Notion</p>
       </div>
 
       <ul className='menu-options-container'>

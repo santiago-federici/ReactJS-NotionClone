@@ -18,10 +18,12 @@ export function UserDefaultPage ({ userId }) {
       .then(data => {
         setUsername(data[0].username)
       })
+      .catch(err => console.log('Error in users/{userId}', err))
 
     fetch(`http://localhost:3000/tables/${userId}`)
       .then(res => res.json())
       .then(data => setTables(data))
+      .catch(err => console.log('Error in tables/{userId}', err))
   }, [])
 
   return (
