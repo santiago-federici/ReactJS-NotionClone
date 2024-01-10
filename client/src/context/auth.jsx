@@ -9,29 +9,28 @@ export const AuthProvider = ({ children }) => {
   )
 
   const login = async ({ email, password }) => {
-    try {
-      const res = await fetch('http://localhost:3000/auth/login',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password }),
-          credentials: 'include'
-        })
+    const res = await fetch('http://localhost:3000/auth/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include'
+      })
 
-      const data = await res.json()
+    const data = await res.json()
 
-      if (res.ok) {
-        setCurrentUser(data)
-        setError(null)
-      } else {
-        setError('No user found. Check your email or password.')
-        setCurrentUser(null)
-      }
-    } catch (err) {
-      setError('An error occurred during login: ', err)
+    if (!data.message) {
+      setCurrentUser(data)
+      setError(null)
+      console.log('data if !data.message: ', data)
+      console.log('error if !data.message: ', error)
+    } else {
       setCurrentUser(null)
+      setError(data.message)
+      console.log('error of data.message: ', error)
+      console.log('data.message: ', data.message)
     }
   }
 

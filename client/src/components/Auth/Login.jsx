@@ -18,8 +18,10 @@ export function Login () {
 
     try {
       await login({ email, password: userPassword })
-      if (currentUser) {
+      if (currentUser !== null) {
         navigate('/userdefaultpage')
+      } else {
+        console.log('error from login: ', error)
       }
     } catch (err) {
       console.log('err from login', err)
