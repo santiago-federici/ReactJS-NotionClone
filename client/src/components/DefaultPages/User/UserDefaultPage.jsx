@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 // import { AsideProvider } from '../../context/aside'
 // import { GroupsProvider } from '../../context/groups'
 // import { Filters } from '../Filters'
@@ -8,52 +7,11 @@ import { AsideMenu } from '../../AsideMenu'
 import { UntitledTable } from '../../UntitledTable'
 import './UserDefaultPage.css'
 
-export function UserDefaultPage ({ userId }) {
-  const [username, setUsername] = useState()
-  const [tables, setTables] = useState([])
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/users/${userId}`)
-      .then(res => res.json())
-      .then(data => {
-        setUsername(data[0].username)
-      })
-      .catch(err => console.log('Error in users/{userId}', err))
-
-    fetch(`http://localhost:3000/tables/${userId}`)
-      .then(res => res.json())
-      .then(data => setTables(data))
-      .catch(err => console.log('Error in tables/{userId}', err))
-  }, [])
-
+export function UserDefaultPage () {
   return (
     <main className="user-main">
-      <AsideMenu userId={userId} username={username} setTables={setTables} tables={tables} />
+      <AsideMenu />
       <UntitledTable />
-
-      {/* {
-        tables.length > 0
-          ? <UntitledTable />
-          : <UntitledTable />
-      } */}
-
-      {/* <section className='info-section'>
-        <h1 className='page-title'>Tasks</h1>
-
-        <GroupsProvider>
-
-          <AsideProvider>
-
-            <Header />
-
-            <Filters />
-
-            <GroupsContainer />
-
-          </AsideProvider>
-        </GroupsProvider>
-
-      </section> */}
     </main>
   )
 }

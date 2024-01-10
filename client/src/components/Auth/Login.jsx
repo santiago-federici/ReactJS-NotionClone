@@ -1,38 +1,29 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/auth'
 
 import { NotionCompleteLogo } from '../Icons'
 
 import './Login.css'
 
-export function Login ({ setUserId }) {
+export function Login () {
   const [email, setEmail] = useState()
   const [userPassword, setUserPassword] = useState()
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const { error, currentUser, login } = useContext(AuthContext)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    fetch('http://localhost:3000/auth/login',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password: userPassword })
-      })
-      .then(res => res.json())
-      .then(data => {
-        const message = document.querySelector('.incorrect-user')
-        if (data.length > 0) {
-          setUserId(data[0].id)
-          message.style.display = 'none'
-          navigate('/userdefaultpage')
-        } else {
-          message.style.display = 'block'
-        }
-      })
-      .catch(err => console.log(err))
+    try {
+      await login({ email, password: userPassword })
+      if (currentUser) {
+        navigate('/userdefaultpage')
+      }
+    } catch (err) {
+      console.log('err from login', err)
+    }
   }
 
   return (
@@ -55,7 +46,8 @@ export function Login ({ setUserId }) {
 
         <span className='submit-login-btn' onClick={(e) => handleSubmit(e)}>Login</span>
 
-        <p className='incorrect-user'>Incorrect user or password. Try again.</p>
+        <p className='incorrect-user'>{error && error}</p>
+
       </form>
 
       <Link to='/register'>Don`t have an account yet? Register here.</Link>

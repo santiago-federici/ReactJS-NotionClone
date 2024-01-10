@@ -9,10 +9,14 @@ import { createAuthRouter } from './routes/auth.js'
 export const createApp = ({ userModel, tableModel, authModel }) => {
   const app = express()
 
-  app.use(cookieParser())
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Credentials', true)
+    next()
+  })
   app.use(json())
   app.use(corsMiddleware())
   app.disable('x-powered-by')
+  app.use(cookieParser())
 
   app.use('/users', createUsersRouter({ userModel }))
   app.use('/tables', createTablesRouter({ tableModel }))

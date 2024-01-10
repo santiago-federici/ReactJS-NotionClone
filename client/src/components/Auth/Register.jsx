@@ -5,13 +5,14 @@ import { NotionCompleteLogo } from '../Icons'
 
 import './Login.css'
 
-export function Register ({ setUserId }) {
+export function Register () {
   const [email, setEmail] = useState()
   const [username, setUsername] = useState()
   const [userPassword, setUserPassword] = useState()
+  const [error, setError] = useState()
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     fetch('http://localhost:3000/auth/register',
@@ -24,9 +25,13 @@ export function Register ({ setUserId }) {
       })
       .then(res => res.json())
       .then(data => {
-        console.log('data from register: ', data)
-        // setUserId(data[0].id)
-        // navigate('/userdefaultpage')
+        const message = document.querySelector('.incorrect-user')
+        if (data.length === 1) {
+          navigate('/userdefaultpage')
+        } else {
+          setError(data.message)
+          message.style.display = 'block'
+        }
       })
       .catch(err => console.log(err))
   }
@@ -55,6 +60,9 @@ export function Register ({ setUserId }) {
         </label>
 
         <span className='submit-login-btn' onClick={(e) => handleSubmit(e)}>Register</span>
+
+        <p className='incorrect-user'>{error}</p>
+
       </form>
 
       <Link to='/login'>Already have an account? Login here.</Link>

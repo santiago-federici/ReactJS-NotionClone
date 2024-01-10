@@ -7,21 +7,21 @@ import { Register } from './components/Auth/Register.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './App.css'
+import { AuthProvider } from './context/auth.jsx'
 
 function App() {
-  const [userId, setUserId] = useState()
   return (
 
-    <BrowserRouter>
-      <Routes>
-        <Route exact path='/' element={<NoUserDefaultPage />} />
-        <Route exact path='/userdefaultpage' element={<UserDefaultPage userId={userId} />} />
-          setUserId(data[0].id)
-          setUserId(data[0].id)
-        <Route exact path='/register' element={<Register setUserId={setUserId} />} />
-        <Route exact path='/login' element={<Login setUserId={setUserId} />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<NoUserDefaultPage />} />
+          <Route exact path='/userdefaultpage' element={<UserDefaultPage />} />
+          <Route exact path='/register' element={<Register />} />
+          <Route exact path='/login' element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
 
   )
 }
