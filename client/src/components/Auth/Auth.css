@@ -1,14 +1,12 @@
-.login-main {
+.auth-main {
   width: 100%;
   height: 100dvh;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-
-  outline: 1px solid red;
 }
 
-.login-form {
+.auth-form {
   margin-top: 6rem;
   width: 100%;
   max-width: 320px;
@@ -16,23 +14,21 @@
   display: grid;
   place-items: center;
   align-self: center;
-  
-  /* outline: 1px solid black; */
 }
 
-.login-form h2 {
+.auth-form h2 {
   font-size: 34px;
   margin-bottom: 3rem;
 }
 
-.login-form label {
+.auth-form label {
   display: grid;
   color: #37352FA6;
   font-size: 12px;
   width: 100%;
 }
 
-.login-form label input {
+.auth-form label input {
   border: 1px solid rgb(221, 221, 221);
   border-radius: 3px;
   padding: 4px 10px;
@@ -43,12 +39,12 @@
   font-size: 16px;
 }
 
-.login-form label input::placeholder {
+.auth-form label input::placeholder {
   color: #b4b4b4;
   font-size: 16px;
 }
 
-.login-form .submit-login-btn {
+.auth-form .submit-auth-btn {
   text-align: center;
   margin-block: 1rem;
   width: 100%;
@@ -62,7 +58,7 @@
 }
 
 @media screen and (min-width: 852px) {
-  .login-form h2 {
+  .auth-form h2 {
     font-size: 50px;
   }
 }
@@ -70,4 +66,21 @@
 .incorrect-user {
   color: red;
   font-size: .8rem;
+}
+
+.login-to-register-btn,
+.login-to-register-btn > a{
+  margin-top: 3rem;
+  text-align: center;
+  color: #37352FA6;
+  width: fit-content;
+  align-self: center;
+}
+
+.login-to-register-btn > a{
+  text-decoration: underline;
+}
+
+.login-to-register-btn > a:hover {
+  color: rgba(255, 28, 28, 0.8);
 }

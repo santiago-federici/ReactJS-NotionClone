@@ -8,9 +8,11 @@ export const AuthProvider = ({ children }) => {
     JSON.parse(localStorage.getItem('user')) || null
   )
 
+  const baseURL = 'http://localhost:3000/auth/'
+
   const login = async ({ email, password }) => {
     try {
-      const res = await fetch('http://localhost:3000/auth/login',
+      const res = await fetch(`${baseURL}login`,
         {
           method: 'POST',
           headers: {
@@ -36,12 +38,40 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  const register = async ({ email, username, password }) => {
+    try {
+      const res = await fetch(`${baseURL}register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, username, password }),
+          credentials: 'include'
+        })
+
+      const data = await res.json()
+
+      setError(null)
+      if (!data.message) {
+        setCurrentUser(data)
+        setError(null)
+      } else {
+        setCurrentUser(null)
+        setError(data.message)
+      }
+    } catch (err) {
+      setCurrentUser(null)
+      setError('An error ocurred during register')
+    }
+  }
+
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(currentUser))
   }, [currentUser])
 
   return (
-    <AuthContext.Provider value={{ error, currentUser, login }}>
+    <AuthContext.Provider value={{ error, currentUser, setCurrentUser, login, register }}>
       {children}
     </AuthContext.Provider>
   )

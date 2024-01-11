@@ -5,6 +5,7 @@ import { AuthContext } from '../context/auth'
 import { CirclePlus, Clock, Dots, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
 
 import './AsideMenu.css'
+import { useNavigate } from 'react-router-dom'
 
 export function AsideMenu() {
   const renderIcon = (icon) => {
@@ -18,19 +19,22 @@ export function AsideMenu() {
     }
   }
 
-  const { currentUser } = useContext(AuthContext)
+  const { currentUser, setCurrentUser } = useContext(AuthContext)
   const [tables, setTables] = useState()
+  const [tablesChange, setTablesChange] = useState()
+  const baseURL = 'http://localhost:3000/tables/'
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tables/${currentUser.id}`)
-      .then(res => res.json())
-      .then(data => {
-        setTables(data)
-      })
-  }, [])
+    if (currentUser) {
+      fetch(`${baseURL}${currentUser.id}`)
+        .then(res => res.json())
+        .then(data => setTables(data))
+    }
+  }, [tablesChange])
 
   const handleAddAPage = () => {
-    fetch('http://localhost:3000/tables',
+    fetch(baseURL,
       {
         method: 'POST',
         headers: {
@@ -40,15 +44,15 @@ export function AsideMenu() {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data.title)
         const newTables = [...tables, data]
         setTables(newTables)
+        setTablesChange(!tablesChange)
       })
       .catch(err => console.log(err))
   }
 
   const handleDeleteAPage = (tableId) => {
-    fetch(`http://localhost:3000/tables/${tableId}`,
+    fetch(`${baseURL}${tableId}`,
       {
         method: 'DELETE',
         headers: {
@@ -59,15 +63,27 @@ export function AsideMenu() {
       .then(data => {
         const newTables = tables.filter(table => table.id !== data.id)
         setTables(newTables)
+        setTablesChange(!tablesChange)
       })
       .catch(err => console.log(err))
   }
 
   const handleLogout = () => {
-    fetch('http://localhost:3000/auth/logout')
-      // .then(res => console.log(res))
+    fetch('http://localhost:3000/auth/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        if (data.message) {
+          setCurrentUser(null)
+          navigate('/')
+        }
+      })
+      .catch(err => console.log('error from logout catch: ', err))
   }
 
   return (
@@ -106,7 +122,7 @@ export function AsideMenu() {
                 </span>
                 {table.title}
 
-                <span onClick={(id) => handleDeleteAPage(table.id)}> <Dots /> </span>
+                <span onClick={() => handleDeleteAPage(table.id)}> <Dots /> </span>
             </li>
           ))
         }
