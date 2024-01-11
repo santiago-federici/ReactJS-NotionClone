@@ -1,4 +1,4 @@
-import { ArrowRight } from '../../Icons'
+import { ArrowRight } from '../../components/Icons.jsx'
 
 export function Main () {
   return (

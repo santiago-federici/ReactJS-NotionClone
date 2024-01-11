@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/auth'
+import { AuthContext } from '../../context/auth.jsx'
 
-import { NotionCompleteLogo } from '../Icons'
+import { NotionCompleteLogo } from '../../components/Icons.jsx'
 
 import './Auth.css'
 
@@ -18,7 +18,7 @@ export function Auth () {
   const { error, currentUser, login, register } = useContext(AuthContext)
 
   useEffect(() => {
-    if (currentUser && currentUser.id) navigate('/userdefaultpage')
+    if (currentUser && currentUser.id) navigate('/dashboard')
   }, [authAttempted])
 
   const handleSubmit = async (e) => {
@@ -83,7 +83,7 @@ export function Auth () {
 
         </form>
 
-        <p className='login-to-register-btn'>Don`t have an account yet? <span onClick={() => handleChangeAuth()}>{isLoginForm ? 'Register' : 'Login'} here.</span></p>
+        <p className='login-to-register-btn'>{isLoginForm ? 'Don`t have an account yet?' : 'Already have an account'} <span onClick={() => handleChangeAuth()}>{isLoginForm ? 'Register' : 'Login'} here.</span></p>
       </main>
       : <></>
   )

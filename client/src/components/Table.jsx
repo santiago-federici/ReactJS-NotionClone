@@ -1,4 +1,4 @@
-export function UntitledTable () {
+export function Table () {
   return (
     <div>
       UntitledTable

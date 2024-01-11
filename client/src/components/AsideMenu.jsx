@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../context/auth'
-
 import { CirclePlus, Clock, Dots, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from './Icons'
 
 import './AsideMenu.css'
-import { useNavigate } from 'react-router-dom'
 
 export function AsideMenu() {
   const renderIcon = (icon) => {
@@ -19,10 +18,13 @@ export function AsideMenu() {
     }
   }
 
+  const baseURL = 'http://localhost:3000/tables/'
+
   const { currentUser, setCurrentUser } = useContext(AuthContext)
+
   const [tables, setTables] = useState()
   const [tablesChange, setTablesChange] = useState()
-  const baseURL = 'http://localhost:3000/tables/'
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -152,7 +154,7 @@ export function AsideMenu() {
         </li>
       </ul>
 
-      <button onClick={() => handleLogout()}>Logout</button>
+      <span className='logout-btn' onClick={() => handleLogout()}>Logout</span>
     </aside>
   )
 }

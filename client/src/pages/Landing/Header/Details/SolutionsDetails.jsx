@@ -1,4 +1,4 @@
-import { DropdownRight } from '../../../../Icons.jsx'
+import { DropdownRight } from '../../../../components/Icons.jsx'
 
 export function SolutionsDetails () {
   return (

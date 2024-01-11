@@ -68,8 +68,7 @@
   font-size: .8rem;
 }
 
-.login-to-register-btn,
-.login-to-register-btn > a{
+.login-to-register-btn {
   margin-top: 3rem;
   text-align: center;
   color: #37352FA6;
@@ -77,10 +76,11 @@
   align-self: center;
 }
 
-.login-to-register-btn > a{
+.login-to-register-btn > span{
   text-decoration: underline;
 }
 
-.login-to-register-btn > a:hover {
+.login-to-register-btn > span:hover {
+  cursor: pointer;
   color: rgba(255, 28, 28, 0.8);
 }

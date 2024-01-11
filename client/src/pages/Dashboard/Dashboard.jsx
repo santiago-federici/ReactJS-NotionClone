@@ -1,11 +1,13 @@
 import { useContext, useEffect } from 'react'
-import { AsideMenu } from '../../AsideMenu'
-import { UntitledTable } from '../../UntitledTable'
-import './UserDefaultPage.css'
-import { AuthContext } from '../../../context/auth'
 import { useNavigate } from 'react-router-dom'
 
-export function UserDefaultPage () {
+import { AuthContext } from '../../context/auth'
+import { AsideMenu } from '../../components/AsideMenu'
+import { Table } from '../../components/Table'
+
+import './Dashboard.css'
+
+export function Dashboard () {
   const { currentUser } = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -17,7 +19,7 @@ export function UserDefaultPage () {
     currentUser && currentUser
       ? <main className="user-main">
       <AsideMenu />
-      <UntitledTable />
+      <Table />
     </main>
       : <></>
   )
