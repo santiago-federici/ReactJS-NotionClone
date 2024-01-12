@@ -9,6 +9,8 @@ export const createTablesRouter = ({ tableModel }) => {
 
   tablesRouter.get('/', tableController.getAll)
   tablesRouter.get('/:userId', tableController.getByUserId)
+  tablesRouter.get('/findTable/:tableId', tableController.getByTableId)
+  tablesRouter.get('/rows/:tableId', tableController.getRowsByTableId)
   tablesRouter.post('/', tableController.create)
   tablesRouter.delete('/:tableId', tableController.delete)
 
