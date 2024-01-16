@@ -6,7 +6,7 @@ import { CirclePlus, Clock, Dots, Download, EmptyPage, Plus, Search, Settings, T
 
 import './AsideMenu.css'
 
-export function AsideMenu({ setTableId }) {
+export function AsideMenu() {
   const renderIcon = (icon) => {
     switch (icon) {
       case 'TrendingUp':
@@ -18,26 +18,25 @@ export function AsideMenu({ setTableId }) {
     }
   }
 
-  const baseTableURL = 'http://localhost:3000/tables/'
+  const baseURL = 'http://localhost:3000/tables/'
 
   const { currentUser, setCurrentUser } = useContext(AuthContext)
 
   const [tables, setTables] = useState()
-
   const [tablesChange, setTablesChange] = useState()
 
   const navigate = useNavigate()
 
   useEffect(() => {
     if (currentUser) {
-      fetch(`${baseTableURL}${currentUser.id}`)
+      fetch(`${baseURL}${currentUser.id}`)
         .then(res => res.json())
         .then(data => setTables(data))
     }
   }, [tablesChange])
 
   const handleAddAPage = () => {
-    fetch(baseTableURL,
+    fetch(baseURL,
       {
         method: 'POST',
         headers: {
@@ -55,7 +54,7 @@ export function AsideMenu({ setTableId }) {
   }
 
   const handleDeleteAPage = (tableId) => {
-    fetch(`${baseTableURL}${tableId}`,
+    fetch(`${baseURL}${tableId}`,
       {
         method: 'DELETE',
         headers: {
@@ -119,7 +118,7 @@ export function AsideMenu({ setTableId }) {
       <ul className='menu-options-container'>
         {
           tables && tables.length > 0 && tables.map(table => (
-            <li key={table.id} onClick={() => setTableId(table.id)}>
+            <li key={table.id}>
                 <span className='icon-container'>
                   {renderIcon(table.icon)}
                 </span>

@@ -12,21 +12,7 @@ export class TableController {
     const { userId } = req.params
     const tables = await this.tableModel.getByUserId({ userId })
     if (tables.length > 0) return res.json(tables)
-    res.status(404).json({ message: 'Tables not found' })
-  }
-
-  getByTableId = async (req, res) => {
-    const { tableId } = req.params
-    const table = await this.tableModel.getByTableId({ tableId })
-    if (table) return res.json(table)
     res.status(404).json({ message: 'Table not found' })
-  }
-
-  getRowsByTableId = async (req, res) => {
-    const { tableId } = req.params
-    const tables = await this.tableModel.getRowsByTableId({ tableId })
-    if (tables.length > 0) return res.json(tables)
-    res.status(404).json({ message: 'No rows found for this table' })
   }
 
   create = async (req, res) => {

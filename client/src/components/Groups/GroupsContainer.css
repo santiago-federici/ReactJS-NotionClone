@@ -1,0 +1,149 @@
+.no-groups-yet {
+    margin-top: 2rem;
+}
+
+.no-groups-yet:hover {
+    cursor: pointer;
+    color: var(--clr-text-darker);
+}
+
+.groups-container {
+    display: grid;
+    gap: 3rem;
+}
+
+.group-container {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+    position: relative;
+}
+
+.group-container__header {
+    display: flex;
+}
+
+.group-container__header>p {
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.group-container__header>p:hover {
+    color: var(--clr-text-darker);
+    background: hsl(0, 3%, 93.5%);
+
+}
+
+.tasks-table-head {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+    transition: .3s all ease;
+}
+
+.tasks-table-head>p {
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.2rem;
+}
+
+.tasks-table-footer>p {
+    padding: 0.5rem;
+    display: flex;
+    gap: 5px;
+}
+
+.tasks-table-head>p:hover,
+.tasks-table-footer>p:hover,
+.add-group-btn:hover {
+    cursor: pointer;
+    background: hsl(0, 3%, 93.5%);
+}
+
+.add-group-btn {
+    display: flex;
+    gap: 5px;
+    border: none;
+    background: none;
+    width: fit-content;
+    padding: .3rem .4rem;
+    border-radius: 4px;
+    color: var(--clr-text);
+}
+
+.dot {
+    position: relative;
+}
+
+.dots-options {
+    width: fit-content;
+    text-wrap: nowrap;
+    color: var(--clr-text);
+    bottom: -5rem;
+    left: 0;
+}
+
+.dot-element {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.caret {
+    transition: .3s all ease;
+    color: var(--clr-text-darker);
+}
+
+.caret-rotate {
+    rotate: -90deg;
+    transition: .3s all ease;
+    color: var(--clr-text-darker);
+
+}
+
+.group-name-container {
+    color: var(--clr-text-darker);
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 7px 0 5px;
+}
+
+.group-name-container:hover {
+    background: hsl(0, 3%, 93.5%);
+}
+
+.emoji {
+    font-size: 1.2rem;
+}
+
+.change-name {
+    background: none;
+    padding: .2rem .7rem;
+    color: var(--clr-text-darker);
+    font-weight: 600;
+    position: relative;
+    border: none;
+    z-index: 2;
+
+    transition: .3s all ease;
+}
+
+.change-name:hover {
+    cursor: pointer;
+}
+
+.change-name:focus {
+    background: var(--clr-surface);
+    box-shadow: 0 0 15px 2px rgba(0 0 0 / .3);
+    outline: 1px solid rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
+    scale: 1.01;
+}
+
+.invisible {
+    display: none;
+}

@@ -15,24 +15,6 @@ export class TableModel {
     return tables
   }
 
-  static async getByTableId ({ tableId }) {
-    const [table] = await connection.query(
-      'SELECT id, title FROM tables WHERE id = ?',
-      [tableId]
-    )
-
-    return table
-  }
-
-  static async getRowsByTableId ({ tableId }) {
-    const [tables] = await connection.query(
-      'SELECT id, row_main_content, row_description FROM table_rows where table_id = ?',
-      [tableId]
-    )
-
-    return tables
-  }
-
   static async create ({ userId }) {
     const [newTable] = await connection.query(
       'INSERT INTO tables (title, user_id) VALUES (?, UUID_TO_BIN(?));',

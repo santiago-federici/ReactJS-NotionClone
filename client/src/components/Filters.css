@@ -1,0 +1,40 @@
+.filters-container {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filters-container ul {
+    list-style-type: none;
+    display: flex;
+    gap: 0.3rem;
+}
+
+.filters-container ul li {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    padding: 0.1rem 0.5rem;
+    display: flex;
+    gap: 3px;
+}
+
+.filters-container ul li span {
+    display: flex;
+    align-items: center;
+}
+
+.add-filter-btn {
+    border: none;
+    background: none;
+    color: var(--clr-text);
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0.2rem 0.4rem;
+}
+
+.filters-container ul li:hover,
+.add-filter-btn:hover {
+    background: hsl(0, 0%, 90%);
+    cursor: pointer;
+}
