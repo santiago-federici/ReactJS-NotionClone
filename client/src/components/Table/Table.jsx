@@ -65,25 +65,22 @@ export function Table ({ tableId, setTableId }) {
               </thead>
 
               <tbody>
-                <tr>
-                  <td>Create e-commerce</td>
-                  <td>To Do</td>
-                  <td>High</td>
-                  <td>February 2nd</td>
+                {
+                  rows && rows.length > 0 && rows.map(row => (
+                    <tr key={row.id}>
+                      <td>{row.main_content}</td>
+                      <td>{row.status}</td>
+                      <td>{row.priority}</td>
+                      <td>{row.due}</td>
+                      <td></td>
+                    </tr>
+                  ))
+                }
+                <tr className='new-row-btn'>
+                  <td><Plus /> New</td>
                   <td></td>
-                </tr>
-                <tr>
-                  <td>Finish portfolio design</td>
-                  <td>In Progress</td>
-                  <td>Medium</td>
-                  <td>February 2nd</td>
                   <td></td>
-                </tr>
-                <tr>
-                  <td>Do something else</td>
-                  <td>Done</td>
-                  <td>Low</td>
-                  <td>February 2nd</td>
+                  <td></td>
                   <td></td>
                 </tr>
               </tbody>

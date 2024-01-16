@@ -29,7 +29,7 @@ export class TableModel {
 
   static async getRowsByTableId ({ tableId }) {
     const [tables] = await connection.query(
-      'SELECT id, row_main_content, row_description FROM table_rows where table_id = ?',
+      'SELECT id, main_content, description, status, priority, due FROM table_rows where table_id = ?',
       [tableId]
     )
 

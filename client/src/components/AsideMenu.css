@@ -11,6 +11,10 @@
     user-select: none;
 }
 
+.aside-menu::-webkit-resizer {
+    display: none;
+}
+
 .users-first-letter {
     width: 19.53px;
     height: 19.53px;
