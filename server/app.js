@@ -3,10 +3,11 @@ import cookieParser from 'cookie-parser'
 
 import { corsMiddleware } from './middlewares/cors.js'
 import { createUsersRouter } from './routes/users.js'
-import { createTablesRouter } from './routes/tables.js'
 import { createAuthRouter } from './routes/auth.js'
+import { createTablesRouter } from './routes/tables.js'
+import { createRowsRouter } from './routes/rows.js'
 
-export const createApp = ({ userModel, tableModel, authModel }) => {
+export const createApp = () => {
   const app = express()
 
   app.use((req, res, next) => {
@@ -18,9 +19,10 @@ export const createApp = ({ userModel, tableModel, authModel }) => {
   app.disable('x-powered-by')
   app.use(cookieParser())
 
-  app.use('/users', createUsersRouter({ userModel }))
-  app.use('/tables', createTablesRouter({ tableModel }))
-  app.use('/auth', createAuthRouter({ authModel }))
+  app.use('/users', createUsersRouter())
+  app.use('/auth', createAuthRouter())
+  app.use('/tables', createTablesRouter())
+  app.use('/rows', createRowsRouter())
 
   const PORT = process.env.PORT ?? 3000
 

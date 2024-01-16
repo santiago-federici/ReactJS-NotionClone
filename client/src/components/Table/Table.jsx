@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
-import './Table.css'
+
 import { Bolt, ChevronDown, ClockBig, Dots, Plus, Search, Star } from '../Icons'
+
+import './Table.css'
 
 export function Table ({ tableId, setTableId }) {
   const [tableInfo, setTableInfo] = useState([])
@@ -65,26 +67,18 @@ export function Table ({ tableId, setTableId }) {
               </thead>
 
               <tbody>
+                {
+                  rows && rows.length > 0 && rows.map(row => (
+                    <tr key={row.id}>
+                      <td>{row.row_main_content}</td>
+                      <td>To Do</td>
+                      <td>High</td>
+                      <td>February 2nd</td>
+                      <td></td>
+                    </tr>
+                  ))
+                }
                 <tr>
-                  <td>Create e-commerce</td>
-                  <td>To Do</td>
-                  <td>High</td>
-                  <td>February 2nd</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Finish portfolio design</td>
-                  <td>In Progress</td>
-                  <td>Medium</td>
-                  <td>February 2nd</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Do something else</td>
-                  <td>Done</td>
-                  <td>Low</td>
-                  <td>February 2nd</td>
-                  <td></td>
                 </tr>
               </tbody>
             </table>
