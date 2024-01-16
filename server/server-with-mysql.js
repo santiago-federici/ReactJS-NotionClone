@@ -2,6 +2,6 @@ import { createApp } from './app.js'
 import { sequelize } from './config/database.js'
 
 (async () => {
-  await sequelize.sync({ force: true })
+  await sequelize.sync()
   createApp()
 })()

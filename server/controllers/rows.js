@@ -10,7 +10,6 @@ export class RowController {
   create = async (req, res) => {
     const { tableId, mainContent, rowDescription, rowStatus, rowPriority, rowDue } = req.body
     const newRow = await Row.create({ tableId, mainContent, rowDescription, rowStatus, rowPriority, rowDue })
-    console.log('--------------------------------newRow from controller: ', newRow)
     if (newRow) return res.json(newRow)
     return res.status(400).json({ message: 'There was an error creating the row' })
   }
