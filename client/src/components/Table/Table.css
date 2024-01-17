@@ -54,6 +54,7 @@
 
 .table-container {
   overflow: auto;
+  padding-bottom: 5rem;
 }
 
 .table-container::-webkit-scrollbar{
@@ -119,6 +120,10 @@ table tbody tr td:not(:last-of-type) {
 table tbody tr td {
   text-wrap: nowrap;
   color: #37352F;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
 }
 
 .new-row-btn > td{
@@ -131,4 +136,79 @@ table tbody tr td {
 
 table tbody tr .special {
   border-right: none;
+}
+
+.row-main-content {
+  background: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: #37352F;
+  font-weight: 500;
+}
+
+.row-main-content:focus {
+  outline: none;
+  box-shadow: 0 0 10px 1px rgba(0 0 0 / .3);
+  position: absolute;
+  padding: 5px 0 5px 20px;
+  width: 98%;
+  top: 0;
+  left: 2%;
+}
+
+.status,
+.priority {
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: 400;
+  width: fit-content;
+}
+
+.status-todo {
+  background: #e3e2e0;
+}
+
+.status-inprogress {
+  background: #d3e5ef;
+}
+
+.status-done,
+.priority-low {
+  background: #dbeddb;
+}
+
+.priority-high {
+ background: #ffe2dd;
+}
+
+.priority-medium {
+ background: #fdecc8;
+}
+
+.status-options,
+.priority-options {
+  background: var(--clr-surface);
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  overflow: hidden;
+  padding: 8px 10px;
+  z-index: 99999;
+  border: 1px solid rgba(0 0 0 / .1);
+  border-radius: 6px;
+  box-shadow: 0 0 10px 2px rgba(0 0 0 / .1);
+}
+
+.status-options > p,
+.priority-options > p {
+  font-size: 12px;
+  opacity: .7;
+}
+
+.status-options > ul, 
+.priority-options > ul {
+  list-style-type: none;
+  display: grid;
+  gap: 5px;
 }

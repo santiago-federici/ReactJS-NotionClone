@@ -46,11 +46,7 @@ export function AsideMenu({ setTableId }) {
         body: JSON.stringify({ userId: currentUser.id })
       })
       .then(res => res.json())
-      .then(data => {
-        const newTables = [...tables, data]
-        setTables(newTables)
-        setTablesChange(!tablesChange)
-      })
+      .then(data => setTablesChange(!tablesChange))
       .catch(err => console.log(err))
   }
 

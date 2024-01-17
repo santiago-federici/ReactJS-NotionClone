@@ -8,11 +8,17 @@ export const createTablesRouter = ({ tableModel }) => {
   const tableController = new TableController({ tableModel })
 
   tablesRouter.get('/', tableController.getAll)
-  tablesRouter.get('/:userId', tableController.getByUserId)
   tablesRouter.get('/findTable/:tableId', tableController.getByTableId)
-  tablesRouter.get('/rows/:tableId', tableController.getRowsByTableId)
   tablesRouter.post('/', tableController.create)
   tablesRouter.delete('/:tableId', tableController.delete)
+
+  tablesRouter.get('/:userId', tableController.getByUserId)
+
+  tablesRouter.get('/rows/:tableId', tableController.getRowsByTableId)
+  tablesRouter.post('/rows', tableController.createRow)
+  tablesRouter.patch('/rows/status/:rowId', tableController.updateStatusRow)
+  tablesRouter.patch('/rows/priority/:rowId', tableController.updatePriorityRow)
+  tablesRouter.patch('/rows/mainContent/:rowId', tableController.updateMainContentRow)
 
   return tablesRouter
 }

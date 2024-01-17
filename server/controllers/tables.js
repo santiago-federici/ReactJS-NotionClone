@@ -42,4 +42,35 @@ export class TableController {
     if (tableToDelete) return res.json(tableToDelete)
     res.status(404).json({ message: 'Table not found' })
   }
+
+  createRow = async (req, res) => {
+    const { tableId } = req.body
+    const newRow = await this.tableModel.createRow({ tableId })
+    if (newRow) return res.json(newRow)
+    return res.status(400).json({ message: 'There was an error creating the row' })
+  }
+
+  updateStatusRow = async (req, res) => {
+    const { status } = req.body
+    const { rowId } = req.params
+    const updatedRow = await this.tableModel.updateStatusRow({ status, rowId })
+    if (updatedRow) return res.json(updatedRow)
+    return res.status(400).json({ message: 'There was an error updating the row' })
+  }
+
+  updatePriorityRow = async (req, res) => {
+    const { priority } = req.body
+    const { rowId } = req.params
+    const updatedRow = await this.tableModel.updatePriorityRow({ priority, rowId })
+    if (updatedRow) return res.json(updatedRow)
+    return res.status(400).json({ message: 'There was an error updating the row' })
+  }
+
+  updateMainContentRow = async (req, res) => {
+    const { mainContent } = req.body
+    const { rowId } = req.params
+    const updatedRow = await this.tableModel.updateMainContentRow({ mainContent, rowId })
+    if (updatedRow) return res.json(updatedRow)
+    return res.status(400).json({ message: 'There was an error updating the row' })
+  }
 }
