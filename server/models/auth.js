@@ -1,9 +1,7 @@
 import { connection } from '../config/connection.js'
 
 export class AuthModel {
-  static async register ({ input }) {
-    const { username, email, password } = input
-
+  static async register ({ username, email, password }) {
     try {
       await connection.query(
         'INSERT INTO users (username, email, user_password) VALUES (?, ?, ?)',
@@ -25,10 +23,10 @@ export class AuthModel {
     return user
   }
 
-  static async loginByEmail ({ email, password }) {
+  static async loginByEmail ({ email }) {
     const [users] = await connection.query(
-      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE email = ? AND user_password = ?;',
-      [email, password]
+      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE email = ?;',
+      [email]
     )
 
     return users
