@@ -1,29 +1,20 @@
-import { DataTypes, Model } from 'sequelize'
-import { sequelize } from '../config/database.js'
+import { connection } from './connection.js'
 
-export class User extends Model {}
+export class UserModel {
+  static async getAll () {
+    const [users] = await connection.query(
+      'SELECT BIN_TO_UUID(id) id, username, email FROM users;'
+    )
 
-User.init({
-  id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    primaryKey: true
-  },
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  },
-  userPassword: {
-    type: DataTypes.STRING,
-    allowNull: false
+    return users
   }
-}, {
-  sequelize,
-  updatedAt: false,
-  modelName: 'User'
-})
+
+  static async getById ({ id }) {
+    const [users] = await connection.query(
+      'SELECT BIN_TO_UUID(id) id, username, email, user_password FROM users WHERE id = UUID_TO_BIN(?);',
+      [id]
+    )
+
+    return users
+  }
+}
