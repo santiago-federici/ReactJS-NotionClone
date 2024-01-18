@@ -41,13 +41,6 @@ export function Auth () {
     }
   }
 
-  const handleChangeAuth = () => {
-    setEmail('')
-    setUsername('')
-    setUserPassword('')
-    setIsLoginForm(!isLoginForm)
-  }
-
   return (
     !currentUser
       ? <main className='auth-main'>
@@ -60,7 +53,7 @@ export function Auth () {
 
           <label>
             Email
-            <input type="text" placeholder="Enter your email address..." value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="text" placeholder="Enter your email address..." onChange={(e) => setEmail(e.target.value)} />
           </label>
 
           {
@@ -68,13 +61,13 @@ export function Auth () {
               ? <></>
               : <label>
                   Username
-                  <input type="text" placeholder="Enter your username..." value={username} onChange={(e) => setUsername(e.target.value)} />
+                  <input type="text" placeholder="Enter your username..." onChange={(e) => setUsername(e.target.value)} />
                 </label>
           }
 
           <label>
             Password
-            <input type="password" placeholder="Enter your password..." value={userPassword} onChange={(e) => setUserPassword(e.target.value)} />
+            <input type="password" placeholder="Enter your password..." onChange={(e) => setUserPassword(e.target.value)} />
           </label>
 
           <span className='submit-auth-btn' onClick={(e) => handleSubmit(e)}>{isLoginForm ? 'Login' : 'Register'}</span>
@@ -83,7 +76,7 @@ export function Auth () {
 
         </form>
 
-        <p className='login-to-register-btn'>{isLoginForm ? 'Don`t have an account yet?' : 'Already have an account'} <span onClick={() => handleChangeAuth()}>{isLoginForm ? 'Register' : 'Login'} here.</span></p>
+        <p className='login-to-register-btn'>{isLoginForm ? 'Don`t have an account yet?' : 'Already have an account'} <span onClick={() => setIsLoginForm(!isLoginForm)}>{isLoginForm ? 'Register' : 'Login'} here.</span></p>
       </main>
       : <></>
   )

@@ -1,4 +1,4 @@
-import { connection } from './connection.js'
+import { connection } from '../config/connection.js'
 
 export class TableModel {
   static async getAll () {
@@ -46,12 +46,17 @@ export class TableModel {
   }
 
   static async delete ({ tableId }) {
+    const [rowsToDelete] = await connection.query(
+      'DELETE FROM table_rows WHERE table_id = ?;',
+      [tableId]
+    )
+
     const [tableToDelete] = await connection.query(
       'DELETE FROM tables WHERE id = ?;',
       [tableId]
     )
 
-    return tableToDelete
+    return { rowsToDelete, tableToDelete }
   }
 
   static async createRow ({ tableId }) {

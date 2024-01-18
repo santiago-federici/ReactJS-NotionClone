@@ -1,4 +1,4 @@
-import { connection } from './connection.js'
+import { connection } from '../config/connection.js'
 
 export class AuthModel {
   static async register ({ input }) {
