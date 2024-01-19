@@ -36,6 +36,14 @@ export class TableController {
     res.status(400).json({ message: 'There was an error creating the table' })
   }
 
+  updateTableTitle = async (req, res) => {
+    const { tableId } = req.params
+    const { title } = req.body
+    const updatedTable = await this.tableModel.updateTableTitle({ tableId, title })
+    if (updatedTable) return res.json(updatedTable)
+    return res.status(400).json({ message: 'There was an error updating the table' })
+  }
+
   delete = async (req, res) => {
     const { tableId } = req.params
     const tableToDelete = await this.tableModel.delete({ tableId })

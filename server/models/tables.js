@@ -45,6 +45,15 @@ export class TableModel {
     return newTable
   }
 
+  static async updateTableTitle ({ tableId, title }) {
+    const [updatedTable] = await connection.query(
+      'UPDATE tables SET title = ? WHERE id = ?;',
+      [title, tableId]
+    )
+
+    return updatedTable
+  }
+
   static async delete ({ tableId }) {
     const [rowsToDelete] = await connection.query(
       'DELETE FROM table_rows WHERE table_id = ?;',

@@ -3,6 +3,18 @@
   width: 100%;
 }
 
+.table-title {
+  color: #37352F;
+  font-size: 32px;
+  font-weight: 700;
+  background: none;
+  border: none;
+}
+
+.table-title:focus {
+  outline: none;
+}
+
 .table-view-header {
   display: flex;
   justify-content: space-between;
