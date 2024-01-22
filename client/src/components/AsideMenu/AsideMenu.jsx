@@ -1,13 +1,12 @@
 import { useEffect } from 'react'
 
 import { useAuth } from '../../hooks/useAuth'
-import { useTables } from '../../hooks/useTables'
 
 import { CirclePlus, Clock, Dots, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from '../Icons'
 
 import './AsideMenu.css'
 
-export function AsideMenu({ setTableId, tablesUpdated }) {
+export function AsideMenu({ getAllTables, tables, setTableId, tablesUpdated, addAPage, deleteAPage }) {
   const renderIcon = (icon) => {
     switch (icon) {
       case 'TrendingUp':
@@ -18,8 +17,6 @@ export function AsideMenu({ setTableId, tablesUpdated }) {
         return <EmptyPage />
     }
   }
-
-  const { getAllTables, addAPage, deleteAPage, tables } = useTables()
 
   const { currentUser, logoutUser } = useAuth()
 

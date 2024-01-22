@@ -9,7 +9,7 @@ import { Page } from '../../components/Page/Page.jsx'
 import './Dashboard.css'
 
 export function Dashboard () {
-  const { tableId, setTableId, tablesUpdated, updateTableTitle } = useTables()
+  const { getAllTables, tables, tableId, setTableId, tablesUpdated, updateTableTitle, addAPage, deleteAPage } = useTables()
 
   const { currentUser, navigate } = useAuth()
 
@@ -20,7 +20,7 @@ export function Dashboard () {
   return (
     currentUser && currentUser
       ? <main className="user-main">
-      <AsideMenu setTableId={setTableId} tablesUpdated={tablesUpdated} />
+      <AsideMenu getAllTables={getAllTables} tables={tables} setTableId={setTableId} tablesUpdated={tablesUpdated} addAPage={addAPage} deleteAPage={deleteAPage} />
       <Page tableId={tableId} updateTableTitle={updateTableTitle} />
     </main>
       : <></>
