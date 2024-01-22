@@ -5,16 +5,11 @@ import { TableHeader } from './TableHeader'
 import { Plus } from '../Icons'
 
 export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
-  const { rows, getRows, rowsUpdated, setRowsUpdated, getRowMainContent } = useRows(tableId)
+  const { rows, getRows, rowsUpdated, setRowsUpdated, addARow, handleChangeLocalMainContent, getUpdatedMainContent, localMainContent } = useRows()
 
   useEffect(() => {
     getRows(tableId)
   }, [tableId, rowsUpdated])
-
-  const handleChangeMainContent = (e, rowId) => {
-    const newMainContent = e.target.value
-    getRowMainContent(rowId, newMainContent)
-  }
 
   const [openStatusList, setOpenStatusList] = useState(new Array(rows.length).fill(false))
 
@@ -62,19 +57,6 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
     }
   }
 
-  const handleNewRow = (tableId) => {
-    fetch('http://localhost:3000/tables/rows', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ tableId })
-    })
-      .then(res => res.json())
-      .then(data => setRowsUpdated(!rowsUpdated))
-      .catch(err => console.log('err from table.jsx catch: ', err))
-  }
-
   return (
     <main className='table-view-main'>
       <input
@@ -102,7 +84,11 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
               rows && rows.length > 0 && rows.map((row, index) => (
                 <tr key={row.id}>
                   <td className='main-content-td'>
-                    <input className='row-main-content' value={row.main_content || ''} onChange={(e) => handleChangeMainContent(e, row.id)} />
+                    <input
+                     className='row-main-content'
+                     value={localMainContent[row.id] || row.main_content || ''}
+                     onChange={(e) => handleChangeLocalMainContent(row.id, e.target.value)}
+                     onBlur={() => getUpdatedMainContent(row.id, localMainContent[row.id])} />
                   </td>
                   <td onClick={() => handleStatusOptions(index)}>
                     <span className={`status status-${row.status.toLowerCase().split(' ').join('')}`}>
@@ -144,7 +130,7 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
               ))
             }
             <tr className='new-row-btn'>
-              <td onClick={() => handleNewRow(tableId)}><Plus /> New</td>
+              <td onClick={() => addARow(tableId)}><Plus /> New</td>
               <td></td>
               <td></td>
               <td></td>

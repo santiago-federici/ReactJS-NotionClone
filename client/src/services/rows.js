@@ -6,7 +6,20 @@ export const findRows = async (tableId) => {
   return data
 }
 
-export const changeRowMainContent = async ({ rowId, newMainContent }) => {
+export const createRow = async (tableId) => {
+  const res = await fetch(ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ tableId })
+  })
+  const data = await res.json()
+  if (data) return true
+  return false
+}
+
+export const updateMainContent = async ({ rowId, newMainContent }) => {
   const res = await fetch(`${ENDPOINT}mainContent/${rowId}`, {
     method: 'PATCH',
     headers: {

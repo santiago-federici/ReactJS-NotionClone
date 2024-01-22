@@ -1,26 +1,37 @@
-import { useCallback, useState } from 'react'
-import { changeRowMainContent, findRows } from '../services/rows'
-import debounce from 'just-debounce-it'
+import { useState } from 'react'
+import { updateMainContent, findRows, createRow } from '../services/rows'
 
-export function useRows (tableId) {
+export function useRows () {
   const [rows, setRows] = useState([])
+  const [rowsUpdated, setRowsUpdated] = useState()
+  const [localMainContent, setLocalMainContent] = useState({})
 
-  const getRows = () => {
+  const getRows = (tableId) => {
     findRows(tableId)
       .then(data => setRows(data))
       .catch(err => console.log('err from useRows: ', err))
   }
 
-  const [rowsUpdated, setRowsUpdated] = useState()
+  const handleChangeLocalMainContent = (rowId, newMainContent) => {
+    setLocalMainContent((prevLocalMainContent) => ({
+      ...prevLocalMainContent,
+      [rowId]: newMainContent
+    }))
+  }
 
-  const debouncedGetRowMainContent = useCallback(
-    debounce((rowId, newMainContent) => {
-      changeRowMainContent({ rowId, newMainContent })
-        // .then(setRowsUpdated(!rowsUpdated))
-        .then(() => getRows(tableId))
-        .catch(err => console.log('err from useRows: ', err))
-    }, 300)
-    , [])
+  const addARow = (tableId) => {
+    createRow(tableId)
+      .then(data => setRowsUpdated(!rowsUpdated))
+      .catch(err => console.log('err from useRows: ', err))
+  }
 
-  return { rows, getRows, rowsUpdated, setRowsUpdated, getRowMainContent: debouncedGetRowMainContent }
+  const getUpdatedMainContent = (rowId, newMainContent) => {
+    updateMainContent({ rowId, newMainContent })
+      .then(() => {
+        setRowsUpdated(!rowsUpdated)
+      })
+      .catch((err) => console.log('err from useRows: ', err))
+  }
+
+  return { rows, setRows, getRows, rowsUpdated, setRowsUpdated, addARow, handleChangeLocalMainContent, getUpdatedMainContent, localMainContent }
 }
