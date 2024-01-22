@@ -30,3 +30,27 @@ export const updateMainContent = async ({ rowId, newMainContent }) => {
   const data = await res.json()
   return data
 }
+
+export const updateStatus = async (rowId, newStatus) => {
+  const res = await fetch(`${ENDPOINT}status/${rowId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ status: newStatus })
+  })
+  const data = await res.json()
+  return data
+}
+
+export const updatePriority = async (rowId, newPriority) => {
+  const res = await fetch(`${ENDPOINT}priority/${rowId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ priority: newPriority })
+  })
+  const data = await res.json()
+  return data
+}

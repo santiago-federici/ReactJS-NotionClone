@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { updateMainContent, findRows, createRow } from '../services/rows'
+import { updateMainContent, findRows, createRow, updateStatus, updatePriority } from '../services/rows'
 
 export function useRows () {
   const [rows, setRows] = useState([])
@@ -33,5 +33,17 @@ export function useRows () {
       .catch((err) => console.log('err from useRows: ', err))
   }
 
-  return { rows, setRows, getRows, rowsUpdated, setRowsUpdated, addARow, handleChangeLocalMainContent, getUpdatedMainContent, localMainContent }
+  const getUpdatedStatus = (rowId, newStatus) => {
+    updateStatus(rowId, newStatus)
+      .then(data => setRowsUpdated(!rowsUpdated))
+      .catch(err => console.log('err from useRows: ', err))
+  }
+
+  const getUpdatedPriority = (rowId, newPriority) => {
+    updatePriority(rowId, newPriority)
+      .then(data => setRowsUpdated(!rowsUpdated))
+      .catch(err => console.log('err from useRows: ', err))
+  }
+
+  return { rows, setRows, getRows, rowsUpdated, setRowsUpdated, addARow, handleChangeLocalMainContent, getUpdatedMainContent, localMainContent, getUpdatedStatus, getUpdatedPriority }
 }
