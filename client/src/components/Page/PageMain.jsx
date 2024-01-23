@@ -21,6 +21,7 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
     handleChangeLocalDescription,
     getUpdatedStatus,
     getUpdatedPriority,
+    getUpdatedDate,
     getDeletedRow
   } = useRows()
 
@@ -76,7 +77,9 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
                   <td>
                     <PriorityComponent rows={rows} priority={row.priority} id={row.id} index={index} getUpdatedPriority={getUpdatedPriority} />
                   </td>
-                  <td>{row.due}</td>
+                  <td>
+                    <input type='date' value={row.due || ''} onChange={(e) => getUpdatedDate(row.id, e.target.value)} />
+                  </td>
                   <td></td>
 
                   {index === openSidebarRowIndex && (

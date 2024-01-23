@@ -15,13 +15,5 @@ export const createTablesRouter = ({ tableModel }) => {
 
   tablesRouter.get('/:userId', tableController.getByUserId)
 
-  tablesRouter.get('/rows/:tableId', tableController.getRowsByTableId)
-  tablesRouter.post('/rows', tableController.createRow)
-  tablesRouter.patch('/rows/status/:rowId', tableController.updateStatusRow)
-  tablesRouter.patch('/rows/priority/:rowId', tableController.updatePriorityRow)
-  tablesRouter.patch('/rows/mainContent/:rowId', tableController.updateMainContentRow)
-  tablesRouter.patch('/rows/description/:rowId', tableController.updateDescriptionRow)
-  tablesRouter.delete('/rows/:rowId', tableController.deleteRow)
-
   return tablesRouter
 }

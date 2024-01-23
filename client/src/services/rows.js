@@ -1,4 +1,4 @@
-const ENDPOINT = 'http://localhost:3000/tables/rows/'
+const ENDPOINT = 'http://localhost:3000/rows/'
 
 export const findRows = async (tableId) => {
   const res = await fetch(`${ENDPOINT}${tableId}`)
@@ -62,6 +62,18 @@ export const updatePriority = async (rowId, newPriority) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ priority: newPriority })
+  })
+  const data = await res.json()
+  return data
+}
+
+export const updateDue = async (rowId, newDue) => {
+  const res = await fetch(`${ENDPOINT}priority/${rowId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ due: newDue })
   })
   const data = await res.json()
   return data

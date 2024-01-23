@@ -22,13 +22,6 @@ export class TableController {
     res.status(404).json({ message: 'Table not found' })
   }
 
-  getRowsByTableId = async (req, res) => {
-    const { tableId } = req.params
-    const tables = await this.tableModel.getRowsByTableId({ tableId })
-    if (tables.length > 0) return res.json(tables)
-    res.status(404).json({ message: 'No rows found for this table' })
-  }
-
   create = async (req, res) => {
     const { userId } = req.body
     const newTable = await this.tableModel.create({ userId })
@@ -49,51 +42,5 @@ export class TableController {
     const tableToDelete = await this.tableModel.delete({ tableId })
     if (tableToDelete) return res.json(tableToDelete)
     res.status(404).json({ message: 'Table not found' })
-  }
-
-  createRow = async (req, res) => {
-    const { tableId } = req.body
-    const newRow = await this.tableModel.createRow({ tableId })
-    if (newRow) return res.json(newRow)
-    return res.status(400).json({ message: 'There was an error creating the row' })
-  }
-
-  updateStatusRow = async (req, res) => {
-    const { status } = req.body
-    const { rowId } = req.params
-    const updatedRow = await this.tableModel.updateStatusRow({ status, rowId })
-    if (updatedRow) return res.json(updatedRow)
-    return res.status(400).json({ message: 'There was an error updating the row' })
-  }
-
-  updatePriorityRow = async (req, res) => {
-    const { priority } = req.body
-    const { rowId } = req.params
-    const updatedRow = await this.tableModel.updatePriorityRow({ priority, rowId })
-    if (updatedRow) return res.json(updatedRow)
-    return res.status(400).json({ message: 'There was an error updating the row' })
-  }
-
-  updateMainContentRow = async (req, res) => {
-    const { mainContent } = req.body
-    const { rowId } = req.params
-    const updatedRow = await this.tableModel.updateMainContentRow({ mainContent, rowId })
-    if (updatedRow) return res.json(updatedRow)
-    return res.status(400).json({ message: 'There was an error updating the row' })
-  }
-
-  updateDescriptionRow = async (req, res) => {
-    const { description } = req.body
-    const { rowId } = req.params
-    const updatedRow = await this.tableModel.updateDescriptionRow({ description, rowId })
-    if (updatedRow) return res.json(updatedRow)
-    return res.status(400).json({ message: 'There was an error updating the row' })
-  }
-
-  deleteRow = async (req, res) => {
-    const { rowId } = req.params
-    const rowToDelete = await this.tableModel.deleteRow({ rowId })
-    if (rowToDelete) return res.json(rowToDelete)
-    res.status(404).json({ message: 'Row not found' })
   }
 }

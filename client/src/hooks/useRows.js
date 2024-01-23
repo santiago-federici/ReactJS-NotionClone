@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { updateMainContent, findRows, createRow, updateStatus, updatePriority, updateDescription, deleteRow } from '../services/rows'
+import { updateMainContent, findRows, createRow, updateStatus, updatePriority, updateDescription, deleteRow, updateDue } from '../services/rows'
 
 export function useRows () {
   const [rows, setRows] = useState([])
@@ -61,6 +61,12 @@ export function useRows () {
       .catch(err => console.log('err from useRows: ', err))
   }
 
+  const getUpdatedDate = (rowId, newDue) => {
+    updateDue(rowId, newDue)
+      .then(data => setRowsUpdated(!rowsUpdated))
+      .catch(err => console.log('err from useRows: ', err))
+  }
+
   const getDeletedRow = (rowId) => {
     deleteRow(rowId)
       .then(data => setRowsUpdated(!rowsUpdated))
@@ -82,6 +88,7 @@ export function useRows () {
     handleChangeLocalDescription,
     getUpdatedStatus,
     getUpdatedPriority,
+    getUpdatedDate,
     getDeletedRow
   }
 }
