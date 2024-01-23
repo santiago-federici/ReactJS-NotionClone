@@ -18,5 +18,5 @@ export function useAuth () {
       .catch(err => console.log('err from hook: ', err))
   }
 
-  return { currentUser, logoutUser }
+  return { currentUser, logoutUser, navigate }
 }
