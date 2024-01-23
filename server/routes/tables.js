@@ -20,6 +20,8 @@ export const createTablesRouter = ({ tableModel }) => {
   tablesRouter.patch('/rows/status/:rowId', tableController.updateStatusRow)
   tablesRouter.patch('/rows/priority/:rowId', tableController.updatePriorityRow)
   tablesRouter.patch('/rows/mainContent/:rowId', tableController.updateMainContentRow)
+  tablesRouter.patch('/rows/description/:rowId', tableController.updateDescriptionRow)
+  tablesRouter.delete('/rows/:rowId', tableController.deleteRow)
 
   return tablesRouter
 }

@@ -103,4 +103,22 @@ export class TableModel {
 
     return updatedRow
   }
+
+  static async updateDescriptionRow ({ description, rowId }) {
+    const [updatedRow] = await connection.query(
+      'UPDATE table_rows SET description = ? WHERE id = ?;',
+      [description, rowId]
+    )
+
+    return updatedRow
+  }
+
+  static async deleteRow ({ rowId }) {
+    const [rowToDelete] = await connection.query(
+      'DELETE FROM table_rows WHERE id = ?;',
+      [rowId]
+    )
+
+    return rowToDelete
+  }
 }

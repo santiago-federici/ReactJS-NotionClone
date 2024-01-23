@@ -1,26 +1,34 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRows } from '../../hooks/useRows'
 
 import { TableHeader } from './TableHeader'
-import { Plus } from '../Icons'
+import { OpenSidebar, Plus } from '../Icons'
 import { StatusComponent } from './StatusComponent'
 import { PriorityComponent } from './PriorityComponent'
+import { SidebarComponent } from '../Sidebar/SidebarComponent'
 
 export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
   const {
-    rows, getRows,
+    rows,
+    getRows,
     rowsUpdated,
     addARow,
-    handleChangeLocalMainContent,
-    getUpdatedMainContent,
     localMainContent,
+    getUpdatedMainContent,
+    handleChangeLocalMainContent,
+    localDescription,
+    getUpdatedDescription,
+    handleChangeLocalDescription,
     getUpdatedStatus,
-    getUpdatedPriority
+    getUpdatedPriority,
+    getDeletedRow
   } = useRows()
 
   useEffect(() => {
     getRows(tableId)
   }, [tableId, rowsUpdated])
+
+  const [openSidebarRowIndex, setOpenSidebarRowIndex] = useState(null)
 
   return (
     <main className='table-view-main'>
@@ -53,12 +61,46 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
                      className='row-main-content'
                      value={localMainContent[row.id] || row.main_content || ''}
                      onChange={(e) => handleChangeLocalMainContent(row.id, e.target.value)}
-                     onBlur={() => getUpdatedMainContent(row.id, localMainContent[row.id])} />
+                     onBlur={() => getUpdatedMainContent(row.id, localMainContent[row.id])}
+                    />
+
+                    <span className='open-sidebar' onClick={() => setOpenSidebarRowIndex(index)} >
+                      <OpenSidebar />
+                      OPEN
+                    </span>
+
                   </td>
-                  <StatusComponent rows={rows} row={row} index={index} getUpdatedStatus={getUpdatedStatus} />
-                  <PriorityComponent rows={rows} row={row} index={index} getUpdatedPriority={getUpdatedPriority} />
+                  <td>
+                    <StatusComponent rows={rows} status={row.status} id={row.id} index={index} getUpdatedStatus={getUpdatedStatus} />
+                  </td>
+                  <td>
+                    <PriorityComponent rows={rows} priority={row.priority} id={row.id} index={index} getUpdatedPriority={getUpdatedPriority} />
+                  </td>
                   <td>{row.due}</td>
                   <td></td>
+
+                  {index === openSidebarRowIndex && (
+                      <SidebarComponent
+                        rows={rows}
+                        mainContent={row.main_content}
+                        status={row.status}
+                        id={row.id}
+                        priority={row.priority}
+                        due={row.due}
+                        description={row.description}
+                        index={index}
+                        setOpenSidebarRowIndex={setOpenSidebarRowIndex}
+                        localMainContent={localMainContent}
+                        getUpdatedMainContent={getUpdatedMainContent}
+                        handleChangeLocalMainContent={handleChangeLocalMainContent}
+                        localDescription={localDescription}
+                        getUpdatedDescription={getUpdatedDescription}
+                        handleChangeLocalDescription={handleChangeLocalDescription}
+                        getUpdatedStatus={getUpdatedStatus}
+                        getUpdatedPriority={getUpdatedPriority}
+                        getDeletedRow={getDeletedRow}
+                      />
+                  )}
                 </tr>
               ))
             }

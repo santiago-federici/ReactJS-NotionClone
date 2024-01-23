@@ -69,6 +69,15 @@ export function ChevronDown() {
   )
 }
 
+export function ChevronDownBigger() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M6 9l6 6l6 -6"></path>
+    </svg>
+  )
+}
+
 export function ChevronRight() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-right" width="15" height="15" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -277,15 +286,6 @@ export function Exclamation() {
   )
 }
 
-export function PointFilled() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-point-filled" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" strokeWidth="0" fill="currentColor"></path>
-    </svg>
-  )
-}
-
 export function MaximizeArrows() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrows-maximize" width="19" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -465,6 +465,16 @@ export function DropdownRight () {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 15" width='12px' height='12px' display='block'>
       <path d="M8.696 7.507a1.08 1.08 0 00-.34-.764L1.896.426a.96.96 0 00-.689-.282.975.975 0 00-.987.988c0 .265.108.514.299.705l5.81 5.67-5.81 5.67a.979.979 0 00-.3.705c0 .556.432.988.988.988.266 0 .499-.1.69-.283l6.457-6.325a.988.988 0 00.34-.755z"/>
+    </svg>
+  )
+}
+
+export function OpenSidebar () {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-layout-sidebar-right" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+      <path d="M15 4l0 16" />
     </svg>
   )
 }

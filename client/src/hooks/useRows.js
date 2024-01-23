@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { updateMainContent, findRows, createRow, updateStatus, updatePriority } from '../services/rows'
+import { updateMainContent, findRows, createRow, updateStatus, updatePriority, updateDescription, deleteRow } from '../services/rows'
 
 export function useRows () {
   const [rows, setRows] = useState([])
   const [rowsUpdated, setRowsUpdated] = useState()
   const [localMainContent, setLocalMainContent] = useState({})
+  const [localDescription, setLocalDescription] = useState({})
 
   const getRows = (tableId) => {
     findRows(tableId)
@@ -19,6 +20,13 @@ export function useRows () {
     }))
   }
 
+  const handleChangeLocalDescription = (rowId, newDescription) => {
+    setLocalDescription((prevLocalDescription) => ({
+      ...prevLocalDescription,
+      [rowId]: newDescription
+    }))
+  }
+
   const addARow = (tableId) => {
     createRow(tableId)
       .then(data => setRowsUpdated(!rowsUpdated))
@@ -27,6 +35,14 @@ export function useRows () {
 
   const getUpdatedMainContent = (rowId, newMainContent) => {
     updateMainContent({ rowId, newMainContent })
+      .then(() => {
+        setRowsUpdated(!rowsUpdated)
+      })
+      .catch((err) => console.log('err from useRows: ', err))
+  }
+
+  const getUpdatedDescription = (rowId, newDescription) => {
+    updateDescription({ rowId, newDescription })
       .then(() => {
         setRowsUpdated(!rowsUpdated)
       })
@@ -45,5 +61,27 @@ export function useRows () {
       .catch(err => console.log('err from useRows: ', err))
   }
 
-  return { rows, setRows, getRows, rowsUpdated, setRowsUpdated, addARow, handleChangeLocalMainContent, getUpdatedMainContent, localMainContent, getUpdatedStatus, getUpdatedPriority }
+  const getDeletedRow = (rowId) => {
+    deleteRow(rowId)
+      .then(data => setRowsUpdated(!rowsUpdated))
+      .catch(err => console.log('err from useRows: ', err))
+  }
+
+  return {
+    rows,
+    setRows,
+    getRows,
+    rowsUpdated,
+    setRowsUpdated,
+    addARow,
+    localMainContent,
+    getUpdatedMainContent,
+    handleChangeLocalMainContent,
+    localDescription,
+    getUpdatedDescription,
+    handleChangeLocalDescription,
+    getUpdatedStatus,
+    getUpdatedPriority,
+    getDeletedRow
+  }
 }

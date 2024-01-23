@@ -31,6 +31,18 @@ export const updateMainContent = async ({ rowId, newMainContent }) => {
   return data
 }
 
+export const updateDescription = async ({ rowId, newDescription }) => {
+  const res = await fetch(`${ENDPOINT}description/${rowId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ description: newDescription })
+  })
+  const data = await res.json()
+  return data
+}
+
 export const updateStatus = async (rowId, newStatus) => {
   const res = await fetch(`${ENDPOINT}status/${rowId}`, {
     method: 'PATCH',
@@ -53,4 +65,16 @@ export const updatePriority = async (rowId, newPriority) => {
   })
   const data = await res.json()
   return data
+}
+
+export const deleteRow = async (rowId) => {
+  const res = await fetch(`${ENDPOINT}${rowId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const data = await res.json()
+  if (data) return true
+  return false
 }

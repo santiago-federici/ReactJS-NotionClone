@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function PriorityComponent ({ rows, row, index, getUpdatedPriority }) {
+export function PriorityComponent ({ rows, priority, id, index, getUpdatedPriority }) {
   const [openPriorityList, setOpenPriorityList] = useState(new Array(rows.length).fill(false))
 
   const handlePriorityOptions = (index) => {
@@ -17,15 +17,15 @@ export function PriorityComponent ({ rows, row, index, getUpdatedPriority }) {
   }
 
   return (
-    <td onClick={() => handlePriorityOptions(index)}>
-      <span className={`priority priority-${row.priority.toLowerCase().split(' ').join('')}`}>
-        {row.priority}
+    <div onClick={() => handlePriorityOptions(index)}>
+      <span className={`priority priority-${priority.toLowerCase()}`}>
+        {priority}
       </span>
       {
         openPriorityList[index] && (
           <div className='priority-options'>
             <p>Select an option</p>
-            <ul onClick={(e) => handleClickPriority(e, row.id)}>
+            <ul onClick={(e) => handleClickPriority(e, id)}>
               <li className='priority priority-low'>Low</li>
               <li className='priority priority-medium'>Medium</li>
               <li className='priority priority-high'>High</li>
@@ -33,6 +33,6 @@ export function PriorityComponent ({ rows, row, index, getUpdatedPriority }) {
           </div>
         )
       }
-    </td>
+    </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 // import { useRows } from '../../hooks/useRows'
 
-export function StatusComponent ({ rows, row, index, getUpdatedStatus }) {
+export function StatusComponent ({ rows, status, id, index, getUpdatedStatus }) {
   // const { getUpdatedStatus } = useRows()
   const [openStatusList, setOpenStatusList] = useState(new Array(rows.length).fill(false))
 
@@ -19,15 +19,15 @@ export function StatusComponent ({ rows, row, index, getUpdatedStatus }) {
   }
 
   return (
-    <td onClick={() => handleStatusOptions(index)}>
-      <span className={`status status-${row.status.toLowerCase().split(' ').join('')}`}>
-        {row.status}
+    <div onClick={() => handleStatusOptions(index)}>
+      <span className={`status status-${status.toLowerCase().split(' ').join('')}`}>
+        {status}
       </span>
       {
         openStatusList[index] && (
           <div className='status-options'>
             <p>Select an option</p>
-            <ul onClick={(e) => handleClickStatus(e, row.id)}>
+            <ul onClick={(e) => handleClickStatus(e, id)}>
               <li className='status status-todo'>To Do</li>
               <li className='status status-done'>Done</li>
               <li className='status status-inprogress'>In Progress</li>
@@ -35,6 +35,6 @@ export function StatusComponent ({ rows, row, index, getUpdatedStatus }) {
           </div>
         )
       }
-    </td>
+    </div>
   )
 }

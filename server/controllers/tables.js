@@ -81,4 +81,19 @@ export class TableController {
     if (updatedRow) return res.json(updatedRow)
     return res.status(400).json({ message: 'There was an error updating the row' })
   }
+
+  updateDescriptionRow = async (req, res) => {
+    const { description } = req.body
+    const { rowId } = req.params
+    const updatedRow = await this.tableModel.updateDescriptionRow({ description, rowId })
+    if (updatedRow) return res.json(updatedRow)
+    return res.status(400).json({ message: 'There was an error updating the row' })
+  }
+
+  deleteRow = async (req, res) => {
+    const { rowId } = req.params
+    const rowToDelete = await this.tableModel.deleteRow({ rowId })
+    if (rowToDelete) return res.json(rowToDelete)
+    res.status(404).json({ message: 'Row not found' })
+  }
 }

@@ -1,0 +1,108 @@
+.sidebar {
+  display: flex;
+  position: absolute;
+  background: var(--clr-surface);
+  top: 0;
+  right: 0;
+  border: 1px solid rgba(0 0 0 / .1);
+  box-shadow: 0 0 10px 1px rgba(0 0 0 / .1);
+  width: 350px;
+  min-width: 350px;
+  height: 100%;
+  z-index: 999;
+  resize: horizontal;
+  overflow: auto;
+  rotate: 180deg;
+}
+
+.sidebar::-webkit-resizer {
+  display: none;
+}
+
+.rotate-content {
+  rotate: 180deg;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.sidebar-header {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  height: fit-content;
+}
+
+.close-sidebar-btn {
+  display: flex;
+  cursor: pointer;
+}
+
+.sidebar-main {
+  display: grid;
+  gap: 2rem;
+}
+
+.sidebar-main-content {
+  font-size: 32px;
+  overflow: hidden;
+  color: #37352F;
+  max-width: 100%;
+  background: none;
+  border: none;
+  font-weight: 500;
+}
+
+.sidebar-main-content:focus {
+  outline: none;
+}
+
+.properties-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.property {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.property > div > .status-options,
+.property > div > .priority-options {
+  right: 0;
+}
+
+.description-input {
+  background: none;
+  border: none;
+  color: #37352F;
+}
+
+.description-input:focus {
+  outline: none;
+}
+
+.delete-row {
+  /* color: rgba(255, 28, 28, 0.8); */
+  color: #4d4d4d;
+  border: 1px solid rgba(255, 28, 28, 0.4);
+  background: rgba(255, 28, 28, 0.2);
+  border-radius: 3px;
+  width: 80%;
+  align-self: center;
+  padding: 2px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 300ms all ease;
+}
+
+.delete-row:hover {
+  cursor: pointer;
+  color: rgb(255, 28, 28);
+}
