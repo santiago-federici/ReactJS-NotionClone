@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import { useRows } from '../../hooks/useRows'
 
 import { TableHeader } from './TableHeader'
-import { Calendar, OpenSidebar, Plus } from '../Icons'
+import { OpenSidebar, Plus } from '../Icons'
 import { StatusComponent } from './StatusComponent'
 import { PriorityComponent } from './PriorityComponent'
 import { SidebarComponent } from '../Sidebar/SidebarComponent'
+import { DueComponent } from './DueComponent'
 
 export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
   const {
@@ -80,25 +81,7 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
                     <PriorityComponent rows={rows} priority={row.priority} id={row.id} index={index} getUpdatedPriority={getUpdatedPriority} />
                   </td>
                   <td>
-                    {
-                      localDue[row.id] || row.due
-                        ? <input
-                            className='datepicker-input'
-                            type='date' value={localDue[row.id] || row.due || ''}
-                            onChange={(e) => handleChangeLocalDue(row.id, e.target.value)}
-                            onBlur={() => getUpdatedDue(row.id, localDue[row.id])}
-                          />
-                        : <>
-                          <Calendar />
-                          <input
-                            className='datepicker-input opacity-0'
-                            type='date' value={localDue[row.id] || row.due || ''}
-                            onChange={(e) => handleChangeLocalDue(row.id, e.target.value)}
-                            onBlur={() => getUpdatedDue(row.id, localDue[row.id])}
-                          />
-                        </>
-
-                    }
+                    <DueComponent localDue={localDue} id={row.id} due={row.due} handleChangeLocalDue={handleChangeLocalDue} getUpdatedDue={getUpdatedDue} />
                   </td>
                   <td></td>
 
@@ -122,6 +105,9 @@ export function PageMain ({ tableId, title, setNewTitle, updateTableTitle }) {
                         getUpdatedStatus={getUpdatedStatus}
                         getUpdatedPriority={getUpdatedPriority}
                         getDeletedRow={getDeletedRow}
+                        localDue={localDue}
+                        handleChangeLocalDue={handleChangeLocalDue}
+                        getUpdatedDue={getUpdatedDue}
                       />
                   )}
                 </tr>

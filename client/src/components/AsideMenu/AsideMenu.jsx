@@ -2,22 +2,11 @@ import { useEffect } from 'react'
 
 import { useAuth } from '../../hooks/useAuth'
 
-import { CirclePlus, Clock, Dots, Download, EmptyPage, Plus, Search, Settings, Target, Template, Trash, TrendingUp, UserSearch } from '../Icons'
+import { CirclePlus, Clock, Dots, Download, EmptyPage, Plus, Search, Settings, Template, Trash, UserSearch } from '../Icons'
 
 import './AsideMenu.css'
 
 export function AsideMenu({ getAllTables, tables, setTableId, tablesUpdated, addAPage, deleteAPage }) {
-  const renderIcon = (icon) => {
-    switch (icon) {
-      case 'TrendingUp':
-        return <TrendingUp />
-      case 'Target':
-        return <Target />
-      default:
-        return <EmptyPage />
-    }
-  }
-
   const { currentUser, logoutUser } = useAuth()
 
   useEffect(() => {
@@ -58,7 +47,7 @@ export function AsideMenu({ getAllTables, tables, setTableId, tablesUpdated, add
           tables && tables.length > 0 && tables.map(table => (
             <li key={table.id} onClick={() => setTableId(table.id)}>
                 <span className='icon-container'>
-                  {renderIcon(table.icon)}
+                  <EmptyPage />
                 </span>
                 {table.title}
 

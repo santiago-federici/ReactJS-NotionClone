@@ -1,4 +1,5 @@
-import { ChevronDownBigger, ChevronRightPipe, ChevronUp, MaximizeArrows, OpenSidebar, Trash } from '../Icons'
+import { ChevronDownBigger, ChevronRightPipe, ChevronUp, Trash } from '../Icons'
+import { DueComponent } from '../Page/DueComponent'
 import { PriorityComponent } from '../Page/PriorityComponent'
 import { StatusComponent } from '../Page/StatusComponent'
 import './SidebarComponent.css'
@@ -22,7 +23,10 @@ export function SidebarComponent (
     handleChangeLocalDescription,
     getUpdatedStatus,
     getUpdatedPriority,
-    getDeletedRow
+    localDue,
+    getDeletedRow,
+    handleChangeLocalDue,
+    getUpdatedDue
   }) {
   return (
     <aside className="sidebar">
@@ -49,9 +53,9 @@ export function SidebarComponent (
               <p>Priority</p>
               <PriorityComponent rows={rows} priority={priority} id={id} index={index} getUpdatedPriority={getUpdatedPriority} />
             </span>
-            <span className='property'>
+            <span className='property due-property'>
               <p>Due</p>
-              <p>{due}</p>
+              <DueComponent localDue={localDue} id={id} due={due} handleChangeLocalDue={handleChangeLocalDue} getUpdatedDue={getUpdatedDue} />
             </span>
           </article>
 
