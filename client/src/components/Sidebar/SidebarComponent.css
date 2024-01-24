@@ -106,3 +106,8 @@
   cursor: pointer;
   color: rgb(255, 28, 28);
 }
+
+.change-task-arrows {
+  display: flex;
+  cursor: pointer;
+}

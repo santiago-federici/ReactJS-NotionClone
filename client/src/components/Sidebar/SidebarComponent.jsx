@@ -29,10 +29,8 @@ export function SidebarComponent (
       <div className='rotate-content'>
         <header className='sidebar-header'>
           <span className='close-sidebar-btn' onClick={() => setOpenSidebarRowIndex(null)}><ChevronRightPipe /></span>
-          <MaximizeArrows />
-          <OpenSidebar />
-          <ChevronUp />
-          <ChevronDownBigger />
+          <span className='change-task-arrows' onClick={() => setOpenSidebarRowIndex(index - 1)}><ChevronUp /></span>
+          <span className='change-task-arrows' onClick={() => setOpenSidebarRowIndex(index + 1)}><ChevronDownBigger /></span>
         </header>
 
         <main className='sidebar-main'>
