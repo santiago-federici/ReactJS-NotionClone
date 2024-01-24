@@ -6,10 +6,20 @@ export function useRows () {
   const [rowsUpdated, setRowsUpdated] = useState()
   const [localMainContent, setLocalMainContent] = useState({})
   const [localDescription, setLocalDescription] = useState({})
+  const [localDue, setLocalDue] = useState({})
 
   const getRows = (tableId) => {
     findRows(tableId)
-      .then(data => setRows(data))
+      .then(data => {
+        if (!data.message) {
+          setRows(data.map(row => ({
+            ...row,
+            due: row.due && row.due.slice(0, 10)
+          })))
+        } else {
+          setRows(data)
+        }
+      })
       .catch(err => console.log('err from useRows: ', err))
   }
 
@@ -27,6 +37,14 @@ export function useRows () {
     }))
   }
 
+  const handleChangeLocalDue = (rowId, newDue) => {
+    const formattedDue = newDue.slice(0, 10)
+    setLocalDue((prevLocalDue) => ({
+      ...prevLocalDue,
+      [rowId]: formattedDue
+    }))
+  }
+
   const addARow = (tableId) => {
     createRow(tableId)
       .then(data => setRowsUpdated(!rowsUpdated))
@@ -35,17 +53,13 @@ export function useRows () {
 
   const getUpdatedMainContent = (rowId, newMainContent) => {
     updateMainContent({ rowId, newMainContent })
-      .then(() => {
-        setRowsUpdated(!rowsUpdated)
-      })
+      .then(() => setRowsUpdated(!rowsUpdated))
       .catch((err) => console.log('err from useRows: ', err))
   }
 
   const getUpdatedDescription = (rowId, newDescription) => {
     updateDescription({ rowId, newDescription })
-      .then(() => {
-        setRowsUpdated(!rowsUpdated)
-      })
+      .then(() => setRowsUpdated(!rowsUpdated))
       .catch((err) => console.log('err from useRows: ', err))
   }
 
@@ -61,7 +75,7 @@ export function useRows () {
       .catch(err => console.log('err from useRows: ', err))
   }
 
-  const getUpdatedDate = (rowId, newDue) => {
+  const getUpdatedDue = (rowId, newDue) => {
     updateDue(rowId, newDue)
       .then(data => setRowsUpdated(!rowsUpdated))
       .catch(err => console.log('err from useRows: ', err))
@@ -88,7 +102,9 @@ export function useRows () {
     handleChangeLocalDescription,
     getUpdatedStatus,
     getUpdatedPriority,
-    getUpdatedDate,
+    localDue,
+    getUpdatedDue,
+    handleChangeLocalDue,
     getDeletedRow
   }
 }

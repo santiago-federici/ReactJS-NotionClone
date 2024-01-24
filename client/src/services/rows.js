@@ -68,7 +68,7 @@ export const updatePriority = async (rowId, newPriority) => {
 }
 
 export const updateDue = async (rowId, newDue) => {
-  const res = await fetch(`${ENDPOINT}priority/${rowId}`, {
+  const res = await fetch(`${ENDPOINT}due/${rowId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -76,7 +76,8 @@ export const updateDue = async (rowId, newDue) => {
     body: JSON.stringify({ due: newDue })
   })
   const data = await res.json()
-  return data
+  if (data) return true
+  return false
 }
 
 export const deleteRow = async (rowId) => {
