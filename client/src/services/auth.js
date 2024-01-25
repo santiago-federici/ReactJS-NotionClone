@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://reactjs-notionclone-production.up.railway.app/auth/'
+const ENDPOINT = 'reactjs-notionclone.railway.internal/auth/'
 
 export const resgiter = async () => {
 

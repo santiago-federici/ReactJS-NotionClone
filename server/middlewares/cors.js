@@ -6,7 +6,6 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3000',
   'http://localhost:5173',
   'https://reactjs-notionclone-production.up.railway.app/'
-
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({

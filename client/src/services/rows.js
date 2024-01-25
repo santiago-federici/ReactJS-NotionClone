@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://reactjs-notionclone-production.up.railway.app/rows/'
+const ENDPOINT = 'reactjs-notionclone.railway.internal/rows/'
 
 export const findRows = async (tableId) => {
   const res = await fetch(`${ENDPOINT}${tableId}`)
