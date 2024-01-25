@@ -24,7 +24,7 @@ export const createApp = ({ userModel, tableModel, rowModel, authModel }) => {
   app.use('/rows', createRowsRouter({ rowModel }))
   app.use('/auth', createAuthRouter({ authModel }))
 
-  const PORT = process.env.PORT ?? 3000
+  const PORT = process.env.PORT || 3000
 
   app.listen(PORT, () => {
     console.log(`Server listening on port http://localhost:${PORT}`)
