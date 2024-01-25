@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
     JSON.parse(localStorage.getItem('user')) || null
   )
 
-  const baseURL = 'http://localhost:3000/auth/'
+  const baseURL = 'https://reactjs-notionclone-production.up.railway.app//auth/'
 
   const login = async ({ email, password }) => {
     try {

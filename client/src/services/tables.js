@@ -1,4 +1,4 @@
-const ENDPOINT = 'http://localhost:3000/tables/'
+const ENDPOINT = 'https://reactjs-notionclone-production.up.railway.app//tables/'
 
 export const findAllTables = async (userId) => {
   const res = await fetch(`${ENDPOINT}${userId}`)
