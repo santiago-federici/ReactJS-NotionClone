@@ -17,6 +17,13 @@ export const createApp = ({ userModel, tableModel, rowModel, authModel }) => {
     next()
   })
 
+  app.options('*', corsMiddleware())
+
+  app.use((req, res, next) => {
+    res.header('Access-Control-Expose-Headers', 'Content-Type, Authorization')
+    next()
+  })
+
   app.use(json())
   app.use(cookieParser())
   app.disable('x-powered-by')
