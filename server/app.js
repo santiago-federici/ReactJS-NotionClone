@@ -10,14 +10,16 @@ import { createRowsRouter } from './routes/rows.js'
 export const createApp = ({ userModel, tableModel, rowModel, authModel }) => {
   const app = express()
 
+  app.use(corsMiddleware())
+
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Credentials', true)
     next()
   })
+
   app.use(json())
-  app.use(corsMiddleware())
-  app.disable('x-powered-by')
   app.use(cookieParser())
+  app.disable('x-powered-by')
 
   app.use('/users', createUsersRouter({ userModel }))
   app.use('/tables', createTablesRouter({ tableModel }))
