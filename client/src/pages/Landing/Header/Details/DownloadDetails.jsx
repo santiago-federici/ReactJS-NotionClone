@@ -7,7 +7,7 @@ export function DownloadDetails () {
         Download
         <DropdownRight />
       </summary>
-      <div className='dropdown-info-container'>
+      <div className='dropdown-info-container  download-dropdown'>
         <p>iOS & Android</p>
         <p>Mac & Windows</p>
         <p>Web Clipper</p>

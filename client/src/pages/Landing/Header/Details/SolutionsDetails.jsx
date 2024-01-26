@@ -8,20 +8,26 @@ export function SolutionsDetails () {
         <DropdownRight />
       </summary>
       <div className='dropdown-info-container solutions-dropdown'>
-        <span>BY TEAM SIZE</span>
-        <p>Enterprise</p>
-        <p>Small business</p>
-        <p>Personal</p>
-        <span>BY TEAM FUNCTION</span>
-        <p>Design</p>
-        <p>Engineering</p>
-        <p>Product</p>
-        <p>Managers</p>
-        <span>NOTION FOR</span>
-        <p>Startups</p>
-        <p>Remote work</p>
-        <p>Education</p>
-        <p>Nonprofits</p>
+        <div className='solutions-divider'>
+          <span>BY TEAM SIZE</span>
+          <p>Enterprise</p>
+          <p>Small business</p>
+          <p>Personal</p>
+        </div>
+        <div className='solutions-divider'>
+          <span>BY TEAM FUNCTION</span>
+          <p>Design</p>
+          <p>Engineering</p>
+          <p>Product</p>
+          <p>Managers</p>
+        </div>
+        <div className='solutions-divider'>
+          <span>NOTION FOR</span>
+          <p>Startups</p>
+          <p>Remote work</p>
+          <p>Education</p>
+          <p>Nonprofits</p>
+        </div>
       </div>
     </details>
   )

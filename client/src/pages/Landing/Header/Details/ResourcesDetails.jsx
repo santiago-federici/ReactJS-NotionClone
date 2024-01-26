@@ -7,7 +7,7 @@ export function ResourcesDetails () {
         Resources
         <DropdownRight />
       </summary>
-      <div className='dropdown-info-container'>
+      <div className='dropdown-info-container resources-dropdown'>
         <p>Blog</p>
         <p>Guides & tutorials</p>
         <p>Webinars</p>

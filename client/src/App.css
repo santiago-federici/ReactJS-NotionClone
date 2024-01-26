@@ -88,6 +88,14 @@
     list-style: none; 
 }
 
+.solutions-dropdown > div > span {
+    font-size: 11px;
+    font-weight: 500;
+    color: #2c2c2c99;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
 
 @media screen and (max-width: 1079px) {
     .app-header-no-user {
@@ -148,13 +156,7 @@
         display: none;
     }
     
-    .solutions-dropdown > span {
-        font-size: 11px;
-        font-weight: 500;
-        color: #2c2c2c99;
-        letter-spacing: 1px;
-        margin-top: 10px;
-    }
+    
     
     .menu-container details summary {
         font-size: 16px;
@@ -275,7 +277,6 @@
     .menu-container .right-section .special-span {
         padding-right: 1rem;
         position: relative;
-        /* border-right: 1px solid #e0e0e0; */
     }
 
     .menu-container .right-section .special-span::after {
@@ -394,5 +395,20 @@
         color: #909091;
         font-weight: 400;
         font-size: 13.5px;
+    }
+
+    .solutions-dropdown > div:nth-child(2) {
+        padding: 0 2rem;
+        border-inline: 1px solid #e0e0e0;
+    }
+
+    .download-dropdown {
+        display: grid;
+        text-wrap: nowrap;
+    }
+
+    .resources-dropdown {
+        display: grid;
+        text-wrap: nowrap;    
     }
 }
