@@ -3,27 +3,27 @@
         Description
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#-stack">
+    <a href="#-stack" target="_blank">
         Stack
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#--getting-started">
+    <a href="#--getting-started" target="_blank">
         Getting Started
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#-dependencies">
+    <a href="#-dependencies" target="_blank">
         Dependencies
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#-contributing">
+    <a href="#-contributing" target="_blank">
         Contributing
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#-commands">
+    <a href="#-commands" target="_blank">
         Commands
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#-social-media">
+    <a href="#-social-media" target="_blank">
         Social Media
     </a>
 </div>
@@ -141,18 +141,18 @@ CREATE TABLE table_rows (
 <div style='display: grid; gap: 10px;'>
   <div style='display: flex; gap: 10px;'>
     <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' height="20px" width="20px" align="center" />
-    <a href="https://github.com/santiago-federici">Github</a>
+    <a href="https://github.com/santiago-federici" target="_blank">Github</a>
   </div>
   <div style='display: flex; gap: 10px;'>
-  <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg' height="20px" width="20px" align="center" />
-  <a href="https://github.com/santiago-federici">Twitter</a>
+    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg' height="20px" width="20px" align="center" />
+    <a href="https://github.com/santiago-federici" target="_blank">Twitter</a>
   </div>
   <div style='display: flex; gap: 10px;'>
     <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg' height="20px" width="20px" align="center" />
-    <a href="https://github.com/santiago-federici">Instagram</a>
+    <a href="https://github.com/santiago-federici" target="_blank">Instagram</a>
   </div>
   <div style='display: flex; gap: 10px;'>
     <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' height="20px" width="20px" align="center" />
-    <a href="https://github.com/santiago-federici">Linkedin</a>
+    <a href="https://github.com/santiago-federici" target="_blank">Linkedin</a>
   </div>
 </div>
