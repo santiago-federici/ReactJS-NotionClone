@@ -87,7 +87,8 @@ npm run start
 
 4. Create a database (I use MySQL Workbench):
 
-```sqCREATE TABLE users (
+```sql
+CREATE TABLE users (
 	id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
     username VARCHAR(25) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
