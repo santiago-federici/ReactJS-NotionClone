@@ -1,54 +1,58 @@
-<!-- <div align="center">
-<img src="public/favicon.svg" height="50px" width="auto" /> 
-<h3>
- The ESLAND page reimagined
-</h3>
-<p>Created for didactic and educational purposes.</p>
-</div>
-
 <div align="center">
-    <a href="#" target="_blank">
-        Preview
+    <a href="#-description" target="_blank">
+        Description
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#-getting-started">
+    <a href="#-stack">
+        Stack
+    </a>
+    <span>&nbsp;✦&nbsp;</span>
+    <a href="#--getting-started">
         Getting Started
+    </a>
+    <span>&nbsp;✦&nbsp;</span>
+    <a href="#-dependencies">
+        Dependencies
+    </a>
+    <span>&nbsp;✦&nbsp;</span>
+    <a href="#-contributing">
+        Contributing
     </a>
     <span>&nbsp;✦&nbsp;</span>
     <a href="#-commands">
         Commands
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#-license">
-        License
-    </a>
-    <span>&nbsp;✦&nbsp;</span>
-    <a href="https://www.youtube.com/c/midudev">
-        YouTube
-    </a>
-    <span>&nbsp;✦&nbsp;</span>
-    <a href="https://twitter.com/midudev">
-        Twitter
+    <a href="#-social-media">
+        Social Media
     </a>
 </div>
 
-<p></p>
-
-<div align="center"> -->
-### NotionClone
-
-<!-- </div> -->
+<h1 align="center">
+  NotionClone
+</h1>
 
 > [!WARNING]
-> This page is not official. The official page is [**notion.so**](https://notion.so/).
+> This page is not official. This is just for educating purposes. The official page is [**notion.so**](https://notion.so/).
+
+<div id="-description"></div>
+
+## 📝 Description
+
+A clone of the [Notion](https://notion.so/) website where you can create tables and track your daily tasks.
+
+<div id="-stack"></div>
 
 ## 🛠️ Stack
 
-- [**Vite**](https://https://vitejs.dev/) - The web framework for content-driven websites.
-- [**React**](https://react.dev/) - JavaScript with syntax for types.
-- [**Vanilla CSS**] - A utility-first CSS framework for rapidly building custom designs.
-- [**Express**](https://expressjs.com/) - JavaScript with syntax for types.
-- [**MySQL**](https://www.mysql.com/) - JavaScript with syntax for types.
+- [**Vite**](https://https://vitejs.dev/) - A new way to build modern web apps.
+- [**React**](https://react.dev/) - A JavaScript library for building user interfaces.
+- [**CSS**](https://developer.mozilla.org/en-US/docs/Web/CSS) - Cascading Style Sheets for styling your pages.
+- [**Express**](https://expressjs.com/) - A Node.js framework for building web applications.
+- [**MySQL**](https://www.mysql.com/) - The world's most popular open source database.
+
+<div id="-getting-started"></div>
+
 
 ## 🚀 Getting Started
 
@@ -61,6 +65,8 @@ git clone git@github.com:santiago-federici/ReactJS-NotionClone.git
 2. Install the dependencies both in the frontend and the backend:
 
 - I use [npm](https://www.npmjs.com/) to install and manage the dependencies.
+
+<div id="-dependencies"></div>
 
 # Install dependencies:
 ```bash
@@ -81,40 +87,43 @@ npm run start
 
 4. Create a database (I use MySQL Workbench):
 
-```bash
-CREATE TABLE users (
+```sqCREATE TABLE users (
 	id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
-  username VARCHAR(25) NOT NULL,
-  email VARCHAR(50) NOT NULL UNIQUE,
-  user_password VARCHAR(200) NOT NULL
+    username VARCHAR(25) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    user_password VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE tables (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-  title VARCHAR(50) DEFAULT ('Untitled'),
-  user_id BINARY(16) NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+    title VARCHAR(50) DEFAULT ('Untitled'),
+    user_id BINARY(16) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE table_rows (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-  main_content VARCHAR(50),
-  description VARCHAR(250),
-  status VARCHAR (50),
-  priority VARCHAR (50),
-  due DATE,
-  table_id INT NOT NULL,
-  FOREIGN KEY (table_id) REFERENCES tables(id)
+    main_content VARCHAR(50),
+    description VARCHAR(250),
+    status VARCHAR (50),
+    priority VARCHAR (50),
+    due DATE,
+    table_id INT NOT NULL,
+    FOREIGN KEY (table_id) REFERENCES tables(id)
 );
 ```
 
 6. Open [**http://localhost:5371**](http://localhost:5371/) with your browser to see the result 🚀
+
+<div id="-contributing"></div>
 
 ### 🤝 Contributing
 
 <a href="https://github.com/santiago-federici/ReactJS-NotionClone/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=santiago-federici/ReactJS-NotionClone" />
 </a>
+
+<div id="-commands"></div>
 
 ## 🧞 Commands
 
@@ -123,3 +132,27 @@ CREATE TABLE table_rows (
 | ⚙️  | `dev`            | Starts local dev server at `localhost:5173`.  |
 | ⚙️  | `start`          | Starts local dev server at `localhost:3000`.  |
 | ⚙️  | `build`          | Build your production site to `./dist/`.      |
+
+
+<div id="-social-media"></div>
+
+## 📲 My Social Media
+
+<div style='display: grid; gap: 10px;'>
+  <div style='display: flex; gap: 10px;'>
+    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' height="20px" width="20px" align="center" />
+    <a href="https://github.com/santiago-federici">Github</a>
+  </div>
+  <div style='display: flex; gap: 10px;'>
+  <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg' height="20px" width="20px" align="center" />
+  <a href="https://github.com/santiago-federici">Twitter</a>
+  </div>
+  <div style='display: flex; gap: 10px;'>
+    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg' height="20px" width="20px" align="center" />
+    <a href="https://github.com/santiago-federici">Instagram</a>
+  </div>
+  <div style='display: flex; gap: 10px;'>
+    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' height="20px" width="20px" align="center" />
+    <a href="https://github.com/santiago-federici">Linkedin</a>
+  </div>
+</div>
