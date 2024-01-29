@@ -39,7 +39,8 @@
 
 ## 📝 Description
 
-A clone of the [Notion](https://notion.so/) website where you can create tables and track your daily tasks.
+NotionClone – a web application inspired by [**Notion**](https://notion.so/) – provides users with the tools to efficiently organize their lives by creating tables and managing daily tasks. Experience the flexibility of organizing information and stay productive with a user-friendly interface.
+
 
 <div id="-stack"></div>
 
@@ -139,21 +140,7 @@ CREATE TABLE table_rows (
 
 ## 📲 My Social Media
 
-<div style='display: grid; gap: 10px;'>
-  <div style='display: flex; gap: 10px;'>
-    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' height="20px" width="20px" align="center" />
-    <a href="https://github.com/santiago-federici" target="_blank">Github</a>
-  </div>
-  <div style='display: flex; gap: 10px;'>
-    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg' height="20px" width="20px" align="center" />
-    <a href="https://twitter.com/Santi_Federici" target="_blank">Twitter</a>
-  </div>
-  <div style='display: flex; gap: 10px;'>
-    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg' height="20px" width="20px" align="center" />
-    <a href="https://www.instagram.com/santi_federici/" target="_blank">Instagram</a>
-  </div>
-  <div style='display: flex; gap: 10px;'>
-    <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' height="20px" width="20px" align="center" />
-    <a href="www.linkedin.com/in/santiago-federici" target="_blank">Linkedin</a>
-  </div>
-</div>
+- [**Github**](https://github.com/santiago-federici)
+- [**Linkedin**](www.linkedin.com/in/santiago-federici)
+- [**Twitter**](https://twitter.com/Santi_Federici)
+- [**Instagram**](https://www.instagram.com/santi_federici)
