@@ -63,13 +63,12 @@ NotionClone â€“ a web application inspired by [**Notion**](https://notion.so/) â
 git clone git@github.com:santiago-federici/ReactJS-NotionClone.git
 ```
 
+<div id="-dependencies"></div>
+
 2. Install the dependencies both in the frontend and the backend:
 
 - I use [npm](https://www.npmjs.com/) to install and manage the dependencies.
 
-<div id="-dependencies"></div>
-
-# Install dependencies:
 ```bash
 npm install
 ```
