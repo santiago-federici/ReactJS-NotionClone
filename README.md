@@ -85,7 +85,7 @@ npm run dev
 npm run start
 ```
 
-4. Create a database (I use MySQL Workbench):
+5. Create a database (I use MySQL Workbench):
 
 ```sql
 CREATE TABLE users (
