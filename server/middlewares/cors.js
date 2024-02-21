@@ -6,7 +6,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:42729',
-  'https://reactjs-notionclone-production-04b7.up.railway.app'
+  'https://notionclone-server.vercel.app/'
 
 ]
 
