@@ -60,7 +60,7 @@ NotionClone â€“ a web application inspired by [**Notion**](https://notion.so/) â
 1. [Clone](https://github.com/santiago-federici/ReactJS-NotionClone.git) this repository.
 
 ```bash
-git clone git@github.com:santiago-federici/ReactJS-NotionClone.git
+git clone "https://github.com/santiago-federici/ReactJS-NotionClone.git"
 ```
 
 <div id="-dependencies"></div>
