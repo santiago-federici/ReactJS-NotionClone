@@ -1,4 +1,4 @@
-import { connection } from '../config/connection.js'
+import { connection } from '../config/MySQL/connection.js'
 
 export class AuthModel {
   static async register ({ username, email, password }) {

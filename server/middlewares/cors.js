@@ -6,8 +6,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:42729',
-  'https://notionclone-server.vercel.app/'
-
+  'https://notionclone-server.vercel.app'
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({

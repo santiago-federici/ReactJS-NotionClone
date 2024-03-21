@@ -1,4 +1,4 @@
-import { connection } from '../config/connection.js'
+import { connection } from '../config/MySQL/connection.js'
 
 export class UserModel {
   static async getAll () {
