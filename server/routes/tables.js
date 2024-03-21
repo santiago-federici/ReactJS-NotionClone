@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { TableController } from '../controllers/tables.js'
+import { TableController } from '../controllers/SQLite/tables.js' // <-- Change folder between MySQL and SQLite as needed
 
 export const createTablesRouter = ({ tableModel }) => {
   const tablesRouter = Router()
