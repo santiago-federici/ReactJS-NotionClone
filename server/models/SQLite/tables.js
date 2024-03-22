@@ -1,61 +1,86 @@
-import { client } from '../config/SQLite/connection.js'
+import { client } from '../../config/SQLite/connection.js'
 
 export class TableModel {
   static async getAll () {
-    const tables = await client.execute({
-      sql: 'SELECT id, title, BIN_TO_UUID(user_id) user_id FROM tables;'
-    })
+    try {
+      const tables = await client.execute({
+        sql: 'SELECT id, title, user_id FROM tables;',
+        args: []
+      })
 
-    return tables
+      return tables
+    } catch (err) {
+      return { err: 'Error getting the tables', error: err }
+    }
   }
 
   static async getByUserId ({ userId }) {
-    const tables = await client.execute({
-      sql: 'SELECT id, title, BIN_TO_UUID(user_id) user_id FROM tables WHERE BIN_TO_UUID(user_id) = ?;',
-      args: [userId]
-    })
+    try {
+      const tables = await client.execute({
+        sql: 'SELECT id, title, user_id FROM tables WHERE user_id = ?;',
+        args: [userId]
+      })
 
-    return tables
+      return tables
+    } catch (err) {
+      return { err: 'Error getting the tables', error: err }
+    }
   }
 
   static async getByTableId ({ tableId }) {
-    const table = await client.execute({
-      sql: 'SELECT id, title FROM tables WHERE id = ?',
-      args: [tableId]
-    })
+    try {
+      const table = await client.execute({
+        sql: 'SELECT id, title FROM tables WHERE id = ?',
+        args: [tableId]
+      })
 
-    return table
+      return table
+    } catch (err) {
+      return { err: 'Error getting the table', error: err }
+    }
   }
 
   static async create ({ userId }) {
-    const newTable = await client.execute({
-      sql: 'INSERT INTO tables (title, user_id) VALUES (?, UUID_TO_BIN(?));',
-      args: ['Untitled', userId]
-    })
+    try {
+      const newTable = await client.execute({
+        sql: 'INSERT INTO tables (title, user_id) VALUES (?, ?);',
+        args: ['Untitled', userId]
+      })
 
-    return newTable
+      return newTable
+    } catch (err) {
+      return { err: 'Error creating the table', error: err }
+    }
   }
 
   static async updateTableTitle ({ tableId, title }) {
-    const updatedTable = await client.execute({
-      sql: 'UPDATE tables SET title = ? WHERE id = ?;',
-      args: [title, tableId]
-    })
+    try {
+      const updatedTable = await client.execute({
+        sql: 'UPDATE tables SET title = ? WHERE id = ?;',
+        args: [title, tableId]
+      })
 
-    return updatedTable
+      return updatedTable
+    } catch (err) {
+      return { err: 'Error updating the table', error: err }
+    }
   }
 
   static async delete ({ tableId }) {
-    const rowsToDelete = await client.execute({
-      sql: 'DELETE FROM table_rows WHERE table_id = ?;',
-      args: [tableId]
-    })
+    try {
+      const rowsToDelete = await client.execute({
+        sql: 'DELETE FROM table_rows WHERE table_id = ?;',
+        args: [tableId]
+      })
 
-    const tableToDelete = await client.execute({
-      sql: 'DELETE FROM tables WHERE id = ?;',
-      args: [tableId]
-    })
+      const tableToDelete = await client.execute({
+        sql: 'DELETE FROM tables WHERE id = ?;',
+        args: [tableId]
+      })
 
-    return { rowsToDelete, tableToDelete }
+      return { rowsToDelete, tableToDelete }
+    } catch (err) {
+      return { err: 'Error deleting the table', error: err }
+    }
   }
 }

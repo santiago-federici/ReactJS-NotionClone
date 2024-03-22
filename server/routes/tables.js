@@ -8,12 +8,14 @@ export const createTablesRouter = ({ tableModel }) => {
   const tableController = new TableController({ tableModel })
 
   tablesRouter.get('/', tableController.getAll)
-  tablesRouter.get('/findTable/:tableId', tableController.getByTableId)
-  tablesRouter.post('/', tableController.create)
-  tablesRouter.patch('/title/:tableId', tableController.updateTableTitle)
-  tablesRouter.delete('/:tableId', tableController.delete)
-
   tablesRouter.get('/:userId', tableController.getByUserId)
+  tablesRouter.get('/findTable/:tableId', tableController.getByTableId)
+
+  tablesRouter.post('/', tableController.create)
+
+  tablesRouter.patch('/title/:tableId', tableController.updateTableTitle)
+
+  tablesRouter.delete('/:tableId', tableController.delete)
 
   return tablesRouter
 }
