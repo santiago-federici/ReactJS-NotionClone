@@ -7,6 +7,13 @@ export class AuthModel {
         sql: 'INSERT INTO users (username, email, user_password) VALUES (?, ?, ?)',
         args: [username, email, password]
       })
+
+      const user = await client.execute({
+        sql: 'SELECT id, username, email, user_password FROM users WHERE email = ? AND user_password = ?;',
+        args: [email, password]
+      })
+
+      return user
     } catch (err) {
       if (err && err.code === 'SQLITE_CONSTRAINT') {
         return { err: 'Email is already in use. Try another one.' }
@@ -14,21 +21,19 @@ export class AuthModel {
 
       return { err: 'Error registering the user', error: err }
     }
-
-    const user = await client.execute({
-      sql: 'SELECT id, username, email, user_password FROM users WHERE email = ? AND user_password = ?;',
-      args: [email, password]
-    })
-
-    return user
   }
 
   static async loginByEmail ({ email }) {
-    const users = await client.execute({
-      sql: 'SELECT id, username, email, user_password FROM users WHERE email = ?;',
-      args: [email]
-    })
+    try {
+      const users = await client.execute({
+        sql: 'SELECT id, username, email, user_password FROM users WHERE email = ?;',
+        args: [email]
+      })
 
-    return users
+      return users
+    } catch (err) {
+      console.error(err)
+      return { err: 'Error logging in the user', error: err }
+    }
   }
 }

@@ -17,11 +17,10 @@ export class AuthController {
 
     const newUser = await this.authModel.register({ username: validatedUser.data.username, email: validatedUser.data.email, password: hashedPassword })
 
-    if (newUser && newUser.rows.length > 0) {
-      console.log('newUser from controller: ', newUser.rows)
-      const { id, username, email } = newUser.rows[0]
+    if (newUser.err) return res.status(400).json({ message: newUser.err })
 
-      console.log('credentials: ', id, username, email)
+    if (newUser && newUser.rows.length > 0) {
+      const { id, username, email } = newUser.rows[0]
 
       const token = jwt.sign({ id }, 'secretkey')
 
@@ -29,12 +28,13 @@ export class AuthController {
         httpOnly: true
       }).status(200).json({ id, username, email })
     }
-    return res.status(400).json({ message: newUser.error })
   }
 
   loginByEmail = async (req, res) => {
     const { email, password } = req.body
     const user = await this.authModel.loginByEmail({ email })
+
+    if (user.err) return res.status(400).json({ message: user.err })
 
     if (user && user.rows.length > 0) {
       const isValidPass = await bcrypt.compare(password, user.rows[0].user_password)
