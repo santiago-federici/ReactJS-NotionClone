@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { RowController } from '../controllers/rows.js'
+import { RowController } from '../controllers/SQLite/rows.js' // <-- Change folder between MySQL and SQLite as needed
 
 export const createRowsRouter = ({ rowModel }) => {
   const rowsRouter = Router()
