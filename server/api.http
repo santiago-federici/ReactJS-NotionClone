@@ -1,0 +1,111 @@
+### GET ALL USERS
+GET http://localhost:3000/users/
+
+### GET USER BY ID
+GET http://localhost:3000/users/fc97f55c409a07e713a3fa16e2a11e91
+
+
+
+### REGISTER
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "hahaha",
+  "email": "hahaha@gmail.com",
+  "password": "123456"
+}
+
+### LOGIN
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "hahaha@gmail.com",
+  "password": "123456"
+}
+
+
+
+### GET ALL TABLES
+GET http://localhost:3000/tables/
+
+### GET TABLES BY USER ID
+GET http://localhost:3000/tables/fc97f55c409a07e713a3fa16e2a11e91
+
+### GET TABLE BY TABLE ID
+GET http://localhost:3000/tables/findTable/2
+
+### CREATE TABLE
+POST http://localhost:3000/tables/
+Content-Type: application/json
+
+{
+  "userId": "fc97f55c409a07e713a3fa16e2a11e91"
+}
+
+### UPDATE TABLE
+PATCH http://localhost:3000/tables/title/7
+Content-Type: application/json
+
+{
+  "title": "Last table created"
+}
+
+### DELETE TABLE
+DELETE http://localhost:3000/tables/15
+
+
+### GET ROWS BY TABLE ID
+GET http://localhost:3000/rows/1
+
+### CREATE ROW
+POST http://localhost:3000/rows/
+Content-Type: application/json
+
+{
+  "tableId": "1"
+}
+
+### UPDATE ROW STATUS
+PATCH http://localhost:3000/rows/status/1
+Content-Type: application/json
+
+{
+  "status": "Done"
+}
+
+### UPDATE ROW PRIORITY
+PATCH http://localhost:3000/rows/priority/1
+Content-Type: application/json
+
+{
+  "priority": "High"
+}
+
+### UPDATE ROW MAIN CONTENT
+PATCH http://localhost:3000/rows/mainContent/1
+Content-Type: application/json
+
+{
+  "mainContent": "Do math homework"
+}
+
+### UPDATE ROW DESCRIPTION
+PATCH http://localhost:3000/rows/description/1
+Content-Type: application/json
+
+{
+  "description": "I gotta do this fcking homework"
+}
+
+### UPDATE ROW DUE
+PATCH http://localhost:3000/rows/due/1
+Content-Type: application/json
+
+{
+  "due": "September 27th, 2024"
+}
+
+### DELETE ROW
+DELETE http://localhost:3000/rows/3
