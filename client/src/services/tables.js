@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://notionclone-server.vercel.app/tables/'
+const ENDPOINT = 'https://notion-clone-server-nine.vercel.app/tables/'
 
 export const findAllTables = async (userId) => {
   const res = await fetch(`${ENDPOINT}${userId}`)
@@ -9,7 +9,7 @@ export const findAllTables = async (userId) => {
 export const findTable = async (tableId) => {
   const res = await fetch(`${ENDPOINT}findTable/${tableId}`)
   const data = await res.json()
-  return data[0]
+  return data
 }
 
 export const createTable = async (userId) => {
@@ -21,7 +21,7 @@ export const createTable = async (userId) => {
     body: JSON.stringify({ userId })
   })
   const data = await res.json()
-  if (data.insertId) return true
+  if (data.id) return true
   return false
 }
 

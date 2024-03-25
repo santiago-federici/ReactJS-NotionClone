@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://notionclone-server.vercel.app/rows/'
+const ENDPOINT = 'https://notion-clone-server-nine.vercel.app/rows/'
 
 export const findRows = async (tableId) => {
   const res = await fetch(`${ENDPOINT}${tableId}`)

@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
     JSON.parse(localStorage.getItem('user')) || null
   )
 
-  const baseURL = 'https://notionclone-server.vercel.app/auth/'
+  const baseURL = 'https://notion-clone-server-nine.vercel.app/auth/'
 
   const login = async ({ email, password }) => {
     try {

@@ -1,12 +1,4 @@
-const ENDPOINT = 'https://notionclone-server.vercel.app/auth/'
-
-export const resgiter = async () => {
-
-}
-
-export const login = async () => {
-
-}
+const ENDPOINT = 'https://notion-clone-server-nine.vercel.app/auth/'
 
 export const logout = async () => {
   const res = await fetch(`${ENDPOINT}logout`, {
