@@ -22,6 +22,6 @@ export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => c
     return callback(new Error('Not Allowed by CORS'))
   },
   credentials: true,
-  exposedHeaders: ['Content-Type', 'Authorization'], // Add any additional headers you need to expose
-  methods: ['GET', 'POST', 'OPTIONS']
+  exposedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE']
 })
