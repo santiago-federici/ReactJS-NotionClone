@@ -47,7 +47,12 @@ export class TableModel {
         args: ['Untitled', userId]
       })
 
-      return newTable
+      const createdTable = await client.execute({
+        sql: 'SELECT id, title FROM tables WHERE id = ?;',
+        args: [newTable.lastInsertRowid]
+      })
+
+      return createdTable
     } catch (err) {
       return { err: 'Error creating the table', error: err }
     }

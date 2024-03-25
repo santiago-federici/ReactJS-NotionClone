@@ -5,23 +5,23 @@ export class TableController {
 
   getAll = async (req, res) => {
     const tables = await this.tableModel.getAll()
-    if (tables.err) return res.status(404).json({ message: 'Tables not found', error: tables.err })
+    if (tables.err) return res.status(404).json({ message: 'There was an error getting the tables', error: tables.err })
     if (tables && tables.rows.length > 0) return res.status(200).json(tables.rows)
+    return res.status(404).json({ message: 'No tables found' })
   }
 
   getByUserId = async (req, res) => {
     const { userId } = req.params
     const tables = await this.tableModel.getByUserId({ userId })
-    if (tables.err) return res.status(404).json({ message: 'Tables not found', error: tables.err })
+    if (tables.err) return res.status(404).json({ message: 'There was an error getting the tables', error: tables.err })
     if (tables && tables.rows.length > 0) return res.status(200).json(tables.rows)
+    return res.status(404).json({ message: 'No tables found' })
   }
 
   getByTableId = async (req, res) => {
     const { tableId } = req.params
     const table = await this.tableModel.getByTableId({ tableId })
-    console.log('table from controller: ', table)
-
-    if (table.err) return res.status(404).json({ message: 'Table not found', error: table.err })
+    if (table.err) return res.status(404).json({ message: 'There was an error getting the table', error: table.err })
     if (table && table.rows.length > 0) return res.status(200).json(table.rows[0])
     return res.status(404).json({ message: 'Table not found' })
   }
@@ -30,7 +30,7 @@ export class TableController {
     const { userId } = req.body
     const newTable = await this.tableModel.create({ userId })
     if (newTable.err) return res.status(400).json({ message: 'There was an error creating the table' })
-    if (newTable && newTable.rowsAffected === 1) return res.status(200).json({ message: 'Table created successfully' })
+    if (newTable && newTable.rows.length > 0) return res.status(200).json(newTable.rows[0])
   }
 
   updateTableTitle = async (req, res) => {
@@ -45,11 +45,7 @@ export class TableController {
 
   delete = async (req, res) => {
     const { tableId } = req.params
-    const { rowsToDelete, tableToDelete } = await this.tableModel.delete({ tableId })
-
-    console.log('rows: ', rowsToDelete)
-    console.log('table: ', tableToDelete)
-
+    const { tableToDelete } = await this.tableModel.delete({ tableId })
     if (tableToDelete.err) return res.status(400).json({ error: tableToDelete.err })
     if (tableToDelete && tableToDelete.rowsAffected === 1) return res.status(200).json({ message: 'Table deleted successfully' })
     return res.status(404).json({ message: 'Table not found' })
