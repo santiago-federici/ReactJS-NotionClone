@@ -6,6 +6,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:3000',
+  'https://notionclone-v1.vercel.app/',
   'https://notion-clone-server-nine.vercel.app'
 ]
 
